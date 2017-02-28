@@ -1,37 +1,88 @@
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.geom.Ellipse2D;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-public class ImageEdit extends JPanel{
+import java.awt.*;
+import javax.swing.*;
 
-    public ImageEdit() {
-    }
-    protected void paintComponent(Graphics g) {
-        Graphics2D g2D = (Graphics2D)g;
-        // paint background
-        g2D.setBackground(Color.WHITE);
-        g2D.clearRect(0,0,getWidth(), getHeight());
+public class ImageEdit{
 
-        // paint shape
-        g2D.setColor(Color.BLUE);
-        drawEllipse(g2D);
+    private JFrame mainFrame;
+    private JPanel drawingArea;
+    private JPanel toolsPanel;
+    private JPanel colorPanel;
+
+    private DrawingManager drawingManager;
+
+    ImageEdit(){
+        drawingManager = new DrawingManager(this);
+
+        setDrawingArea();
+        setToolsPanel();
+        setColorPanel();
+        setFrame();
+        prepareGameManager();
+
     }
 
-    private void drawEllipse(Graphics2D g2D){
-        int shapeWidth = 150;
-        int shapwHeight = 75;
-        Ellipse2D.Double ellipse = new Ellipse2D.Double( (getWidth()-shapeWidth)/2, (getHeight()-shapwHeight)/2, shapeWidth, shapwHeight);
-        g2D.draw(ellipse);
-    }
 
     public static void main(String[] args) {
-        ImageEdit panel = new ImageEdit();
-        JFrame frame = new JFrame("Paint");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().add(panel);
-        frame.setBounds(100,100,300,300);
-        frame.setVisible(true);
+
+     ImageEdit imageEdit = new ImageEdit();
+
+    }
+
+
+    private void setColorPanel() {
+        this.colorPanel = new JPanel();
+        this.colorPanel.setBackground(Color.blue);
+        this.colorPanel.setSize(this.mainFrame.MAXIMIZED_HORIZ,34);
+        this.colorPanel.setVisible(true);
+    }
+
+    private void setToolsPanel() {
+        this.toolsPanel = new JPanel();
+        this.toolsPanel.setBackground(Color.RED);
+        this.toolsPanel.setVisible(true);
+    }
+
+    private void setDrawingArea() {
+        this.drawingArea = new JPanel();
+        this.drawingArea.setBackground(Color.white);
+        this.drawingArea.setSize(this.mainFrame.MAXIMIZED_HORIZ-128,this.mainFrame.MAXIMIZED_VERT-128);
+        this.drawingArea.setVisible(true);
+    }
+
+    private void setFrame() {
+        this.mainFrame = new JFrame("Paint");
+        this.mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.mainFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        this.mainFrame.setLayout(new BorderLayout());
+
+
+        this.mainFrame.add(this.toolsPanel,BorderLayout.WEST);
+        this.mainFrame.add(this.colorPanel,BorderLayout.NORTH);
+        this.mainFrame.add(this.drawingArea,BorderLayout.CENTER);
+
+
+        this.mainFrame.setVisible(true);
+    }
+
+
+    private void prepareGameManager() {
+
+    }
+
+    public JFrame getMainFrame() {
+        return mainFrame;
+    }
+
+    public JPanel getDrawingArea() {
+        return drawingArea;
+    }
+
+    public JPanel getToolsPanel() {
+        return toolsPanel;
+    }
+
+    public JPanel getColorPanel() {
+        return colorPanel;
     }
 }
