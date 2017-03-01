@@ -7,13 +7,10 @@ import java.awt.*;
 public class DrawingManager  {
 
     private Tool currentTool;
-    DrawingArea drawingArea;
-    Color color;
+    private DrawingArea drawingArea;
+    private Color color;
 
 
-    public DrawingArea getDrawingArea() {
-        return drawingArea;
-    }
 
     DrawingManager(){
 
@@ -22,6 +19,7 @@ public class DrawingManager  {
 
 
         this.currentTool = new Paint(this);
+        color = Color.black;
 
         update();
     }
@@ -37,10 +35,20 @@ public class DrawingManager  {
     }
 
     public void update(){
+        this.drawingArea.addMouseListener(currentTool);
         this.drawingArea.addMouseMotionListener(currentTool);
     }
 
     public Graphics getCanvas(){
         return this.drawingArea.getGraphics();
+    }
+
+
+    public Color getColor() {
+        return color;
+    }
+
+    public DrawingArea getDrawingArea() {
+        return drawingArea;
     }
 }

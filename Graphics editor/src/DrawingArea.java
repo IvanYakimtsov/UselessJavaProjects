@@ -11,13 +11,12 @@ public class DrawingArea extends JPanel {
 
 
     DrawingArea(){
-       // canvas = new JLabel(new ImageIcon(this.canvasViev));
+
         this.setBackground(Color.white);
         this.setVisible(true);
 
         canvas = this.getGraphics();
 
-        //this.add(canvas);
 
 
 
