@@ -1,7 +1,7 @@
 package com.ivan.imageEditor;
 
 import java.awt.*;
-import java.awt.event.MouseAdapter;
+
 
 /**
  * Created by Ivan on 28.02.2017.
@@ -45,7 +45,7 @@ public class DrawingManager  {
     public void update(){
         this.drawingArea.addMouseListener(currentTool);
         this.drawingArea.addMouseMotionListener(currentTool);
-       this.getDrawingArea().setCursor(this.currentTool.getCursor());
+        this.getDrawingArea().setCursor(this.currentTool.getCursor());
     }
 
     public Graphics getCanvas(){

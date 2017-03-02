@@ -2,7 +2,7 @@ package com.ivan.imageEditor;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
+
 
 /**
  * Created by Ivan on 01.03.2017.

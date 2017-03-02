@@ -1,10 +1,8 @@
 package com.ivan.imageEditor;
 
 import java.awt.*;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseWheelEvent;
+
 
 /**
  * Created by Ivan on 28.02.2017.
