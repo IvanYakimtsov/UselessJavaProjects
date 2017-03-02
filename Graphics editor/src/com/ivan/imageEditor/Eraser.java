@@ -1,30 +1,35 @@
-import javafx.scene.shape.Line;
+package com.ivan.imageEditor;
 
 import java.awt.*;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
 
 /**
- * Created by Ivan on 28.02.2017.
+ * Created by Ivan on 01.03.2017.
  */
-public class Paint extends Tool {
+public class Eraser implements Tool {
 
     boolean isPressed;
     int lastXposition;
     int lastYposition;
+    DrawingManager drawingManager;
+    Cursor cursor;
 
 
-    Paint(DrawingManager drawingManager) {
-        super(drawingManager);
+    Eraser(DrawingManager drawingManager) {
+        this.drawingManager = drawingManager;
         setCursor();
     }
 
-
-    private void setCursor(){
+    public void setCursor(){
         Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Image image = toolkit.getImage("Img/artistic-brush.png");
-        Cursor cursor = toolkit.createCustomCursor(image,new Point(0,28) , "paint");
+        Image image = toolkit.getImage("Img/eraserTool.png");
+        Cursor cursor = toolkit.createCustomCursor(image,new Point(0,28) , "eraserTool");
 
-        drawingManager.getDrawingArea().setCursor(cursor);
+        this.cursor = cursor;
+
+
     }
 
     @Override
@@ -43,9 +48,10 @@ public class Paint extends Tool {
     }
 
     @Override
-    public void mouseMoved(MouseEvent event) {
+    public void mouseMoved(MouseEvent e) {
 
     }
+
 
     @Override
     public void mouseClicked(MouseEvent event) {
@@ -66,19 +72,19 @@ public class Paint extends Tool {
     }
 
     @Override
-    public void mouseEntered(MouseEvent event) {
+    public void mouseEntered(MouseEvent e) {
 
     }
 
     @Override
-    public void mouseExited(MouseEvent event) {
+    public void mouseExited(MouseEvent e) {
 
     }
 
     private void paint(MouseEvent event){
         Graphics2D paint = (Graphics2D)drawingManager.getCanvas();
-        paint.setStroke(new  BasicStroke(4.0f));
-        paint.setColor(drawingManager.getColor());
+        paint.setColor(Color.WHITE);
+        paint.setStroke(new  BasicStroke(16.0f));
 
         paint.drawLine(event.getX(),event.getY(),event.getX(),event.getY());
 
@@ -86,4 +92,10 @@ public class Paint extends Tool {
             paint.drawLine(lastXposition,lastYposition,event.getX(),event.getY());
         }
     }
+
+    @Override
+    public Cursor getCursor() {
+        return this.cursor;
+    }
+
 }
