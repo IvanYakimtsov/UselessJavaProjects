@@ -81,7 +81,7 @@ public class Pencil implements Tool{
     private void paint(MouseEvent event){
         Graphics2D paint = (Graphics2D)drawingManager.getCanvas();
         paint.setColor(drawingManager.getColor());
-
+        paint.setStroke(new  BasicStroke(1.0f));
         paint.drawLine(event.getX(),event.getY(),event.getX(),event.getY());
 
         if(isPressed){

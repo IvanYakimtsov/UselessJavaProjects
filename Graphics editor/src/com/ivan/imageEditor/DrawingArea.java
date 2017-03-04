@@ -7,26 +7,23 @@ import java.awt.*;
 /**
  * Created by Ivan on 01.03.2017.
  */
-public class DrawingArea extends JPanel {
+public class DrawingArea  {
 
-    private Graphics  canvas;
+    JPanel drawingArea;
 
 
     DrawingArea(){
 
-        this.setBackground(Color.white);
-        this.setVisible(true);
-
-        canvas = this.getGraphics();
-
+        this.drawingArea = new JPanel();
+        this.drawingArea.setBackground(Color.white);
+        this.drawingArea.setVisible(true);
 
 
 
     }
 
-    public Graphics getCanvas() {
-        return canvas;
+    public JPanel getDrawingArea() {
+        return drawingArea;
     }
-
 
 }
