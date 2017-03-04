@@ -2,6 +2,7 @@ package com.ivan.imageEditor;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 
 /**
@@ -10,6 +11,7 @@ import java.awt.*;
 public class DrawingArea  {
 
     JPanel drawingArea;
+    BufferedImage image;
 
 
     DrawingArea(){
@@ -19,6 +21,7 @@ public class DrawingArea  {
         this.drawingArea.setVisible(true);
 
 
+       // this.image = new BufferedImage(drawingArea.getWidth(),drawingArea.getHeight(),BufferedImage.TYPE_INT_RGB);
 
     }
 
