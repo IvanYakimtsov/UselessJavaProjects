@@ -10,5 +10,5 @@ import java.awt.event.MouseMotionListener;
  */
 public interface Tool extends MouseMotionListener,MouseListener {
     public Cursor getCursor();
-    public void setCursor();
+
 }

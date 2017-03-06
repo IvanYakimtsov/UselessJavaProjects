@@ -21,7 +21,7 @@ public class Eraser implements Tool {
         setCursor();
     }
 
-    public void setCursor(){
+    private void setCursor(){
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Image image = toolkit.getImage("Img/eraserTool.png");
         Cursor cursor = toolkit.createCustomCursor(image,new Point(0,28) , "eraserTool");
@@ -81,15 +81,16 @@ public class Eraser implements Tool {
     }
 
     private void paint(MouseEvent event){
-        Graphics2D paint = (Graphics2D)drawingManager.getCanvas();
-        paint.setColor(Color.WHITE);
+        Graphics2D paint = (Graphics2D)drawingManager.getDrawingArea().getImage().createGraphics();
         paint.setStroke(new  BasicStroke(16.0f));
+        paint.setColor(Color.WHITE);
 
         paint.drawLine(event.getX(),event.getY(),event.getX(),event.getY());
 
         if(isPressed){
             paint.drawLine(lastXposition,lastYposition,event.getX(),event.getY());
         }
+        drawingManager.getDrawingArea().repaint();
     }
 
     @Override

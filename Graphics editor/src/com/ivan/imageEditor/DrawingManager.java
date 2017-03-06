@@ -1,6 +1,5 @@
 package com.ivan.imageEditor;
 
-import javax.swing.*;
 import java.awt.*;
 
 
@@ -31,7 +30,7 @@ public class DrawingManager  {
     public void setCurrentTool(Tool currentTool) {
 
        // this.drawingArea.removeMouseListener(this.currentTool);
-        this.drawingArea.getDrawingArea().removeMouseMotionListener(this.currentTool);
+        this.drawingArea.removeMouseMotionListener(this.currentTool);
 
         this.currentTool = currentTool;
 
@@ -44,13 +43,9 @@ public class DrawingManager  {
     }
 
     public void update(){
-        this.drawingArea.getDrawingArea().addMouseListener(currentTool);
-        this.drawingArea.getDrawingArea().addMouseMotionListener(currentTool);
+        this.drawingArea.addMouseListener(currentTool);
+        this.drawingArea.addMouseMotionListener(currentTool);
         this.getDrawingArea().setCursor(this.currentTool.getCursor());
-    }
-
-    public Graphics getCanvas(){
-        return this.drawingArea.getDrawingArea().getGraphics();
     }
 
 
@@ -58,7 +53,7 @@ public class DrawingManager  {
         return color;
     }
 
-    public JPanel getDrawingArea() {
-        return drawingArea.getDrawingArea();
+    public DrawingArea getDrawingArea() {
+        return this.drawingArea;
     }
 }

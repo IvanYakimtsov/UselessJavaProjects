@@ -20,7 +20,7 @@ public class Pencil implements Tool{
         setCursor();
     }
 
-    public void setCursor(){
+    private void setCursor(){
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Image image = toolkit.getImage("Img/pencil.png");
         Cursor cursor = toolkit.createCustomCursor(image,new Point(0,28) , "pencil");
@@ -79,14 +79,16 @@ public class Pencil implements Tool{
 
 
     private void paint(MouseEvent event){
-        Graphics2D paint = (Graphics2D)drawingManager.getCanvas();
-        paint.setColor(drawingManager.getColor());
+        Graphics2D paint = (Graphics2D)drawingManager.getDrawingArea().getImage().createGraphics();
         paint.setStroke(new  BasicStroke(1.0f));
+        paint.setColor(drawingManager.getColor());
+
         paint.drawLine(event.getX(),event.getY(),event.getX(),event.getY());
 
         if(isPressed){
             paint.drawLine(lastXposition,lastYposition,event.getX(),event.getY());
         }
+        drawingManager.getDrawingArea().repaint();
     }
 
     @Override

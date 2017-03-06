@@ -21,7 +21,7 @@ public class Paint implements Tool{
         setCursor();
     }
 
-    public void setCursor(){
+    private void setCursor(){
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Image image = toolkit.getImage("Img/artistic-brush.png");
         Cursor cursor = toolkit.createCustomCursor(image,new Point(0,28) , "paint");
@@ -58,7 +58,6 @@ public class Paint implements Tool{
 
     @Override
     public void mousePressed(MouseEvent event) {
-        paint(event);
 
     }
 
@@ -79,7 +78,7 @@ public class Paint implements Tool{
 
 
     private void paint(MouseEvent event){
-        Graphics2D paint = (Graphics2D)drawingManager.getCanvas();
+        Graphics2D paint = (Graphics2D)drawingManager.getDrawingArea().getImage().createGraphics();
         paint.setStroke(new  BasicStroke(4.0f));
         paint.setColor(drawingManager.getColor());
 
@@ -88,6 +87,8 @@ public class Paint implements Tool{
         if(isPressed){
             paint.drawLine(lastXposition,lastYposition,event.getX(),event.getY());
         }
+        drawingManager.getDrawingArea().repaint();
+
     }
 
     @Override
