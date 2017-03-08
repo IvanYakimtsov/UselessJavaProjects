@@ -1,6 +1,7 @@
 package com.ivan.imageEditor;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 /**
@@ -80,8 +81,8 @@ public class Pencil implements Tool{
 
     private void paint(MouseEvent event){
         Graphics2D paint = (Graphics2D)drawingManager.getDrawingArea().getImage().createGraphics();
-        paint.setStroke(new  BasicStroke(1.0f));
-        paint.setColor(drawingManager.getColor());
+        paint.setStroke(new  BasicStroke(2.0f));
+        paint.setColor(drawingManager.getColor().brighter().brighter().brighter().brighter());
 
         paint.drawLine(event.getX(),event.getY(),event.getX(),event.getY());
 
@@ -97,4 +98,18 @@ public class Pencil implements Tool{
     }
 
 
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
+    }
 }

@@ -40,7 +40,7 @@ public class ToolsPanel  {
 
 
     //------------------------------------------------------------------------------------------------------------
-    public class ToolsPanelListener implements ActionListener {
+    class ToolsPanelListener implements ActionListener {
         DrawingManager drawingManager;
         Tool tool;
         ToolsPanelListener(DrawingManager drawingManager, Tool tool){

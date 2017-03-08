@@ -38,7 +38,7 @@ public class ColorPanel {
 
 
     //---------------------------------------------------------------------------------------------------
-    public class ColorPanelListener implements ActionListener {
+    class ColorPanelListener implements ActionListener {
         DrawingManager drawingManager;
         Color color;
         ColorPanelListener(DrawingManager drawingManager, Color color){

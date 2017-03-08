@@ -50,7 +50,7 @@ public class ImageEdit{
         this.toolsPanel.addButton(setToolButton("Img/pencil.png"),new Pencil(this.drawingManager));
         this.toolsPanel.addButton(setToolButton("Img/eraser.png"),new Eraser(this.drawingManager));
         this.toolsPanel.addButton(setToolButton("Img/vector.png"),new Paint(this.drawingManager));
-        this.toolsPanel.addButton(setToolButton("Img/rectangle.png"),new Paint(this.drawingManager));
+        this.toolsPanel.addButton(setToolButton("Img/Rectangle.png"),new Rectangle(this.drawingManager));
         this.toolsPanel.addButton(setToolButton("Img/save.png"),new Paint(this.drawingManager));
     }
 

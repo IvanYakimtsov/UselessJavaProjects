@@ -29,8 +29,9 @@ public class DrawingManager  {
 
     public void setCurrentTool(Tool currentTool) {
 
-       // this.drawingArea.removeMouseListener(this.currentTool);
+        this.drawingArea.removeMouseListener(this.currentTool);
         this.drawingArea.removeMouseMotionListener(this.currentTool);
+        this.drawingArea.removeKeyListener(this.currentTool);
 
         this.currentTool = currentTool;
 
@@ -45,6 +46,7 @@ public class DrawingManager  {
     public void update(){
         this.drawingArea.addMouseListener(currentTool);
         this.drawingArea.addMouseMotionListener(currentTool);
+        this.drawingArea.addKeyListener(this.currentTool);
         this.getDrawingArea().setCursor(this.currentTool.getCursor());
     }
 
