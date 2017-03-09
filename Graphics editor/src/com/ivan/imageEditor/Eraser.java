@@ -83,7 +83,7 @@ public class Eraser implements Tool {
 
     private void paint(MouseEvent event){
         Graphics2D paint = (Graphics2D)drawingManager.getDrawingArea().getImage().createGraphics();
-        paint.setStroke(new  BasicStroke(16.0f));
+        paint.setStroke(new  BasicStroke(drawingManager.getSize()*8.0f));
         paint.setColor(Color.WHITE);
 
         paint.drawLine(event.getX(),event.getY(),event.getX(),event.getY());

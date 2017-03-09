@@ -11,6 +11,7 @@ public class DrawingManager  {
     private Tool currentTool;
     private DrawingArea drawingArea;
     private Color color;
+    private int size;
 
 
 
@@ -22,6 +23,7 @@ public class DrawingManager  {
 
         this.currentTool = new Paint(this);
         color = Color.black;
+        size = 1;
 
         update();
     }
@@ -49,7 +51,9 @@ public class DrawingManager  {
         this.drawingArea.addKeyListener(this.currentTool);
         this.getDrawingArea().setCursor(this.currentTool.getCursor());
     }
-
+    public void setSize(int size) {
+        this.size = size;
+    }
 
     public Color getColor() {
         return color;
@@ -57,5 +61,9 @@ public class DrawingManager  {
 
     public DrawingArea getDrawingArea() {
         return this.drawingArea;
+    }
+
+    public int getSize() {
+        return size;
     }
 }

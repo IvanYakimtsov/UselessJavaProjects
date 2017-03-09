@@ -63,10 +63,11 @@ public class Line implements Tool{
 
 
     public void mouseReleased(MouseEvent event) {
+
         if(isPressed){
             isPressed = false;
             Graphics2D paint = (Graphics2D)drawingManager.getDrawingArea().getImage().createGraphics();
-            paint.setStroke(new  BasicStroke(4.0f));
+            paint.setStroke(new  BasicStroke(drawingManager.getSize()*4.0f));
             paint.setColor(drawingManager.getColor());
 
             paintLine(paint,event);
@@ -93,6 +94,7 @@ public class Line implements Tool{
         Graphics2D paint = (Graphics2D)drawingManager.getDrawingArea().getAccessoryImage().createGraphics();
         paint.setColor(drawingManager.getColor());
         drawingManager.getDrawingArea().clearAccessoryImage();
+        paint.setStroke(new  BasicStroke(drawingManager.getSize()*4.0f));
         paintLine(paint,event);
         drawingManager.getDrawingArea().repaint();
     }

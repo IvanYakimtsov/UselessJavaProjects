@@ -80,7 +80,7 @@ public class Paint implements Tool{
 
     private void paint(MouseEvent event){
         Graphics2D paint = (Graphics2D)drawingManager.getDrawingArea().getImage().createGraphics();
-        paint.setStroke(new  BasicStroke(4.0f));
+        paint.setStroke(new  BasicStroke(drawingManager.getSize()*4.0f));
         paint.setColor(drawingManager.getColor());
 
         paint.drawLine(event.getX(),event.getY(),event.getX(),event.getY());

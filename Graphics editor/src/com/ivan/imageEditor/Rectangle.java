@@ -67,7 +67,7 @@ public class Rectangle implements Tool{
         if(isPressed){
         isPressed = false;
         Graphics2D paint = (Graphics2D)drawingManager.getDrawingArea().getImage().createGraphics();
-        paint.setStroke(new  BasicStroke(4.0f));
+        paint.setStroke(new  BasicStroke(drawingManager.getSize()*4.0f));
         paint.setColor(drawingManager.getColor());
 
         paintRect(paint,event);
@@ -94,6 +94,7 @@ public class Rectangle implements Tool{
         Graphics2D paint = (Graphics2D)drawingManager.getDrawingArea().getAccessoryImage().createGraphics();
         paint.setColor(drawingManager.getColor());
         drawingManager.getDrawingArea().clearAccessoryImage();
+        paint.setStroke(new  BasicStroke(drawingManager.getSize()*4.0f));
         paintRect(paint,event);
         drawingManager.getDrawingArea().repaint();
     }
