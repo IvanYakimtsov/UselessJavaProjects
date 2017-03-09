@@ -47,9 +47,9 @@ public class ImageEdit{
 
     private void setToolsForToolPanel(){
         this.toolsPanel.addButton(setToolButton("Img/paint-brush.png"),new Paint(this.drawingManager));
-        this.toolsPanel.addButton(setToolButton("Img/pencil.png"),new Pencil(this.drawingManager));
+        this.toolsPanel.addButton(setToolButton("Img/segment.png"),new Line(this.drawingManager));
         this.toolsPanel.addButton(setToolButton("Img/eraser.png"),new Eraser(this.drawingManager));
-        this.toolsPanel.addButton(setToolButton("Img/vector.png"),new Paint(this.drawingManager));
+        this.toolsPanel.addButton(setToolButton("Img/text.png"),new Paint(this.drawingManager));
         this.toolsPanel.addButton(setToolButton("Img/Rectangle.png"),new Rectangle(this.drawingManager));
         this.toolsPanel.addButton(setToolButton("Img/save.png"),new Paint(this.drawingManager));
     }
@@ -115,19 +115,24 @@ public class ImageEdit{
     }
 
     private void setMainMenu(){
-        JMenu newMenu = new  JMenu("New");
+        JMenu mainMenu = new  JMenu("Menu");
+        mainMenu.setIcon(new ImageIcon("Img/menu.png"));
 
         JMenuItem txtFileItem = new JMenuItem("Text file");
-        newMenu.add(txtFileItem);
+        mainMenu.add(txtFileItem);
 
         JMenuItem imgFileItem = new JMenuItem("Image file");
-        newMenu.add(imgFileItem);
+        mainMenu.add(imgFileItem);
 
         JMenuItem folderItem = new JMenuItem("Folder");
-        newMenu.add(folderItem);
+        mainMenu.add(folderItem);
+
+        JMenu toolsChooser = new  JMenu("tools");
+        toolsChooser.setIcon(new ImageIcon("Img/edit.png"));
 
         JMenuBar mainMenuBar = new JMenuBar();
-        mainMenuBar.add(newMenu);
+        mainMenuBar.add(mainMenu);
+        mainMenuBar.add(toolsChooser);
 
         mainFrame.setJMenuBar(mainMenuBar);
     }
