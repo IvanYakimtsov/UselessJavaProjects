@@ -3,6 +3,7 @@ package com.ivan.imageEditor;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.util.regex.Pattern;
 
 /**
  * Created by Ivan on 11.03.2017.
@@ -11,6 +12,7 @@ public class Text implements Tool {
 
     private DrawingManager drawingManager;
     private Cursor cursor;
+
     private int startPositionX;
 
     private int positionX;
@@ -84,7 +86,7 @@ public class Text implements Tool {
         paint.setColor(Color.BLACK);
         paint.setStroke(new BasicStroke(2.0f));
         drawingManager.getDrawingArea().clearAccessoryImage();
-        paint.drawRect(startPositionX - 2, positionY - 15 * drawingManager.getSize(), positionX - startPositionX + 4, 20 * drawingManager.getSize());
+        paint.drawRect(startPositionX - 2, positionY - 3 * drawingManager.getSize(), positionX - startPositionX + 4, 4 * drawingManager.getSize());
         drawingManager.getDrawingArea().repaint();
     }
 
@@ -101,18 +103,32 @@ public class Text implements Tool {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        Graphics2D paint = (Graphics2D) drawingManager.getDrawingArea().getImage().createGraphics();
-        paint.setColor(drawingManager.getColor());
-        paint.setStroke(new BasicStroke(2.0f));
 
-        String str = "";
-        if (Character.isLetter(e.getKeyChar()) || Character.isSpaceChar(e.getKeyChar()) || Character.isDigit(e.getKeyChar())) {
-            str += e.getKeyChar();
-            paint.setFont(new Font("Arial", 0, drawingManager.getSize() * 15));
-            paint.drawString(str, positionX, positionY);
-            positionX += drawingManager.getSize() * 10;
+
+        if (Pattern.matches("\\w|\\s|\\!|\\@|\\#|\\$|\\%|\\?|\\^|\\&|\\*|\\(|\\)|\\[|\\]|\\{|\\}|\\+|\\-|\\=|\\*|\\\\|\\/|\\<|\\>",
+                Character.toString(e.getKeyChar()))) {
+            Graphics2D paint = (Graphics2D) drawingManager.getDrawingArea().getImage().createGraphics();
+            paint.setColor(drawingManager.getColor());
+            paint.setStroke(new BasicStroke(2.0f));
+
+            double spaceIndex = 2;
+            if (Character.isUpperCase(e.getKeyChar())) spaceIndex *= 1.2;
+            if (e.getKeyChar() == 'l' || e.getKeyChar() == 'f') spaceIndex *= 0.7;
+            if (e.getKeyChar() == 'w' || e.getKeyChar() == 'W') spaceIndex *= 1.2;
+            if (e.getKeyChar() == '@' || e.getKeyChar() == '%') spaceIndex *= 1.5;
+            if (e.getKeyChar() == 'i' || e.getKeyChar() == 'I') spaceIndex *= 0.7;
+
+            paint.setFont(new Font("Arial", 0, drawingManager.getSize() * 3));
+            paint.drawString(Character.toString(e.getKeyChar()), positionX, positionY);
+            positionX += drawingManager.getSize() * spaceIndex;
             paint();
             drawingManager.getDrawingArea().requestFocus();
+        }
+
+        if (e.getKeyChar() == KeyEvent.VK_ENTER) {
+            drawingManager.getDrawingArea().clearAccessoryImage();
+            drawingManager.getDrawingArea().repaint();
+            drawingManager.getDrawingArea().transferFocus();
         }
 
     }
