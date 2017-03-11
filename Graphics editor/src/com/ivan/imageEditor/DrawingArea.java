@@ -16,8 +16,6 @@ public class DrawingArea extends JPanel {
     private JScrollPane drawingAreaContentPane;
 
 
-
-
     public JScrollPane getDrawingAreaContentPane() {
         return drawingAreaContentPane;
     }
@@ -29,11 +27,10 @@ public class DrawingArea extends JPanel {
 
         setImage();
 
-        this.setPreferredSize(new Dimension(image.getWidth(),image.getHeight()));
+        this.setPreferredSize(new Dimension(image.getWidth(), image.getHeight()));
 
 
-        drawingAreaContentPane = new JScrollPane(this,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-
+        drawingAreaContentPane = new JScrollPane(this, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
 
     }
@@ -42,18 +39,18 @@ public class DrawingArea extends JPanel {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.image = new BufferedImage((int) screenSize.getWidth() - 40, (int) screenSize.getHeight() - 148, BufferedImage.TYPE_INT_RGB);
 
-        setAccessoryImage(image.getWidth(),image.getHeight());
-    }
-
-    private void setAccessoryImage(int width,int height){
-        this.accessoryImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-
         Graphics2D gd2 = (Graphics2D) image.createGraphics();
         gd2.setColor(Color.white);
-        gd2.fillRect(0, 0, width, height);
+        gd2.fillRect(0, 0, image.getWidth(), image.getHeight());
+
+        setAccessoryImage(image.getWidth(), image.getHeight());
+    }
+
+    private void setAccessoryImage(int width, int height) {
+        this.accessoryImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 
 
-        gd2 = (Graphics2D) accessoryImage.createGraphics();
+        Graphics2D gd2 = (Graphics2D) accessoryImage.createGraphics();
         gd2.setBackground(new Color(0, 0, 0, 0));
 
     }
@@ -76,10 +73,10 @@ public class DrawingArea extends JPanel {
 
     public void clear() {
         setImage();
-        this.setSize(new Dimension(image.getWidth(),image.getHeight()));
-        this.setPreferredSize(new Dimension(image.getWidth(),image.getHeight()));
+        this.setSize(new Dimension(image.getWidth(), image.getHeight()));
+        this.setPreferredSize(new Dimension(image.getWidth(), image.getHeight()));
 
-        setAccessoryImage(image.getWidth(),image.getHeight());
+        setAccessoryImage(image.getWidth(), image.getHeight());
         repaint();
     }
 
@@ -93,10 +90,10 @@ public class DrawingArea extends JPanel {
     }
 
     public void setImage(BufferedImage image) {
-        this.setSize(new Dimension(image.getWidth(),image.getHeight()));
-        this.setPreferredSize(new Dimension(image.getWidth(),image.getHeight()));
+        this.setSize(new Dimension(image.getWidth(), image.getHeight()));
+        this.setPreferredSize(new Dimension(image.getWidth(), image.getHeight()));
 
-        setAccessoryImage(image.getWidth(),image.getHeight());
+        setAccessoryImage(image.getWidth(), image.getHeight());
 
         this.image = image;
 
