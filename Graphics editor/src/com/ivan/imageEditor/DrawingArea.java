@@ -1,6 +1,5 @@
 package com.ivan.imageEditor;
 
-import javafx.stage.Screen;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,24 +13,44 @@ public class DrawingArea extends JPanel {
 
     private BufferedImage image;
     private BufferedImage accessoryImage;
+    private JScrollPane drawingAreaContentPane;
 
+
+
+
+    public JScrollPane getDrawingAreaContentPane() {
+        return drawingAreaContentPane;
+    }
 
     DrawingArea() {
 
         this.setBackground(Color.white);
         this.setVisible(true);
+
         setImage();
+
+        this.setPreferredSize(new Dimension(image.getWidth(),image.getHeight()));
+
+
+        drawingAreaContentPane = new JScrollPane(this,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
+
 
     }
 
     private void setImage() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        this.image = new BufferedImage((int) screenSize.getWidth() - 35, (int) screenSize.getHeight() - 145, BufferedImage.TYPE_INT_RGB);
-        this.accessoryImage = new BufferedImage((int) screenSize.getWidth() - 35, (int) screenSize.getHeight() - 145, BufferedImage.TYPE_INT_ARGB);
+        this.image = new BufferedImage((int) screenSize.getWidth() - 40, (int) screenSize.getHeight() - 148, BufferedImage.TYPE_INT_RGB);
+
+        setAccessoryImage(image.getWidth(),image.getHeight());
+    }
+
+    private void setAccessoryImage(int width,int height){
+        this.accessoryImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 
         Graphics2D gd2 = (Graphics2D) image.createGraphics();
         gd2.setColor(Color.white);
-        gd2.fillRect(0, 0, (int) screenSize.getWidth(), (int) screenSize.getHeight());
+        gd2.fillRect(0, 0, width, height);
 
 
         gd2 = (Graphics2D) accessoryImage.createGraphics();
@@ -50,16 +69,18 @@ public class DrawingArea extends JPanel {
     public void clearAccessoryImage() {
         Graphics2D g2d = (Graphics2D) accessoryImage.createGraphics();
         g2d.setBackground(new Color(0, 0, 0, 0));
-        g2d.clearRect(0, 0, image.getWidth(), image.getHeight());
+        g2d.clearRect(0, 0, accessoryImage.getWidth(), accessoryImage.getHeight());
 
 
     }
 
     public void clear() {
-        clearAccessoryImage();
-        Graphics2D g2d = (Graphics2D) image.createGraphics();
-        g2d.setBackground(Color.WHITE);
-        g2d.clearRect(0, 0, image.getWidth(), image.getHeight());
+        setImage();
+        this.setSize(new Dimension(image.getWidth(),image.getHeight()));
+        this.setPreferredSize(new Dimension(image.getWidth(),image.getHeight()));
+
+        setAccessoryImage(image.getWidth(),image.getHeight());
+        repaint();
     }
 
 
@@ -72,7 +93,14 @@ public class DrawingArea extends JPanel {
     }
 
     public void setImage(BufferedImage image) {
+        this.setSize(new Dimension(image.getWidth(),image.getHeight()));
+        this.setPreferredSize(new Dimension(image.getWidth(),image.getHeight()));
+
+        setAccessoryImage(image.getWidth(),image.getHeight());
+
         this.image = image;
+
+        repaint();
     }
 
 

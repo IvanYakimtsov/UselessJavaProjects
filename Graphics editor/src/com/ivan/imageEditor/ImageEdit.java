@@ -68,10 +68,10 @@ public class ImageEdit {
 
             @Override
             public void windowClosing(WindowEvent e) {
-                Object[] options = {"Да", "Нет!"};
+                Object[] options = {"Exit", "Cancel"};
                 int n = JOptionPane
-                        .showOptionDialog(e.getWindow(), "Закрыть окно?",
-                                "Подтверждение", JOptionPane.YES_NO_OPTION,
+                        .showOptionDialog(e.getWindow(), "Are you sure you want to exit?",
+                                "Submit", JOptionPane.YES_NO_OPTION,
                                 JOptionPane.QUESTION_MESSAGE, null, options,
                                 options[0]);
                 if (n == 0) {
@@ -112,7 +112,7 @@ public class ImageEdit {
 
         this.mainFrame.add(this.toolsPanel.getToolPanel(), BorderLayout.WEST);
         this.mainFrame.add(this.parameterPanel.getParameterPanel(), BorderLayout.NORTH);
-        this.mainFrame.add(this.drawingManager.getDrawingArea(), BorderLayout.CENTER);
+        this.mainFrame.add(this.drawingManager.getDrawingArea().getDrawingAreaContentPane(), BorderLayout.CENTER);
     }
 
 

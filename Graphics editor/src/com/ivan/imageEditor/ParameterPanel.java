@@ -90,7 +90,7 @@ public class ParameterPanel {
 
 
         this.parameterPanel.add(sizeChooser);
-        
+
         this.parameterPanel.add(new JLabel("              "));
     }
 

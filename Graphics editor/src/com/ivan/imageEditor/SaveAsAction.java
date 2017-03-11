@@ -2,7 +2,6 @@ package com.ivan.imageEditor;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.filechooser.FileFilter;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
@@ -45,7 +44,7 @@ public class SaveAsAction extends AbstractAction {
                 }
             }
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(mainFrame, "Ошибка ввода-вывода");
+            JOptionPane.showMessageDialog(mainFrame, "Input/Output Exeption");
         }
     }
 

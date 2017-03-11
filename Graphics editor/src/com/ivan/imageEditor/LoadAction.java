@@ -27,8 +27,7 @@ public class LoadAction extends AbstractAction {
         int result = fileChooser.showOpenDialog(null);
         if (result == JFileChooser.APPROVE_OPTION) {
             try {
-                // при выборе изображения подстраиваем размеры формы
-                // и панели под размеры данного изображения
+
                 fileName = fileChooser.getSelectedFile().getAbsolutePath();
                 File file = new File(fileName);
                 fileChooser.addChoosableFileFilter(new ImageFileFilter(".png"));
@@ -36,12 +35,13 @@ public class LoadAction extends AbstractAction {
 
 
                 drawingManager.getDrawingArea().setImage(ImageIO.read(file));
-                drawingManager.getDrawingArea().repaint();
+
             } catch (FileNotFoundException ex) {
-                JOptionPane.showMessageDialog(this.mainFrame, "Такого файла не существует");
+                JOptionPane.showMessageDialog(this.mainFrame, "No File Exists");
             } catch (IOException ex) {
-                JOptionPane.showMessageDialog(this.mainFrame, "Исключение ввода-вывода");
+                JOptionPane.showMessageDialog(this.mainFrame, "Input/Output Exeption");
             } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this.mainFrame, "Undefined Exeption");
             }
         }
     }
