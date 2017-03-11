@@ -1,6 +1,8 @@
 package com.ivan.imageEditor;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -21,6 +23,7 @@ public class ParameterPanel {
         this.parameterPanel = new JPanel();
         this.parameterPanel.setBackground(Color.LIGHT_GRAY);
         this.parameterPanel.setPreferredSize(new Dimension(400, 50));
+        this.parameterPanel.setLayout(new FlowLayout());
 
 
         addSizeChooser();
@@ -72,18 +75,23 @@ public class ParameterPanel {
 
     private void addSizeChooser() {
         this.parameterPanel.add(new JLabel(new ImageIcon("Img/size.png")));
-        this.parameterPanel.add(setSizeButton("Img/one.png", 1));
-        this.parameterPanel.add(setSizeButton("Img/two.png", 2));
-        this.parameterPanel.add(setSizeButton("Img/three.png", 3));
 
+
+        JSlider sizeChooser = new JSlider(JSlider.HORIZONTAL, 1, 20, 5);
+        sizeChooser.setMajorTickSpacing(1);
+        sizeChooser.setBackground(null);
+
+        sizeChooser.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                drawingManager.setSize(sizeChooser.getValue());
+            }
+        });
+
+
+        this.parameterPanel.add(sizeChooser);
+        
         this.parameterPanel.add(new JLabel("              "));
-    }
-
-    private JButton setSizeButton(String fileName, int size) {
-        JButton sizeButton = new JButton(new ImageIcon(fileName));
-        sizeButton.setBackground(null);
-        sizeButton.addActionListener(new SizeButtonListener(size));
-        return sizeButton;
     }
 
 
@@ -134,19 +142,6 @@ public class ParameterPanel {
 
     public JPanel getParameterPanel() {
         return parameterPanel;
-    }
-
-    private class SizeButtonListener implements ActionListener {
-        private int size;
-
-        SizeButtonListener(int size) {
-            this.size = size;
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            drawingManager.setSize(this.size);
-        }
     }
 
 

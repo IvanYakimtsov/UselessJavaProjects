@@ -22,7 +22,7 @@ public class DrawingManager {
 
         this.currentTool = new Paint(this);
         color = Color.black;
-        size = 1;
+        size = 5;
 
         update();
     }

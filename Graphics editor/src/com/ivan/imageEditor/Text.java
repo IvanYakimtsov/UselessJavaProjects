@@ -106,13 +106,14 @@ public class Text implements Tool {
         paint.setStroke(new BasicStroke(2.0f));
 
         String str = "";
-        str += e.getKeyChar();
-        paint.setFont(new Font("Arial", 0, drawingManager.getSize() * 15));
-        paint.drawString(str, positionX, positionY);
-        positionX += drawingManager.getSize() * 10;
-        paint();
-        drawingManager.getDrawingArea().requestFocus();
-
+        if (Character.isLetter(e.getKeyChar()) || Character.isSpaceChar(e.getKeyChar()) || Character.isDigit(e.getKeyChar())) {
+            str += e.getKeyChar();
+            paint.setFont(new Font("Arial", 0, drawingManager.getSize() * 15));
+            paint.drawString(str, positionX, positionY);
+            positionX += drawingManager.getSize() * 10;
+            paint();
+            drawingManager.getDrawingArea().requestFocus();
+        }
 
     }
 
