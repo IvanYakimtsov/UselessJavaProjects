@@ -7,13 +7,13 @@ import java.awt.event.MouseEvent;
 /**
  * Created by Ivan on 06.03.2017.
  */
-public class Line implements Tool{
+public class Line implements Tool {
 
-    boolean isPressed;
-    int startXposition;
-    int startYposition;
-    DrawingManager drawingManager;
-    Cursor cursor;
+    private boolean isPressed;
+    private int startXposition;
+    private int startYposition;
+    private DrawingManager drawingManager;
+    private Cursor cursor;
 
 
     Line(DrawingManager drawingManager) {
@@ -22,10 +22,10 @@ public class Line implements Tool{
         this.isPressed = false;
     }
 
-    private void setCursor(){
+    private void setCursor() {
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Image image = toolkit.getImage("Img/segment.png");
-        Cursor cursor = toolkit.createCustomCursor(image,new Point(2,28) , "rectangle");
+        Cursor cursor = toolkit.createCustomCursor(image, new Point(2, 28), "rectangle");
 
         this.cursor = cursor;
 
@@ -35,7 +35,7 @@ public class Line implements Tool{
     @Override
     public void mouseDragged(MouseEvent event) {
 
-        if(!isPressed){
+        if (!isPressed) {
             startXposition = event.getX();
             startYposition = event.getY();
         }
@@ -64,13 +64,13 @@ public class Line implements Tool{
     @Override
     public void mouseReleased(MouseEvent event) {
 
-        if(isPressed){
+        if (isPressed) {
             isPressed = false;
-            Graphics2D paint = (Graphics2D)drawingManager.getDrawingArea().getImage().createGraphics();
-            paint.setStroke(new  BasicStroke(drawingManager.getSize() *4.0f));
+            Graphics2D paint = (Graphics2D) drawingManager.getDrawingArea().getImage().createGraphics();
+            paint.setStroke(new BasicStroke(drawingManager.getSize() * 4.0f));
             paint.setColor(drawingManager.getColor());
 
-            paintLine(paint,event);
+            paintLine(paint, event);
 
             drawingManager.getDrawingArea().clearAccessoryImage();
             drawingManager.getDrawingArea().repaint();
@@ -89,22 +89,21 @@ public class Line implements Tool{
     }
 
 
-    private void paint(MouseEvent event){
+    private void paint(MouseEvent event) {
 
-        Graphics2D paint = (Graphics2D)drawingManager.getDrawingArea().getAccessoryImage().createGraphics();
+        Graphics2D paint = (Graphics2D) drawingManager.getDrawingArea().getAccessoryImage().createGraphics();
         paint.setColor(drawingManager.getColor());
         drawingManager.getDrawingArea().clearAccessoryImage();
-        paint.setStroke(new  BasicStroke(drawingManager.getSize()*4.0f));
-        paintLine(paint,event);
+        paint.setStroke(new BasicStroke(drawingManager.getSize() * 4.0f));
+        paintLine(paint, event);
         drawingManager.getDrawingArea().repaint();
     }
 
 
     private void paintLine(Graphics2D paint, MouseEvent event) {
 
-        paint.drawLine(event.getX(),event.getY(),startXposition,startYposition);
+        paint.drawLine(event.getX(), event.getY(), startXposition, startYposition);
     }
-
 
 
     @Override

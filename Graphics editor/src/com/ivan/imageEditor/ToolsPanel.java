@@ -10,13 +10,15 @@ import java.awt.event.ActionListener;
  */
 public class ToolsPanel {
 
-    DrawingManager drawingManager;
-    JPanel toolPanel;
+    private DrawingManager drawingManager;
+    private JPanel toolPanel;
+    private JFrame mainFrame;
 
 
-    ToolsPanel(DrawingManager drawingManager) {
+    ToolsPanel(DrawingManager drawingManager, JFrame mainFrame) {
 
         this.toolPanel = new JPanel();
+        this.mainFrame = mainFrame;
 
         this.drawingManager = drawingManager;
         this.toolPanel.setBackground(Color.LIGHT_GRAY);
@@ -32,7 +34,10 @@ public class ToolsPanel {
         this.addButton(setToolButton("Img/eraser.png"), new Eraser(this.drawingManager));
         this.addButton(setToolButton("Img/text.png"), new Text(this.drawingManager));
         this.addButton(setToolButton("Img/Rectangle.png"), new Rectangle(this.drawingManager));
-        this.addButton(setToolButton("Img/save.png"), new Paint(this.drawingManager));
+
+        JButton saveButton = setToolButton("Img/save.png");
+        saveButton.addActionListener(new SaveAsAction(drawingManager, "Save file", this.mainFrame));
+        this.toolPanel.add(saveButton);
 
     }
 

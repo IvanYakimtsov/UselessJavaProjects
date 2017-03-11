@@ -3,18 +3,18 @@ package com.ivan.imageEditor;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
+
 
 /**
  * Created by Ivan on 06.03.2017.
  */
 public class Rectangle implements Tool {
 
-    boolean isPressed;
-    int startXposition;
-    int startYposition;
-    DrawingManager drawingManager;
-    Cursor cursor;
+    private boolean isPressed;
+    private int startXposition;
+    private int startYposition;
+    private DrawingManager drawingManager;
+    private Cursor cursor;
 
 
     Rectangle(DrawingManager drawingManager) {

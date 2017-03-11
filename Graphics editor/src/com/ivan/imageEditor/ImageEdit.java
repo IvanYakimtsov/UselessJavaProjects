@@ -1,6 +1,8 @@
 package com.ivan.imageEditor;
 
 import java.awt.*;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import javax.swing.*;
 
 public class ImageEdit {
@@ -16,7 +18,7 @@ public class ImageEdit {
 
         drawingManager = new DrawingManager();
 
-        toolsPanel = new ToolsPanel(drawingManager);
+        toolsPanel = new ToolsPanel(drawingManager, this.mainFrame);
         parameterPanel = new ParameterPanel(drawingManager);
         setFrame();
         setCursor();
@@ -44,42 +46,73 @@ public class ImageEdit {
 
     private void setFrame() {
         this.mainFrame = new JFrame("ImageEditor");
-        this.mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.mainFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
+        addFrameListener();
+
         this.mainFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        mainFrameSetPanels();
 
 
+        new MenuBar(this.mainFrame, this.drawingManager);
+
+        this.mainFrame.setVisible(true);
+    }
+
+    private void addFrameListener() {
+        this.mainFrame.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+                Object[] options = {"Да", "Нет!"};
+                int n = JOptionPane
+                        .showOptionDialog(e.getWindow(), "Закрыть окно?",
+                                "Подтверждение", JOptionPane.YES_NO_OPTION,
+                                JOptionPane.QUESTION_MESSAGE, null, options,
+                                options[0]);
+                if (n == 0) {
+                    e.getWindow().setVisible(false);
+                    System.exit(0);
+                }
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+
+            }
+        });
+    }
+
+    private void mainFrameSetPanels() {
         this.mainFrame.setLayout(new BorderLayout());
 
         this.mainFrame.add(this.toolsPanel.getToolPanel(), BorderLayout.WEST);
         this.mainFrame.add(this.parameterPanel.getParameterPanel(), BorderLayout.NORTH);
         this.mainFrame.add(this.drawingManager.getDrawingArea(), BorderLayout.CENTER);
-
-        setMainMenu();
-
-        this.mainFrame.setVisible(true);
-    }
-
-    private void setMainMenu() {
-        JMenu mainMenu = new JMenu("Menu");
-        mainMenu.setIcon(new ImageIcon("Img/menu.png"));
-
-        JMenuItem txtFileItem = new JMenuItem("Text file");
-        mainMenu.add(txtFileItem);
-
-        JMenuItem imgFileItem = new JMenuItem("Image file");
-        mainMenu.add(imgFileItem);
-
-        JMenuItem folderItem = new JMenuItem("Folder");
-        mainMenu.add(folderItem);
-
-        JMenu toolsChooser = new JMenu("tools");
-        toolsChooser.setIcon(new ImageIcon("Img/edit.png"));
-
-        JMenuBar mainMenuBar = new JMenuBar();
-        mainMenuBar.add(mainMenu);
-        mainMenuBar.add(toolsChooser);
-
-        mainFrame.setJMenuBar(mainMenuBar);
     }
 
 

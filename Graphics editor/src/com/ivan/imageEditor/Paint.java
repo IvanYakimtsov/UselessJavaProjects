@@ -10,11 +10,11 @@ import java.awt.event.MouseEvent;
  */
 public class Paint implements Tool {
 
-    boolean isPressed;
-    int lastXposition;
-    int lastYposition;
-    DrawingManager drawingManager;
-    Cursor cursor;
+    private boolean isPressed;
+    private int lastXposition;
+    private int lastYposition;
+    private DrawingManager drawingManager;
+    private Cursor cursor;
 
 
     Paint(DrawingManager drawingManager) {

@@ -12,8 +12,8 @@ import java.awt.image.BufferedImage;
  */
 public class DrawingArea extends JPanel {
 
-    BufferedImage image;
-    BufferedImage accessoryImage;
+    private BufferedImage image;
+    private BufferedImage accessoryImage;
 
 
     DrawingArea() {
@@ -26,8 +26,8 @@ public class DrawingArea extends JPanel {
 
     private void setImage() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        this.image = new BufferedImage((int) screenSize.getWidth(), (int) screenSize.getHeight(), BufferedImage.TYPE_INT_RGB);
-        this.accessoryImage = new BufferedImage((int) screenSize.getWidth(), (int) screenSize.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        this.image = new BufferedImage((int) screenSize.getWidth() - 35, (int) screenSize.getHeight() - 145, BufferedImage.TYPE_INT_RGB);
+        this.accessoryImage = new BufferedImage((int) screenSize.getWidth() - 35, (int) screenSize.getHeight() - 145, BufferedImage.TYPE_INT_ARGB);
 
         Graphics2D gd2 = (Graphics2D) image.createGraphics();
         gd2.setColor(Color.white);
@@ -55,6 +55,13 @@ public class DrawingArea extends JPanel {
 
     }
 
+    public void clear() {
+        clearAccessoryImage();
+        Graphics2D g2d = (Graphics2D) image.createGraphics();
+        g2d.setBackground(Color.WHITE);
+        g2d.clearRect(0, 0, image.getWidth(), image.getHeight());
+    }
+
 
     public BufferedImage getImage() {
         return image;
@@ -62,6 +69,10 @@ public class DrawingArea extends JPanel {
 
     public BufferedImage getAccessoryImage() {
         return accessoryImage;
+    }
+
+    public void setImage(BufferedImage image) {
+        this.image = image;
     }
 
 

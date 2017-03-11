@@ -9,12 +9,12 @@ import java.awt.event.MouseEvent;
  */
 public class Text implements Tool {
 
-    DrawingManager drawingManager;
-    Cursor cursor;
-    int startPositionX;
+    private DrawingManager drawingManager;
+    private Cursor cursor;
+    private int startPositionX;
 
-    int positionX;
-    int positionY;
+    private int positionX;
+    private int positionY;
 
 
     Text(DrawingManager drawingManager) {
@@ -25,8 +25,8 @@ public class Text implements Tool {
 
     private void setCursor() {
         Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Image image = toolkit.getImage("Img/text.png");
-        Cursor cursor = toolkit.createCustomCursor(image, new Point(0, 8), "text");
+        Image image = toolkit.getImage("Img/textCursor.png");
+        Cursor cursor = toolkit.createCustomCursor(image, new Point(11, 21), "text");
 
         this.cursor = cursor;
 
@@ -80,14 +80,13 @@ public class Text implements Tool {
 
 
     private void paint() {
-        Graphics2D paint = (Graphics2D)drawingManager.getDrawingArea().getAccessoryImage().createGraphics();
+        Graphics2D paint = (Graphics2D) drawingManager.getDrawingArea().getAccessoryImage().createGraphics();
         paint.setColor(Color.BLACK);
-        paint.setStroke(new  BasicStroke(2.0f));
+        paint.setStroke(new BasicStroke(2.0f));
         drawingManager.getDrawingArea().clearAccessoryImage();
-        paint.drawRect(startPositionX-2,positionY-15*drawingManager.getSize(),positionX-startPositionX+4,20*drawingManager.getSize());
+        paint.drawRect(startPositionX - 2, positionY - 15 * drawingManager.getSize(), positionX - startPositionX + 4, 20 * drawingManager.getSize());
         drawingManager.getDrawingArea().repaint();
     }
-
 
 
     @Override
@@ -102,15 +101,15 @@ public class Text implements Tool {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        Graphics2D paint = (Graphics2D)drawingManager.getDrawingArea().getImage().createGraphics();
+        Graphics2D paint = (Graphics2D) drawingManager.getDrawingArea().getImage().createGraphics();
         paint.setColor(drawingManager.getColor());
-        paint.setStroke(new  BasicStroke(2.0f));
+        paint.setStroke(new BasicStroke(2.0f));
 
         String str = "";
-        str+=e.getKeyChar();
-        paint.setFont(new  Font("Arial", 0,drawingManager.getSize()* 15));
-        paint.drawString(str,positionX,positionY);
-        positionX+=drawingManager.getSize()*10;
+        str += e.getKeyChar();
+        paint.setFont(new Font("Arial", 0, drawingManager.getSize() * 15));
+        paint.drawString(str, positionX, positionY);
+        positionX += drawingManager.getSize() * 10;
         paint();
         drawingManager.getDrawingArea().requestFocus();
 
