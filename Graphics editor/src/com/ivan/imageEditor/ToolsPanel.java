@@ -34,6 +34,7 @@ public class ToolsPanel {
         this.addButton(setToolButton("Img/eraser.png"), new Eraser(this.drawingManager));
         this.addButton(setToolButton("Img/text.png"), new Text(this.drawingManager));
         this.addButton(setToolButton("Img/Rectangle.png"), new Rectangle(this.drawingManager));
+        this.addButton(setToolButton("Img/zoom.png"), new Zoom(this.drawingManager));
 
         JButton saveButton = setToolButton("Img/save.png");
         saveButton.addActionListener(new SaveAsAction(drawingManager, "Save file", this.mainFrame));

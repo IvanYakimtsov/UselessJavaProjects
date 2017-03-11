@@ -37,6 +37,8 @@ public class DrawingManager {
         this.drawingArea.clearAccessoryImage();
         this.drawingArea.repaint();
 
+        if(this.currentTool instanceof Zoom) ((Zoom) this.currentTool).setOriginalImage();
+
         this.currentTool = currentTool;
 
         update();
@@ -52,6 +54,10 @@ public class DrawingManager {
         this.drawingArea.addMouseMotionListener(currentTool);
         this.drawingArea.addKeyListener(this.currentTool);
         this.getDrawingArea().setCursor(this.currentTool.getCursor());
+
+
+
+        this.drawingArea.repaint();
     }
 
     public void setSize(int size) {

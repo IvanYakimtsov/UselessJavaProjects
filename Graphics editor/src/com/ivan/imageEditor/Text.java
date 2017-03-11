@@ -49,6 +49,15 @@ public class Text implements Tool {
 
     @Override
     public void mouseClicked(MouseEvent event) {
+        mouseTick(event);
+    }
+
+    @Override
+    public void mousePressed(MouseEvent event) {
+    mouseTick(event);
+    }
+
+    private void mouseTick(MouseEvent event){
         drawingManager.getDrawingArea().requestFocus();
         positionX = event.getX();
         positionY = event.getY();
@@ -56,14 +65,6 @@ public class Text implements Tool {
         paint();
     }
 
-    @Override
-    public void mousePressed(MouseEvent event) {
-        drawingManager.getDrawingArea().requestFocus();
-        positionX = event.getX();
-        positionY = event.getY();
-        startPositionX = event.getX();
-        paint();
-    }
 
     @Override
     public void mouseReleased(MouseEvent event) {
