@@ -6,7 +6,7 @@ import java.awt.*;
 /**
  * Created by Ivan on 28.02.2017.
  */
-public class DrawingManager  {
+public class DrawingManager {
 
     private Tool currentTool;
     private DrawingArea drawingArea;
@@ -14,8 +14,7 @@ public class DrawingManager  {
     private int size;
 
 
-
-    DrawingManager(){
+    DrawingManager() {
 
 
         drawingArea = new DrawingArea();
@@ -35,6 +34,9 @@ public class DrawingManager  {
         this.drawingArea.removeMouseMotionListener(this.currentTool);
         this.drawingArea.removeKeyListener(this.currentTool);
 
+        this.drawingArea.clearAccessoryImage();
+        this.drawingArea.repaint();
+
         this.currentTool = currentTool;
 
         update();
@@ -45,12 +47,13 @@ public class DrawingManager  {
         this.color = color;
     }
 
-    public void update(){
+    public void update() {
         this.drawingArea.addMouseListener(currentTool);
         this.drawingArea.addMouseMotionListener(currentTool);
         this.drawingArea.addKeyListener(this.currentTool);
         this.getDrawingArea().setCursor(this.currentTool.getCursor());
     }
+
     public void setSize(int size) {
         this.size = size;
     }

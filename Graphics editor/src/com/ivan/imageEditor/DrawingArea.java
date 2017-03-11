@@ -16,8 +16,7 @@ public class DrawingArea extends JPanel {
     BufferedImage accessoryImage;
 
 
-
-    DrawingArea(){
+    DrawingArea() {
 
         this.setBackground(Color.white);
         this.setVisible(true);
@@ -25,30 +24,30 @@ public class DrawingArea extends JPanel {
 
     }
 
-    private void setImage(){
+    private void setImage() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        this.image = new BufferedImage((int)screenSize.getWidth(),(int)screenSize.getHeight(),BufferedImage.TYPE_INT_RGB);
-        this.accessoryImage = new BufferedImage((int)screenSize.getWidth(),(int)screenSize.getHeight(),BufferedImage.TYPE_INT_ARGB);
+        this.image = new BufferedImage((int) screenSize.getWidth(), (int) screenSize.getHeight(), BufferedImage.TYPE_INT_RGB);
+        this.accessoryImage = new BufferedImage((int) screenSize.getWidth(), (int) screenSize.getHeight(), BufferedImage.TYPE_INT_ARGB);
 
         Graphics2D gd2 = (Graphics2D) image.createGraphics();
         gd2.setColor(Color.white);
-        gd2.fillRect(0, 0,(int)screenSize.getWidth(), (int)screenSize.getHeight());
+        gd2.fillRect(0, 0, (int) screenSize.getWidth(), (int) screenSize.getHeight());
 
 
         gd2 = (Graphics2D) accessoryImage.createGraphics();
-        gd2.setBackground(new Color ( 0, 0, 0, 0 ));
+        gd2.setBackground(new Color(0, 0, 0, 0));
 
     }
 
 
     @Override
-    public void paintComponent (Graphics g){
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(image, 0, 0,this);
-        g.drawImage(accessoryImage, 0, 0,this);
+        g.drawImage(image, 0, 0, this);
+        g.drawImage(accessoryImage, 0, 0, this);
     }
 
-    public void clearAccessoryImage(){
+    public void clearAccessoryImage() {
         Graphics2D g2d = (Graphics2D) accessoryImage.createGraphics();
         g2d.setBackground(new Color(0, 0, 0, 0));
         g2d.clearRect(0, 0, image.getWidth(), image.getHeight());
@@ -57,11 +56,10 @@ public class DrawingArea extends JPanel {
     }
 
 
-
-
     public BufferedImage getImage() {
         return image;
     }
+
     public BufferedImage getAccessoryImage() {
         return accessoryImage;
     }

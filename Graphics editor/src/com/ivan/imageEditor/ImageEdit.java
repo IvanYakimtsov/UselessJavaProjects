@@ -3,7 +3,7 @@ package com.ivan.imageEditor;
 import java.awt.*;
 import javax.swing.*;
 
-public class ImageEdit{
+public class ImageEdit {
 
     private JFrame mainFrame;
     private ToolsPanel toolsPanel;
@@ -12,7 +12,7 @@ public class ImageEdit{
 
     private DrawingManager drawingManager;
 
-    ImageEdit(){
+    ImageEdit() {
 
         drawingManager = new DrawingManager();
 
@@ -29,23 +29,17 @@ public class ImageEdit{
         ImageEdit imageEdit = new ImageEdit();
 
 
-
-
     }
 
 
-
-
-
-    private void setCursor(){
+    private void setCursor() {
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Image image = toolkit.getImage("Img/hand.png");
-        Cursor cursor = toolkit.createCustomCursor(image,new Point(16,0) , "mainCursor");
+        Cursor cursor = toolkit.createCustomCursor(image, new Point(16, 0), "mainCursor");
 
         this.mainFrame.setCursor(cursor);
 
     }
-
 
 
     private void setFrame() {
@@ -54,20 +48,19 @@ public class ImageEdit{
         this.mainFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
 
-
         this.mainFrame.setLayout(new BorderLayout());
 
-        this.mainFrame.add(this.toolsPanel.getToolPanel(),BorderLayout.WEST);
-        this.mainFrame.add(this.parameterPanel.getParameterPanel(),BorderLayout.NORTH);
-        this.mainFrame.add(this.drawingManager.getDrawingArea(),BorderLayout.CENTER);
+        this.mainFrame.add(this.toolsPanel.getToolPanel(), BorderLayout.WEST);
+        this.mainFrame.add(this.parameterPanel.getParameterPanel(), BorderLayout.NORTH);
+        this.mainFrame.add(this.drawingManager.getDrawingArea(), BorderLayout.CENTER);
 
         setMainMenu();
 
         this.mainFrame.setVisible(true);
     }
 
-    private void setMainMenu(){
-        JMenu mainMenu = new  JMenu("Menu");
+    private void setMainMenu() {
+        JMenu mainMenu = new JMenu("Menu");
         mainMenu.setIcon(new ImageIcon("Img/menu.png"));
 
         JMenuItem txtFileItem = new JMenuItem("Text file");
@@ -79,7 +72,7 @@ public class ImageEdit{
         JMenuItem folderItem = new JMenuItem("Folder");
         mainMenu.add(folderItem);
 
-        JMenu toolsChooser = new  JMenu("tools");
+        JMenu toolsChooser = new JMenu("tools");
         toolsChooser.setIcon(new ImageIcon("Img/edit.png"));
 
         JMenuBar mainMenuBar = new JMenuBar();
@@ -90,23 +83,4 @@ public class ImageEdit{
     }
 
 
-
-
-    //-------------------------------------------------------------------
-
-   /* public JFrame getMainFrame() {
-        return mainFrame;
-    }
-
-
-    public ToolsPanel getToolsPanel() {
-        return toolsPanel;
-    }
-
-    public ParameterPanel getParameterPanel() {
-        return parameterPanel;
-    }
-    public DrawingManager getDrawingManager() {
-        return drawingManager;
-    }*/
 }

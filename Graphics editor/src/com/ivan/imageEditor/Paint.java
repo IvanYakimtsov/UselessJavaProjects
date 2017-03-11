@@ -8,7 +8,7 @@ import java.awt.event.MouseEvent;
 /**
  * Created by Ivan on 28.02.2017.
  */
-public class Paint implements Tool{
+public class Paint implements Tool {
 
     boolean isPressed;
     int lastXposition;
@@ -22,10 +22,10 @@ public class Paint implements Tool{
         setCursor();
     }
 
-    private void setCursor(){
+    private void setCursor() {
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Image image = toolkit.getImage("Img/artistic-brush.png");
-        Cursor cursor = toolkit.createCustomCursor(image,new Point(0,28) , "paint");
+        Cursor cursor = toolkit.createCustomCursor(image, new Point(0, 28), "paint");
 
         this.cursor = cursor;
     }
@@ -33,7 +33,7 @@ public class Paint implements Tool{
     @Override
     public void mouseDragged(MouseEvent event) {
 
-        if(!isPressed){
+        if (!isPressed) {
             lastXposition = event.getX();
             lastYposition = event.getY();
         }
@@ -78,15 +78,15 @@ public class Paint implements Tool{
     }
 
 
-    private void paint(MouseEvent event){
-        Graphics2D paint = (Graphics2D)drawingManager.getDrawingArea().getImage().createGraphics();
-        paint.setStroke(new  BasicStroke(drawingManager.getSize()*4.0f));
+    private void paint(MouseEvent event) {
+        Graphics2D paint = (Graphics2D) drawingManager.getDrawingArea().getImage().createGraphics();
+        paint.setStroke(new BasicStroke(drawingManager.getSize() * 4.0f));
         paint.setColor(drawingManager.getColor());
 
-        paint.drawLine(event.getX(),event.getY(),event.getX(),event.getY());
+        paint.drawLine(event.getX(), event.getY(), event.getX(), event.getY());
 
-        if(isPressed){
-            paint.drawLine(lastXposition,lastYposition,event.getX(),event.getY());
+        if (isPressed) {
+            paint.drawLine(lastXposition, lastYposition, event.getX(), event.getY());
         }
         drawingManager.getDrawingArea().repaint();
 

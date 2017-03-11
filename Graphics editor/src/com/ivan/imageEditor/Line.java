@@ -19,7 +19,7 @@ public class Line implements Tool{
     Line(DrawingManager drawingManager) {
         this.drawingManager = drawingManager;
         setCursor();
-
+        this.isPressed = false;
     }
 
     private void setCursor(){
@@ -28,7 +28,7 @@ public class Line implements Tool{
         Cursor cursor = toolkit.createCustomCursor(image,new Point(2,28) , "rectangle");
 
         this.cursor = cursor;
-        this.isPressed = false;
+
 
     }
 
@@ -61,13 +61,13 @@ public class Line implements Tool{
 
     }
 
-
+    @Override
     public void mouseReleased(MouseEvent event) {
 
         if(isPressed){
             isPressed = false;
             Graphics2D paint = (Graphics2D)drawingManager.getDrawingArea().getImage().createGraphics();
-            paint.setStroke(new  BasicStroke(drawingManager.getSize()*4.0f));
+            paint.setStroke(new  BasicStroke(drawingManager.getSize() *4.0f));
             paint.setColor(drawingManager.getColor());
 
             paintLine(paint,event);
