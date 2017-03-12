@@ -91,7 +91,7 @@ public class Zoom implements Tool {
 
     private void zoomPicture() {
         zoomSize++;
-        
+
 
         switch (zoomSize) {
             case 1:
