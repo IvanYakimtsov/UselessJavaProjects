@@ -26,7 +26,7 @@ public class Zoom implements Tool {
     private void setCursor() {
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Image image = toolkit.getImage("Img/zoom.png");
-        Cursor cursor = toolkit.createCustomCursor(image, new Point(0, 28), "zoom");
+        Cursor cursor = toolkit.createCustomCursor(image, new Point(0, 5), "zoom");
 
         this.cursor = cursor;
     }
@@ -57,8 +57,11 @@ public class Zoom implements Tool {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        zoomPicture();
+        zoomPicture(e);
+
     }
+
+
 
     @Override
     public void mouseReleased(MouseEvent e) {
@@ -90,10 +93,18 @@ public class Zoom implements Tool {
         changbleImage = originalImage;
     }
 
-    private void zoomPicture() {
+    private void zoomPicture(MouseEvent event) {
         zoomSize++;
 
+        int imageWidthBeforeChange = changbleImage.getTileWidth();
+        int imageHeightBeforeChange = changbleImage.getHeight();
 
+        chooseZoomSize(zoomSize);
+
+        setScreenVisibleSize(event,imageWidthBeforeChange,imageHeightBeforeChange);
+    }
+
+    private void chooseZoomSize(int zoomSize){
         switch (zoomSize) {
             case 1:
                 setOriginalImage();
@@ -101,19 +112,25 @@ public class Zoom implements Tool {
             case 2:
                 changbleImage = scale(changbleImage, 2);
                 drawingManager.getDrawingArea().setImage(changbleImage);
-                changbleImage = originalImage;
                 break;
             case 3:
-                changbleImage = scale(changbleImage, 4);
+                changbleImage = scale(changbleImage, 2);
                 drawingManager.getDrawingArea().setImage(changbleImage);
-                changbleImage = originalImage;
-                zoomSize = 0;
+                this.zoomSize = 0;
                 break;
             default:
                 setOriginalImage();
-                zoomSize = 0;
+                this.zoomSize = 0;
                 break;
         }
+    }
+
+    private void setScreenVisibleSize(MouseEvent event,int imageWidthBeforeChange,int imageHeightBeforeChange){
+        int positionX = event.getX() * changbleImage.getWidth() / imageWidthBeforeChange ;
+        int positionY = event.getY() * changbleImage.getHeight() / imageHeightBeforeChange ;
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        drawingManager.getDrawingArea().getDrawingAreaContentPane().getViewport().setViewPosition(
+                new Point((int)(positionX - toolkit.getScreenSize().getWidth()/2),(int) (positionY - toolkit.getScreenSize().getHeight()/2)));
     }
 
     public BufferedImage scale(BufferedImage input, double coefficient) {

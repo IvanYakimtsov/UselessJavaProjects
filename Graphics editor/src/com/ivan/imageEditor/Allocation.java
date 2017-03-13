@@ -32,13 +32,13 @@ public class Allocation implements Tool {
     public void mouseDragged(MouseEvent event) {
 
 
-            if (!isPressed) {
-                startXposition = event.getX();
-                startYposition = event.getY();
-            }
+        if (!isPressed) {
+            startXposition = event.getX();
+            startYposition = event.getY();
+        }
 
-            isPressed = true;
-            paint(event);
+        isPressed = true;
+        paint(event);
 
 
     }
@@ -51,17 +51,15 @@ public class Allocation implements Tool {
 
     @Override
     public void mouseClicked(MouseEvent event) {
-        if (event.getButton() == MouseEvent.BUTTON3) {
-            copyPoint.setLocation(event.getX(), event.getY());
-        }
+        copyPoint.setLocation(event.getX(), event.getY());
+
 
     }
 
     @Override
     public void mousePressed(MouseEvent event) {
-        if (event.getButton() == MouseEvent.BUTTON3) {
-            copyPoint.setLocation(event.getX(), event.getY());
-        }
+        copyPoint.setLocation(event.getX(), event.getY());
+
     }
 
 
@@ -155,14 +153,16 @@ public class Allocation implements Tool {
 
     private void copyPartOfImage() {
 
-        bufferedArea = drawingManager.getDrawingArea().getImage().getSubimage((int)areaCoordinates[0].getX(),(int)areaCoordinates[0].getY(),
-                (int) (areaCoordinates[1].getX() - areaCoordinates[0].getX()),(int)(areaCoordinates[1].getY() - areaCoordinates[0].getY()));
+        bufferedArea = drawingManager.getDrawingArea().getImage().getSubimage((int) areaCoordinates[0].getX(), (int) areaCoordinates[0].getY(),
+                (int) (areaCoordinates[1].getX() - areaCoordinates[0].getX()), (int) (areaCoordinates[1].getY() - areaCoordinates[0].getY()));
+
     }
 
     private void passBufferedArea() {
         if (bufferedArea != null) {
 
-            drawingManager.getDrawingArea().getImage().createGraphics().drawImage(bufferedArea,null,(int)copyPoint.getX(),(int)copyPoint.getY());
+            drawingManager.getDrawingArea().getImage().createGraphics().drawImage(bufferedArea, null, (int) copyPoint.getX() - bufferedArea.getWidth() / 2,
+                    (int) copyPoint.getY() - bufferedArea.getHeight() / 2);
             drawingManager.getDrawingArea().repaint();
         }
     }
