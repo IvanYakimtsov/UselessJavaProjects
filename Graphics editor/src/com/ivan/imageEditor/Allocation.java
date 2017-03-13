@@ -30,7 +30,7 @@ public class Allocation implements Tool {
 
     @Override
     public void mouseDragged(MouseEvent event) {
-        
+
 
             if (!isPressed) {
                 startXposition = event.getX();
@@ -154,75 +154,15 @@ public class Allocation implements Tool {
     }
 
     private void copyPartOfImage() {
-        bufferedArea = new BufferedImage((int) Math.abs(areaCoordinates[0].getX() - areaCoordinates[1].getX()),
-                (int) Math.abs(areaCoordinates[0].getY() - areaCoordinates[1].getY()), BufferedImage.TYPE_INT_RGB);
 
-        int startCoordX = 0;
-        int stopCoordX = 0;
-        int startCoordY = 0;
-        int stopCoordY = 0;
-
-        if ((int) areaCoordinates[0].getX() < (int) areaCoordinates[1].getX()) {
-            startCoordX = (int) areaCoordinates[0].getX();
-            stopCoordX = (int) areaCoordinates[1].getX();
-        } else {
-            startCoordX = (int) areaCoordinates[1].getX();
-            stopCoordX = (int) areaCoordinates[0].getX();
-        }
-
-        if ((int) areaCoordinates[0].getY() < (int) areaCoordinates[1].getY()) {
-            startCoordY = (int) areaCoordinates[0].getY();
-            stopCoordY = (int) areaCoordinates[1].getY();
-        } else {
-            startCoordY = (int) areaCoordinates[1].getY();
-            stopCoordY = (int) areaCoordinates[0].getY();
-        }
-
-
-        int bufferedAreaXCoord = -1;
-        int bufferedAreaYCoord = -1;
-
-
-        for (int x = startCoordX; x < stopCoordX; x++) {
-            bufferedAreaXCoord++;
-            for (int y = startCoordY; y < stopCoordY; y++) {
-                bufferedAreaYCoord++;
-
-                int cl = drawingManager.getDrawingArea().getImage().getRGB(x, y);
-                bufferedArea.setRGB(bufferedAreaXCoord, bufferedAreaYCoord, cl);
-
-            }
-            bufferedAreaYCoord = -1;
-        }
+        bufferedArea = drawingManager.getDrawingArea().getImage().getSubimage((int)areaCoordinates[0].getX(),(int)areaCoordinates[0].getY(),
+                (int) (areaCoordinates[1].getX() - areaCoordinates[0].getX()),(int)(areaCoordinates[1].getY() - areaCoordinates[0].getY()));
     }
 
     private void passBufferedArea() {
         if (bufferedArea != null) {
 
-            int bufferedAreaXCoord = -1;
-            int bufferedAreaYCoord = -1;
-
-            int stopCoordX = 0;
-            int stopCoordY = 0;
-
-            if ((int) copyPoint.getX() + bufferedArea.getWidth() > drawingManager.getDrawingArea().getImage().getWidth())
-                stopCoordX = drawingManager.getDrawingArea().getImage().getWidth();
-            else stopCoordX = (int) copyPoint.getX() + bufferedArea.getWidth();
-
-            if ((int) copyPoint.getY() + bufferedArea.getHeight() > drawingManager.getDrawingArea().getImage().getHeight())
-                stopCoordY = drawingManager.getDrawingArea().getImage().getHeight();
-            else stopCoordY = (int) (int) copyPoint.getY() + bufferedArea.getHeight();
-
-            for (int x = (int) copyPoint.getX(); x < stopCoordX; x++) {
-                bufferedAreaXCoord++;
-                for (int y = (int) copyPoint.getY(); y < stopCoordY; y++) {
-                    bufferedAreaYCoord++;
-                    int cl = bufferedArea.getRGB(bufferedAreaXCoord, bufferedAreaYCoord);
-                    drawingManager.getDrawingArea().getImage().setRGB(x, y, cl);
-
-                }
-                bufferedAreaYCoord = -1;
-            }
+            drawingManager.getDrawingArea().getImage().createGraphics().drawImage(bufferedArea,null,(int)copyPoint.getX(),(int)copyPoint.getY());
             drawingManager.getDrawingArea().repaint();
         }
     }

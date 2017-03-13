@@ -87,6 +87,7 @@ public class Zoom implements Tool {
     public void setOriginalImage() {
         drawingManager.getDrawingArea().setImage(originalImage);
         zoomSize = 1;
+        changbleImage = originalImage;
     }
 
     private void zoomPicture() {
