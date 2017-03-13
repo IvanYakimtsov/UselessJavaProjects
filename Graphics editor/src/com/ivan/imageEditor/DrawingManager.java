@@ -37,7 +37,6 @@ public class DrawingManager {
         this.drawingArea.clearAccessoryImage();
         this.drawingArea.repaint();
 
-        if(this.currentTool instanceof Zoom) ((Zoom) this.currentTool).setOriginalImage();
 
         this.currentTool = currentTool;
 

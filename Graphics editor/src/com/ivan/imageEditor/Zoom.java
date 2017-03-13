@@ -12,13 +12,9 @@ public class Zoom implements Tool {
     private DrawingManager drawingManager;
     private Cursor cursor;
     private int zoomSize;
-    private BufferedImage originalImage;
-    private BufferedImage changbleImage;
 
     Zoom(DrawingManager drawingManager) {
         this.drawingManager = drawingManager;
-        originalImage = drawingManager.getDrawingArea().getImage();
-        changbleImage = drawingManager.getDrawingArea().getImage();
         zoomSize = 1;
         setCursor();
     }
@@ -87,47 +83,36 @@ public class Zoom implements Tool {
 
     }
 
-    public void setOriginalImage() {
-        drawingManager.getDrawingArea().setImage(originalImage);
-        zoomSize = 1;
-        changbleImage = originalImage;
-    }
 
     private void zoomPicture(MouseEvent event) {
         zoomSize++;
 
-        int imageWidthBeforeChange = changbleImage.getTileWidth();
-        int imageHeightBeforeChange = changbleImage.getHeight();
+        int imageWidthBeforeChange = drawingManager.getDrawingArea().getImage().getWidth();
+        int imageHeightBeforeChange = drawingManager.getDrawingArea().getImage().getHeight();
 
         chooseZoomSize(zoomSize);
 
-        setScreenVisibleSize(event,imageWidthBeforeChange,imageHeightBeforeChange);
+        setScreenVisiblePart(event,imageWidthBeforeChange,imageHeightBeforeChange);
     }
 
     private void chooseZoomSize(int zoomSize){
         switch (zoomSize) {
             case 1:
-                setOriginalImage();
+                drawingManager.getDrawingArea().setImage(scale(drawingManager.getDrawingArea().getImage(), 0.25));
                 break;
             case 2:
-                changbleImage = scale(changbleImage, 2);
-                drawingManager.getDrawingArea().setImage(changbleImage);
+                drawingManager.getDrawingArea().setImage(scale(drawingManager.getDrawingArea().getImage(), 2));
                 break;
             case 3:
-                changbleImage = scale(changbleImage, 2);
-                drawingManager.getDrawingArea().setImage(changbleImage);
-                this.zoomSize = 0;
-                break;
-            default:
-                setOriginalImage();
+                drawingManager.getDrawingArea().setImage(scale(drawingManager.getDrawingArea().getImage(), 2));
                 this.zoomSize = 0;
                 break;
         }
     }
 
-    private void setScreenVisibleSize(MouseEvent event,int imageWidthBeforeChange,int imageHeightBeforeChange){
-        int positionX = event.getX() * changbleImage.getWidth() / imageWidthBeforeChange ;
-        int positionY = event.getY() * changbleImage.getHeight() / imageHeightBeforeChange ;
+    private void setScreenVisiblePart(MouseEvent event,int imageWidthBeforeChange,int imageHeightBeforeChange){
+        int positionX = event.getX() * drawingManager.getDrawingArea().getImage().getWidth() / imageWidthBeforeChange ;
+        int positionY = event.getY() * drawingManager.getDrawingArea().getImage().getHeight() / imageHeightBeforeChange ;
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         drawingManager.getDrawingArea().getDrawingAreaContentPane().getViewport().setViewPosition(
                 new Point((int)(positionX - toolkit.getScreenSize().getWidth()/2),(int) (positionY - toolkit.getScreenSize().getHeight()/2)));
