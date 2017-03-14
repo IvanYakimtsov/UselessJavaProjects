@@ -1,5 +1,8 @@
 package com.ivan.imageEditor;
 
+import com.ivan.imageEditor.panels.*;
+import com.ivan.imageEditor.panels.DrawingManager;
+
 import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -18,7 +21,7 @@ public class ImageEdit {
 
         drawingManager = new DrawingManager();
 
-        toolsPanel = new ToolsPanel(drawingManager, this.mainFrame);
+        toolsPanel = new ToolsPanel(drawingManager);
         parameterPanel = new ParameterPanel(drawingManager);
         setFrame();
         setCursor();
@@ -54,7 +57,7 @@ public class ImageEdit {
         mainFrameSetPanels();
 
 
-        new MenuBar(this.mainFrame, this.drawingManager);
+        new com.ivan.imageEditor.panels.MenuBar(this.mainFrame, this.drawingManager);
 
         this.mainFrame.setVisible(true);
     }
