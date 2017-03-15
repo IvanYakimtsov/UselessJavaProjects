@@ -17,7 +17,6 @@ public class ToolsPanel {
     private JPanel toolPanel;
 
 
-
     public ToolsPanel(DrawingManager drawingManager) {
 
         this.toolPanel = new JPanel();
@@ -31,6 +30,14 @@ public class ToolsPanel {
     }
 
     private void setTools() {
+        setButtons();
+        JButton saveButton = setToolButton("Img/save.png");
+        saveButton.addActionListener(new SaveAsAction(drawingManager, "Save file"));
+        this.toolPanel.add(saveButton);
+
+    }
+
+    private void setButtons() {
         this.addButton(setToolButton("Img/paint-brush.png"), new com.ivan.imageEditor.tools.Paint(this.drawingManager));
         this.addButton(setToolButton("Img/segment.png"), new com.ivan.imageEditor.tools.Line(this.drawingManager));
         this.addButton(setToolButton("Img/eraser.png"), new com.ivan.imageEditor.tools.Eraser(this.drawingManager));
@@ -39,11 +46,6 @@ public class ToolsPanel {
         this.addButton(setToolButton("Img/zoom.png"), new com.ivan.imageEditor.tools.Zoom(this.drawingManager));
         this.addButton(setToolButton("Img/allocation.png"), new com.ivan.imageEditor.tools.Allocation(this.drawingManager));
         this.addButton(setToolButton("Img/allocation-broken-line.png"), new com.ivan.imageEditor.tools.brokenLineAllocation(this.drawingManager));
-
-        JButton saveButton = setToolButton("Img/save.png");
-        saveButton.addActionListener(new SaveAsAction(drawingManager, "Save file"));
-        this.toolPanel.add(saveButton);
-
     }
 
     private JButton setToolButton(String fileName) {
@@ -64,19 +66,6 @@ public class ToolsPanel {
 
 
     //------------------------------------------------------------------------------------------------------------
-    private class ToolsPanelListener implements ActionListener {
-        DrawingManager drawingManager;
-        Tool tool;
 
-        ToolsPanelListener(DrawingManager drawingManager, Tool tool) {
-            this.drawingManager = drawingManager;
-            this.tool = tool;
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            this.drawingManager.setCurrentTool(this.tool);
-        }
-    }
 
 }

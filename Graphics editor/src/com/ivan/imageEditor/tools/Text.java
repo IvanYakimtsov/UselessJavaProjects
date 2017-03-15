@@ -56,10 +56,10 @@ public class Text implements Tool {
 
     @Override
     public void mousePressed(MouseEvent event) {
-    mouseTick(event);
+        mouseTick(event);
     }
 
-    private void mouseTick(MouseEvent event){
+    private void mouseTick(MouseEvent event) {
         drawingManager.getDrawingArea().requestFocus();
         positionX = event.getX();
         positionY = event.getY();
@@ -107,9 +107,11 @@ public class Text implements Tool {
     @Override
     public void keyPressed(KeyEvent e) {
 
+        boolean isInputValid = (e.getKeyCode() != KeyEvent.VK_BACK_SPACE && e.getKeyCode() != KeyEvent.VK_CONTROL
+                && e.getKeyCode() != KeyEvent.VK_DELETE && e.getKeyCode() != KeyEvent.VK_SHIFT &&
+                e.getKeyCode() != KeyEvent.VK_ENTER );
 
-        if (Pattern.matches("\\w|\\s|\\!|\\@|\\#|\\$|\\%|\\?|\\^|\\&|\\*|\\(|\\)|\\[|\\]|\\{|\\}|\\+|\\-|\\=|\\*|\\\\|\\/|\\<|\\>",
-                Character.toString(e.getKeyChar()))) {
+        if (isInputValid) {
             Graphics2D paint = (Graphics2D) drawingManager.getDrawingArea().getImage().createGraphics();
             paint.setColor(drawingManager.getColor());
             paint.setStroke(new BasicStroke(2.0f));
@@ -128,7 +130,7 @@ public class Text implements Tool {
             drawingManager.getDrawingArea().requestFocus();
         }
 
-        if (e.getKeyChar() == KeyEvent.VK_ENTER) {
+        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
             drawingManager.getDrawingArea().clearAccessoryImage();
             drawingManager.getDrawingArea().repaint();
             drawingManager.getDrawingArea().transferFocus();

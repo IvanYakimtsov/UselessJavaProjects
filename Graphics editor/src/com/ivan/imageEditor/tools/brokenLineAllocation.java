@@ -4,6 +4,8 @@ import com.ivan.imageEditor.panels.DrawingManager;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Ellipse2D;
@@ -19,19 +21,17 @@ public class brokenLineAllocation implements Tool {
     private int lastXposition;
     private int lastYposition;
     private DrawingManager drawingManager;
-
     private Point startPosition;
     private final int RADIUS = 25;
     private Polygon bufferedAreaPoligon;
     private BufferedImage bufferedArea;
-
     private ArrayList<Integer> xPoints;
     private ArrayList<Integer> yPoints;
     private Point copyPoint;
-
     private boolean isAreaChoosen;
     private boolean isLeavedInitialArea;
     private boolean isInitialPointExist;
+    private JPopupMenu popMenu;
 
 
     public brokenLineAllocation(DrawingManager drawingManager) {
@@ -42,7 +42,32 @@ public class brokenLineAllocation implements Tool {
         isAreaChoosen = false;
         isLeavedInitialArea = false;
         isInitialPointExist = false;
+        setPopMenu();
+    }
 
+    private void setPopMenu() {
+        popMenu = new JPopupMenu();
+
+        JMenuItem copyItem = new JMenuItem("Copy");
+        brokenLineAllocation that = this;
+        copyItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                that.copyAction();
+            }
+        });
+
+        JMenuItem pasteItem = new JMenuItem("Paste");
+
+        pasteItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                that.pasteAction();
+            }
+        });
+
+        popMenu.add(copyItem);
+        popMenu.add(pasteItem);
     }
 
 
@@ -54,7 +79,8 @@ public class brokenLineAllocation implements Tool {
                 lastYposition = event.getY();
                 isPressed = true;
             }
-            if (startPosition != null && !(Math.abs(event.getX() - startPosition.getX()) < RADIUS && Math.abs(event.getY() - startPosition.getY()) < RADIUS)) {
+            if (startPosition != null && !(Math.abs(event.getX() - startPosition.getX()) < RADIUS &&
+                    Math.abs(event.getY() - startPosition.getY()) < RADIUS)) {
                 isLeavedInitialArea = true;
             } else if (startPosition != null &&
                     (Math.abs(event.getX() - startPosition.getX()) < RADIUS && Math.abs(event.getY() - startPosition.getY()) < RADIUS) &&
@@ -78,7 +104,7 @@ public class brokenLineAllocation implements Tool {
             drawingManager.getDrawingArea().repaint();
         }
         isAreaChoosen = true;
-        drawingManager.getDrawingArea().requestFocus();
+        validateAreaCoordinates();
         bufferedAreaPoligon = new Polygon(getPointsArray(xPoints), getPointsArray(yPoints), xPoints.size());
     }
 
@@ -103,26 +129,36 @@ public class brokenLineAllocation implements Tool {
 
     @Override
     public void mousePressed(MouseEvent event) {
+        drawingManager.getDrawingArea().requestFocus();
         if (!isInitialPointExist && (event.getButton() != MouseEvent.BUTTON3)) {
-            startPosition = new Point(event.getX(), event.getY());
-            xPoints.add(event.getX());
-            yPoints.add(event.getY());
-            Graphics2D paint = (Graphics2D) drawingManager.getDrawingArea().getAccessoryImage().createGraphics();
-            paint.setStroke(new BasicStroke(5.0f));
-            paint.setColor(Color.BLACK);
-            paint.draw(new Ellipse2D.Double(event.getX() - RADIUS / 2, event.getY() - RADIUS / 2, RADIUS, RADIUS));
-            drawingManager.getDrawingArea().repaint();
-            isInitialPointExist = true;
-            lastXposition = event.getX();
-            lastYposition = event.getY();
-            isPressed = true;
+            drawInitialPoint(event);
+            updateInitialParametrs(event);
         }
 
         if (event.getButton() == MouseEvent.BUTTON3) {
             copyPoint = new Point(event.getX(), event.getY());
+            popMenu.show(drawingManager.getDrawingArea(), event.getX(), event.getY());
         }
     }
 
+
+    private void updateInitialParametrs(MouseEvent event) {
+        startPosition = new Point(event.getX(), event.getY());
+        xPoints.add(event.getX());
+        yPoints.add(event.getY());
+        isInitialPointExist = true;
+        lastXposition = event.getX();
+        lastYposition = event.getY();
+        isPressed = true;
+    }
+
+    private void drawInitialPoint(MouseEvent event) {
+        Graphics2D paint = (Graphics2D) drawingManager.getDrawingArea().getAccessoryImage().createGraphics();
+        paint.setStroke(new BasicStroke(5.0f));
+        paint.setColor(new Color(250, 21, 21, 150));
+        paint.draw(new Ellipse2D.Double(event.getX() - RADIUS / 2, event.getY() - RADIUS / 2, RADIUS, RADIUS));
+        drawingManager.getDrawingArea().repaint();
+    }
 
     public void mouseReleased(MouseEvent event) {
         if (isAreaChoosen) {
@@ -170,28 +206,48 @@ public class brokenLineAllocation implements Tool {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (isAreaChoosen) {
             if ((e.getKeyCode() == KeyEvent.VK_C) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
-                drawingManager.getDrawingArea().clearAccessoryImage();
-                drawingManager.getDrawingArea().repaint();
-                isAreaChoosen = false;
-                isLeavedInitialArea = false;
-                isInitialPointExist = false;
-                copyPartOfImage();
-                xPoints.clear();
-                yPoints.clear();
-
-
+                copyAction();
             }
+
+
+
+        if ((e.getKeyCode() == KeyEvent.VK_Z) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+            System.out.println("+");
+            drawingManager.getDrawingArea().clearAccessoryImage();
+            drawingManager.getDrawingArea().repaint();
+            isAreaChoosen = false;
+            isLeavedInitialArea = false;
+            isInitialPointExist = false;
+            xPoints.clear();
+            yPoints.clear();
+
 
         }
 
 
         if ((e.getKeyCode() == KeyEvent.VK_V) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
-            if (bufferedArea != null) {
-                pastPartOfImage();
-                drawingManager.getDrawingArea().repaint();
-            }
+          pasteAction();
+        }
+    }
+
+    private void copyAction(){
+        if (isAreaChoosen) {
+            drawingManager.getDrawingArea().clearAccessoryImage();
+            drawingManager.getDrawingArea().repaint();
+            isAreaChoosen = false;
+            isLeavedInitialArea = false;
+            isInitialPointExist = false;
+            copyPartOfImage();
+            xPoints.clear();
+            yPoints.clear();
+        }
+    }
+
+    private void pasteAction(){
+        if (bufferedArea != null) {
+            pastPartOfImage();
+            drawingManager.getDrawingArea().repaint();
         }
     }
 
@@ -203,19 +259,30 @@ public class brokenLineAllocation implements Tool {
         bufferedArea = new BufferedImage((int) poligonBounds.getWidth(), (int) poligonBounds.getHeight(), BufferedImage.TYPE_INT_ARGB);
 
 
-        for (int x = (int) poligonBounds.getX(); x <(int) poligonBounds.getX()+ poligonBounds.getWidth(); x++)
-            for (int y = (int) poligonBounds.getY(); y <(int) poligonBounds.getY() + poligonBounds.getHeight(); y++) {
+        for (int x = (int) poligonBounds.getX(); x < (int) poligonBounds.getX() + poligonBounds.getWidth(); x++)
+            for (int y = (int) poligonBounds.getY(); y < (int) poligonBounds.getY() + poligonBounds.getHeight(); y++) {
                 if (bufferedAreaPoligon.contains(x, y)) {
                     int cl = drawingManager.getDrawingArea().getImage().getRGB(x, y);
                     bufferedArea.setRGB((int) (x - poligonBounds.getX()), (int) (y - poligonBounds.getY()), cl);
-                 } else
-                     bufferedArea.setRGB((int) (x - poligonBounds.getX()), (int) (y - poligonBounds.getY()),unvisibleColor.getRGB());
+                } else
+                    bufferedArea.setRGB((int) (x - poligonBounds.getX()), (int) (y - poligonBounds.getY()), unvisibleColor.getRGB());
 
 
             }
 
 
+    }
 
+    private void validateAreaCoordinates() {
+        for(int index = 0; index < xPoints.size(); index++){
+            if (xPoints.get(index) < 0) xPoints.set(index,0);
+            if (xPoints.get(index) > drawingManager.getDrawingArea().getImage().getWidth())
+                xPoints.set(index,drawingManager.getDrawingArea().getImage().getWidth());
+
+            if (yPoints.get(index) < 0) yPoints.set(index,0);
+            if (yPoints.get(index) > drawingManager.getDrawingArea().getImage().getHeight())
+                yPoints.set(index, drawingManager.getDrawingArea().getImage().getHeight());
+        }
     }
 
     private void pastPartOfImage() {
