@@ -84,6 +84,7 @@ public class Paint implements Tool {
         Graphics2D paint = (Graphics2D) drawingManager.getDrawingArea().getImage().createGraphics();
         paint.setStroke(new BasicStroke(drawingManager.getSize() * 1.0f));
         paint.setColor(drawingManager.getColor());
+        paint.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
 
         paint.drawLine(event.getX(), event.getY(), event.getX(), event.getY());
 

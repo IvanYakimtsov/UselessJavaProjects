@@ -3,11 +3,10 @@ package com.ivan.imageEditor.panels;
 
 import com.ivan.imageEditor.fileActions.LoadAction;
 import com.ivan.imageEditor.fileActions.SaveAsAction;
+import com.ivan.imageEditor.tools.BrokenLineAllocation;
 import com.ivan.imageEditor.tools.Tool;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 
 /**
@@ -59,7 +58,7 @@ public class MenuBar {
         addTool(toolsChooser,"Eraser",new com.ivan.imageEditor.tools.Eraser(this.drawingManager));
         addTool(toolsChooser,"Text",new com.ivan.imageEditor.tools.Text(this.drawingManager));
         addTool(toolsChooser,"Allocation",new com.ivan.imageEditor.tools.Allocation(this.drawingManager));
-        addTool(toolsChooser,"Broken line allocation",new com.ivan.imageEditor.tools.brokenLineAllocation(this.drawingManager));
+        addTool(toolsChooser,"Broken line allocation",new BrokenLineAllocation(this.drawingManager));
     }
 
 

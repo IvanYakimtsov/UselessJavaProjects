@@ -73,6 +73,7 @@ public class Rectangle implements Tool {
             paint.setStroke(new BasicStroke(drawingManager.getSize() * 1.0f));
             paint.setColor(drawingManager.getColor());
 
+
             paintRect(paint, event);
 
             drawingManager.getDrawingArea().clearAccessoryImage();

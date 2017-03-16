@@ -8,15 +8,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Ivan on 14.03.2017.
  */
-public class brokenLineAllocation implements Tool {
+public class BrokenLineAllocation implements Tool {
     private boolean isPressed;
     private int lastXposition;
     private int lastYposition;
@@ -24,15 +24,14 @@ public class brokenLineAllocation implements Tool {
     private Point startPosition;
     private Polygon bufferedAreaPoligon;
     private BufferedImage bufferedArea;
-    private ArrayList<Integer> xPoints;
-    private ArrayList<Integer> yPoints;
+    private List<Integer> xPoints;
+    private List<Integer> yPoints;
     private Point copyPoint;
     private boolean isAreaChoosen;
-    private boolean isInitialPointExist;
     private JPopupMenu popMenu;
 
 
-    public brokenLineAllocation(DrawingManager drawingManager) {
+    public BrokenLineAllocation(DrawingManager drawingManager) {
         this.drawingManager = drawingManager;
 
         xPoints = new ArrayList<>(0);
@@ -45,7 +44,7 @@ public class brokenLineAllocation implements Tool {
         popMenu = new JPopupMenu();
 
         JMenuItem copyItem = new JMenuItem("Copy");
-        brokenLineAllocation that = this;
+        BrokenLineAllocation that = this;
         copyItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -75,7 +74,7 @@ public class brokenLineAllocation implements Tool {
                 lastYposition = event.getY();
                 isPressed = true;
             }
-            paint(event);
+            if (!isAreaChoosen) paint(event);
             lastXposition = event.getX();
             lastYposition = event.getY();
         }
@@ -86,16 +85,19 @@ public class brokenLineAllocation implements Tool {
             Graphics2D paint = (Graphics2D) drawingManager.getDrawingArea().getAccessoryImage().createGraphics();
             paint.setStroke(new BasicStroke(1.0f));
             paint.setColor(Color.BLACK);
+            paint.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
             paint.drawLine(event.getX(), event.getY(), (int) startPosition.getX(), (int) startPosition.getY());
             paint.drawLine(lastXposition, lastYposition, event.getX(), event.getY());
             drawingManager.getDrawingArea().repaint();
         }
         isAreaChoosen = true;
         validateAreaCoordinates();
+
         bufferedAreaPoligon = new Polygon(getPointsArray(xPoints), getPointsArray(yPoints), xPoints.size());
+
     }
 
-    private int[] getPointsArray(ArrayList<Integer> integers) {
+    private int[] getPointsArray(List<Integer> integers) {
         int[] ret = new int[integers.size()];
         for (int i = 0; i < ret.length; i++) {
             ret[i] = integers.get(i).intValue();
@@ -117,7 +119,7 @@ public class brokenLineAllocation implements Tool {
     @Override
     public void mousePressed(MouseEvent event) {
         drawingManager.getDrawingArea().requestFocus();
-        if (!isInitialPointExist && (event.getButton() != MouseEvent.BUTTON3)) {
+        if (event.getButton() != MouseEvent.BUTTON3) {
             updateInitialParametrs(event);
         }
 
@@ -129,6 +131,7 @@ public class brokenLineAllocation implements Tool {
 
 
     private void updateInitialParametrs(MouseEvent event) {
+        resetAreaAllocation();
         startPosition = new Point(event.getX(), event.getY());
         xPoints.add(event.getX());
         yPoints.add(event.getY());
@@ -138,6 +141,7 @@ public class brokenLineAllocation implements Tool {
     public void mouseReleased(MouseEvent event) {
         if (event.getButton() != MouseEvent.BUTTON3) allocateArea(event);
         isPressed = false;
+
     }
 
     @Override
@@ -156,6 +160,7 @@ public class brokenLineAllocation implements Tool {
         yPoints.add(event.getY());
         Graphics2D paint = (Graphics2D) drawingManager.getDrawingArea().getAccessoryImage().createGraphics();
         paint.setStroke(new BasicStroke(1.0f));
+        paint.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
         paint.setColor(Color.BLACK);
 
         paint.drawLine(event.getX(), event.getY(), event.getX(), event.getY());
@@ -185,15 +190,7 @@ public class brokenLineAllocation implements Tool {
 
 
         if ((e.getKeyCode() == KeyEvent.VK_Z) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
-            drawingManager.getDrawingArea().clearAccessoryImage();
-            drawingManager.getDrawingArea().repaint();
-            isAreaChoosen = false;
-            // isLeavedInitialArea = false;
-            isInitialPointExist = false;
-            xPoints.clear();
-            yPoints.clear();
-
-
+            resetAreaAllocation();
         }
 
 
@@ -202,12 +199,19 @@ public class brokenLineAllocation implements Tool {
         }
     }
 
+    private void resetAreaAllocation() {
+        drawingManager.getDrawingArea().clearAccessoryImage();
+        drawingManager.getDrawingArea().repaint();
+        isAreaChoosen = false;
+        xPoints.clear();
+        yPoints.clear();
+    }
+
     private void copyAction() {
         if (isAreaChoosen) {
             drawingManager.getDrawingArea().clearAccessoryImage();
             drawingManager.getDrawingArea().repaint();
             isAreaChoosen = false;
-            isInitialPointExist = false;
             copyPartOfImage();
             xPoints.clear();
             yPoints.clear();

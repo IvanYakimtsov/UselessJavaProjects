@@ -5,8 +5,6 @@ import com.ivan.imageEditor.tools.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * Created by Ivan on 01.03.2017.
@@ -45,7 +43,7 @@ public class ToolsPanel {
         this.addButton(setToolButton("Img/Rectangle.png"), new com.ivan.imageEditor.tools.Rectangle(this.drawingManager));
         this.addButton(setToolButton("Img/zoom.png"), new com.ivan.imageEditor.tools.Zoom(this.drawingManager));
         this.addButton(setToolButton("Img/allocation.png"), new com.ivan.imageEditor.tools.Allocation(this.drawingManager));
-        this.addButton(setToolButton("Img/allocation-broken-line.png"), new com.ivan.imageEditor.tools.brokenLineAllocation(this.drawingManager));
+        this.addButton(setToolButton("Img/allocation-broken-line.png"), new BrokenLineAllocation(this.drawingManager));
     }
 
     private JButton setToolButton(String fileName) {

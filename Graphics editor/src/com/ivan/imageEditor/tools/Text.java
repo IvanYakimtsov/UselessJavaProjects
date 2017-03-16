@@ -5,6 +5,7 @@ import com.ivan.imageEditor.panels.DrawingManager;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.awt.font.FontRenderContext;
 import java.util.regex.Pattern;
 
 /**
@@ -109,24 +110,20 @@ public class Text implements Tool {
 
         boolean isInputValid = (e.getKeyCode() != KeyEvent.VK_BACK_SPACE && e.getKeyCode() != KeyEvent.VK_CONTROL
                 && e.getKeyCode() != KeyEvent.VK_DELETE && e.getKeyCode() != KeyEvent.VK_SHIFT &&
-                e.getKeyCode() != KeyEvent.VK_ENTER );
+                e.getKeyCode() != KeyEvent.VK_ENTER);
 
         if (isInputValid) {
             Graphics2D paint = (Graphics2D) drawingManager.getDrawingArea().getImage().createGraphics();
             paint.setColor(drawingManager.getColor());
             paint.setStroke(new BasicStroke(2.0f));
+            paint.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
-            double spaceIndex = 2;
-            if (Character.isUpperCase(e.getKeyChar())) spaceIndex *= 1.2;
-            if (e.getKeyChar() == 'l' || e.getKeyChar() == 'f' || e.getKeyChar() == 't' || e.getKeyChar() == 'j' || e.getKeyChar() == 'J')
-                                                                                                                            spaceIndex *= 0.7;
-            if (e.getKeyChar() == 'w' || e.getKeyChar() == 'W' || e.getKeyChar() == 'm' ||e.getKeyChar() == 'M' ) spaceIndex *= 1.2;
-            if (e.getKeyChar() == '@' || e.getKeyChar() == '%') spaceIndex *= 1.5;
-            if (e.getKeyChar() == 'i' || e.getKeyChar() == 'I') spaceIndex *= 0.7;
+            Font textFont = new Font("Helvetica", Font.PLAIN, drawingManager.getSize() * 3);
+            paint.setFont(textFont);
 
-            paint.setFont(new Font("Arial", 0, drawingManager.getSize() * 3));
             paint.drawString(Character.toString(e.getKeyChar()), positionX, positionY);
-            positionX += drawingManager.getSize() * spaceIndex;
+            FontMetrics metrics = paint.getFontMetrics();
+            positionX += metrics.stringWidth(Character.toString(e.getKeyChar()));
             paint();
             drawingManager.getDrawingArea().requestFocus();
         }

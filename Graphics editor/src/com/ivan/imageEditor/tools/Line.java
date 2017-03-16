@@ -71,6 +71,7 @@ public class Line implements Tool {
             Graphics2D paint = (Graphics2D) drawingManager.getDrawingArea().getImage().createGraphics();
             paint.setStroke(new BasicStroke(drawingManager.getSize() * 1.0f));
             paint.setColor(drawingManager.getColor());
+            paint.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
 
             paintLine(paint, event);
 
@@ -97,6 +98,7 @@ public class Line implements Tool {
         paint.setColor(drawingManager.getColor());
         drawingManager.getDrawingArea().clearAccessoryImage();
         paint.setStroke(new BasicStroke(drawingManager.getSize() * 1.0f));
+        paint.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON); //сглаживание
         paintLine(paint, event);
         drawingManager.getDrawingArea().repaint();
     }
