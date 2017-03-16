@@ -22,14 +22,12 @@ public class brokenLineAllocation implements Tool {
     private int lastYposition;
     private DrawingManager drawingManager;
     private Point startPosition;
-    private final int RADIUS = 25;
     private Polygon bufferedAreaPoligon;
     private BufferedImage bufferedArea;
     private ArrayList<Integer> xPoints;
     private ArrayList<Integer> yPoints;
     private Point copyPoint;
     private boolean isAreaChoosen;
-    private boolean isLeavedInitialArea;
     private boolean isInitialPointExist;
     private JPopupMenu popMenu;
 
@@ -40,8 +38,6 @@ public class brokenLineAllocation implements Tool {
         xPoints = new ArrayList<>(0);
         yPoints = new ArrayList<>(0);
         isAreaChoosen = false;
-        isLeavedInitialArea = false;
-        isInitialPointExist = false;
         setPopMenu();
     }
 
@@ -79,18 +75,9 @@ public class brokenLineAllocation implements Tool {
                 lastYposition = event.getY();
                 isPressed = true;
             }
-            if (startPosition != null && !(Math.abs(event.getX() - startPosition.getX()) < RADIUS &&
-                    Math.abs(event.getY() - startPosition.getY()) < RADIUS)) {
-                isLeavedInitialArea = true;
-            } else if (startPosition != null &&
-                    (Math.abs(event.getX() - startPosition.getX()) < RADIUS && Math.abs(event.getY() - startPosition.getY()) < RADIUS) &&
-                    (isLeavedInitialArea)) allocateArea(event);
-
-            if (!isAreaChoosen) {
-                paint(event);
-                lastXposition = event.getX();
-                lastYposition = event.getY();
-            }
+            paint(event);
+            lastXposition = event.getX();
+            lastYposition = event.getY();
         }
     }
 
@@ -131,7 +118,6 @@ public class brokenLineAllocation implements Tool {
     public void mousePressed(MouseEvent event) {
         drawingManager.getDrawingArea().requestFocus();
         if (!isInitialPointExist && (event.getButton() != MouseEvent.BUTTON3)) {
-            drawInitialPoint(event);
             updateInitialParametrs(event);
         }
 
@@ -146,25 +132,12 @@ public class brokenLineAllocation implements Tool {
         startPosition = new Point(event.getX(), event.getY());
         xPoints.add(event.getX());
         yPoints.add(event.getY());
-        isInitialPointExist = true;
-        lastXposition = event.getX();
-        lastYposition = event.getY();
-        isPressed = true;
     }
 
-    private void drawInitialPoint(MouseEvent event) {
-        Graphics2D paint = (Graphics2D) drawingManager.getDrawingArea().getAccessoryImage().createGraphics();
-        paint.setStroke(new BasicStroke(5.0f));
-        paint.setColor(new Color(250, 21, 21, 150));
-        paint.draw(new Ellipse2D.Double(event.getX() - RADIUS / 2, event.getY() - RADIUS / 2, RADIUS, RADIUS));
-        drawingManager.getDrawingArea().repaint();
-    }
 
     public void mouseReleased(MouseEvent event) {
-        if (isAreaChoosen) {
-            isPressed = false;
-            startPosition = null;
-        }
+        if (event.getButton() != MouseEvent.BUTTON3) allocateArea(event);
+        isPressed = false;
     }
 
     @Override
@@ -206,18 +179,16 @@ public class brokenLineAllocation implements Tool {
 
     @Override
     public void keyPressed(KeyEvent e) {
-            if ((e.getKeyCode() == KeyEvent.VK_C) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
-                copyAction();
-            }
-
+        if ((e.getKeyCode() == KeyEvent.VK_C) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
+            copyAction();
+        }
 
 
         if ((e.getKeyCode() == KeyEvent.VK_Z) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
-            System.out.println("+");
             drawingManager.getDrawingArea().clearAccessoryImage();
             drawingManager.getDrawingArea().repaint();
             isAreaChoosen = false;
-            isLeavedInitialArea = false;
+            // isLeavedInitialArea = false;
             isInitialPointExist = false;
             xPoints.clear();
             yPoints.clear();
@@ -227,16 +198,15 @@ public class brokenLineAllocation implements Tool {
 
 
         if ((e.getKeyCode() == KeyEvent.VK_V) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0)) {
-          pasteAction();
+            pasteAction();
         }
     }
 
-    private void copyAction(){
+    private void copyAction() {
         if (isAreaChoosen) {
             drawingManager.getDrawingArea().clearAccessoryImage();
             drawingManager.getDrawingArea().repaint();
             isAreaChoosen = false;
-            isLeavedInitialArea = false;
             isInitialPointExist = false;
             copyPartOfImage();
             xPoints.clear();
@@ -244,7 +214,7 @@ public class brokenLineAllocation implements Tool {
         }
     }
 
-    private void pasteAction(){
+    private void pasteAction() {
         if (bufferedArea != null) {
             pastPartOfImage();
             drawingManager.getDrawingArea().repaint();
@@ -274,12 +244,12 @@ public class brokenLineAllocation implements Tool {
     }
 
     private void validateAreaCoordinates() {
-        for(int index = 0; index < xPoints.size(); index++){
-            if (xPoints.get(index) < 0) xPoints.set(index,0);
+        for (int index = 0; index < xPoints.size(); index++) {
+            if (xPoints.get(index) < 0) xPoints.set(index, 0);
             if (xPoints.get(index) > drawingManager.getDrawingArea().getImage().getWidth())
-                xPoints.set(index,drawingManager.getDrawingArea().getImage().getWidth());
+                xPoints.set(index, drawingManager.getDrawingArea().getImage().getWidth());
 
-            if (yPoints.get(index) < 0) yPoints.set(index,0);
+            if (yPoints.get(index) < 0) yPoints.set(index, 0);
             if (yPoints.get(index) > drawingManager.getDrawingArea().getImage().getHeight())
                 yPoints.set(index, drawingManager.getDrawingArea().getImage().getHeight());
         }

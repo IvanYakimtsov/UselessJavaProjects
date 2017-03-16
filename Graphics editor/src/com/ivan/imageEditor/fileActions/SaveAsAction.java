@@ -24,10 +24,9 @@ public class SaveAsAction extends AbstractAction {
         String fileName;
         try {
             JFileChooser fileChooser = new JFileChooser();
-            // Создаем фильтры для файлов
             ImageFileFilter pngFilter = new ImageFileFilter(".png");
             ImageFileFilter jpgFilter = new ImageFileFilter(".jpg");
-            // Добавляем фильтры
+
             fileChooser.addChoosableFileFilter(pngFilter);
             fileChooser.addChoosableFileFilter(jpgFilter);
 
@@ -36,7 +35,6 @@ public class SaveAsAction extends AbstractAction {
             if (result == JFileChooser.APPROVE_OPTION) {
                 fileName = fileChooser.getSelectedFile().getAbsolutePath();
 
-                // Смотрим какой фильтр выбран
                 if (fileChooser.getFileFilter() == pngFilter) {
                     ImageIO.write(drawingManager.getDrawingArea().getImage(), "png", new File(fileName + ".png"));
                 } else {

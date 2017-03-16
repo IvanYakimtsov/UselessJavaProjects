@@ -118,8 +118,9 @@ public class Text implements Tool {
 
             double spaceIndex = 2;
             if (Character.isUpperCase(e.getKeyChar())) spaceIndex *= 1.2;
-            if (e.getKeyChar() == 'l' || e.getKeyChar() == 'f') spaceIndex *= 0.7;
-            if (e.getKeyChar() == 'w' || e.getKeyChar() == 'W') spaceIndex *= 1.2;
+            if (e.getKeyChar() == 'l' || e.getKeyChar() == 'f' || e.getKeyChar() == 't' || e.getKeyChar() == 'j' || e.getKeyChar() == 'J')
+                                                                                                                            spaceIndex *= 0.7;
+            if (e.getKeyChar() == 'w' || e.getKeyChar() == 'W' || e.getKeyChar() == 'm' ||e.getKeyChar() == 'M' ) spaceIndex *= 1.2;
             if (e.getKeyChar() == '@' || e.getKeyChar() == '%') spaceIndex *= 1.5;
             if (e.getKeyChar() == 'i' || e.getKeyChar() == 'I') spaceIndex *= 0.7;
 

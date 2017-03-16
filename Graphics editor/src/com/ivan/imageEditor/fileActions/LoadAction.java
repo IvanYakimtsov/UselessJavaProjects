@@ -25,16 +25,14 @@ public class LoadAction extends AbstractAction {
     public void actionPerformed(ActionEvent event) {
         String fileName;
         JFileChooser fileChooser = new JFileChooser();
+        fileChooser.addChoosableFileFilter(new ImageFileFilter(".png"));
+        fileChooser.addChoosableFileFilter(new ImageFileFilter(".jpg"));
         int result = fileChooser.showOpenDialog(null);
         if (result == JFileChooser.APPROVE_OPTION) {
             try {
 
                 fileName = fileChooser.getSelectedFile().getAbsolutePath();
                 File file = new File(fileName);
-                fileChooser.addChoosableFileFilter(new ImageFileFilter(".png"));
-                fileChooser.addChoosableFileFilter(new ImageFileFilter(".jpg"));
-
-
                 drawingManager.getDrawingArea().setImage(ImageIO.read(file));
 
             } catch (FileNotFoundException ex) {
