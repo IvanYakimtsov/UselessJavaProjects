@@ -24,7 +24,7 @@ public class TableEditor {
         exams.add( new Exam("Отс", 9));
         exams.add( new Exam("Мрз", 9));
 
-        tableModel.addStudent("Yakimtsov I.D.", 521702, exams);
+        tableModel.addStudent("Hui S.G.", 521702, exams);
 
         TableView table = new TableView();
         table.createTable(tableModel.getTableData());
