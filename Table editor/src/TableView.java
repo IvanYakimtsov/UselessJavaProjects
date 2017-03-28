@@ -12,12 +12,14 @@ public class TableView {
     private JFrame mainFrame;
     private JPanel workingArea;
     private List<JButton> toolPanelButtons;
+    private JDialog activeDialog;
 
 
     TableView() {
         toolPanelButtons = new ArrayList<>();
         setFrame();
         addWorkingArea();
+        createTable(null);
     }
 
 
@@ -71,12 +73,13 @@ public class TableView {
 
 
     public void createTable(List<TableRow> table) {
+        //TODO: add ammount of rows depanding from page
         workingArea.removeAll();
         GridBagLayout tableLayout = new GridBagLayout();
         Container tableContainer = new Container();
         tableContainer.setLayout(tableLayout);
         printTableHeader(tableContainer);
-        printTableBody(table,tableContainer);
+        if(table != null)printTableBody(table,tableContainer);
         workingArea.add(tableContainer,BorderLayout.NORTH);
         mainFrame.setVisible(false);
         mainFrame.setVisible(true);
@@ -144,6 +147,11 @@ public class TableView {
         JLabel newLabel = new JLabel(name, SwingConstants.CENTER);
         newLabel.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 1, Color.BLACK));
         return newLabel;
+    }
+
+    public void addDialog(JDialog dialog){
+
+        dialog.setLocationRelativeTo(workingArea);
     }
 
     private void addFrameListener() {

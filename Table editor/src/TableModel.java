@@ -13,8 +13,8 @@ public class TableModel {
 
     }
 
-    public void addStudent(String studentName, int group, List<Exam> exams) {
-        tableData.add(new TableRow(studentName, group, exams));
+    public void addStudent(TableRow row) {
+        tableData.add(row);
     }
 
     public List<TableRow> getTableData() {
