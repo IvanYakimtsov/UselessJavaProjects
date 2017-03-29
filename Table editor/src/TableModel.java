@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -6,7 +7,6 @@ import java.util.List;
  */
 public class TableModel {
     private List<TableRow> tableData;
-
 
     TableModel() {
         tableData = new ArrayList<>();
@@ -17,11 +17,12 @@ public class TableModel {
         tableData.add(row);
     }
 
+
     public List<TableRow> getTableData() {
         return tableData;
     }
 
-    public List<TableRow> searchByAverageExamsResult(int minResult, int maxResult, String surname) {
+    public List<TableRow> searchStudent(int minResult, int maxResult, String surname) {
         List<TableRow> searchResult;
         searchResult = findStudentBySurname(surname);
         if (!searchResult.isEmpty()) {
@@ -30,7 +31,7 @@ public class TableModel {
         return searchResult;
     }
 
-    public List<TableRow> searchByGroupNumber(int groupNumber, String surname) {
+    public List<TableRow> searchStudent(int groupNumber, String surname) {
         List<TableRow> searchResult;
         searchResult = findStudentBySurname(surname);
         if (!searchResult.isEmpty()) {
@@ -39,7 +40,7 @@ public class TableModel {
         return searchResult;
     }
 
-    public List<TableRow> searchByExamResult(String exam, int minResult, int maxResult, String surname) {
+    public List<TableRow> searchStudent(String exam, int minResult, int maxResult, String surname) {
         List<TableRow> searchResult;
         searchResult = findStudentBySurname(surname);
         if (!searchResult.isEmpty()) {
@@ -66,9 +67,9 @@ public class TableModel {
     }
 
     public List<TableRow> findStudentsByGroupNumber(int groupNumber, List<TableRow> inputData) {
-        List<TableRow> searchResult = new ArrayList<>();
+        List<TableRow> searchResult = new ArrayList<>(); //TODO: check this
 
-        for (TableRow tableRow : tableData) {
+        for (TableRow tableRow : inputData) {
             if (tableRow.group == groupNumber) searchResult.add(tableRow);
         }
 
@@ -110,33 +111,28 @@ public class TableModel {
     }
 
 
-    public void deleteByGroupNumber(int groupNumber, String surname) {
-        List<TableRow> searchResult = this.searchByGroupNumber(groupNumber, surname);
-
-        clearData(searchResult);
+    public int deleteStudent(int groupNumber, String surname) {
+        List<TableRow> searchResult = this.searchStudent(groupNumber, surname);
+        tableData.removeAll(searchResult);
+        return searchResult.size();
     }
 
 
-    public void deleteByAverageExamsResult(int minResult, int maxResult, String surname) { //TODO: change to int to
-                                                                                          //TODO: show how many results were deleted
-        List<TableRow> searchResult = this.searchByAverageExamsResult(minResult, maxResult, surname);
-
-        clearData(searchResult);
+    public int deleteStudent(int minResult, int maxResult, String surname) {
+        List<TableRow> searchResult = this.searchStudent(minResult, maxResult, surname);
+        tableData.removeAll(searchResult);
+        return searchResult.size();
     }
 
 
-    public void deleteByExamResult(String exam, int minResult, int maxResult, String surname) {
-        List<TableRow> searchResult = this.searchByExamResult(exam, minResult, maxResult, surname);
-
-        clearData(searchResult);
+    public int deleteStudent(String exam, int minResult, int maxResult, String surname) {
+        List<TableRow> searchResult = this.searchStudent(exam, minResult, maxResult, surname);
+        tableData.removeAll(searchResult);
+        return searchResult.size();
     }
 
     private void clearData(List<TableRow> dataForCleaning) {
-        for (TableRow tableRow : tableData) {
-            for (TableRow resultRow : dataForCleaning) {
-                if (tableRow == resultRow) tableData.remove(tableRow);
-            }
-        }
+     tableData.removeAll(dataForCleaning);
     }
 
 

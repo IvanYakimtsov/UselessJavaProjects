@@ -6,7 +6,7 @@ import java.util.List;
  */
 public class TableEditor {
     public static void main(String args[]){
-        new TableController(new TableModel(),new TableView());
+        new TableController(new TableModel(),new TableView(5));
 
     }
 }
