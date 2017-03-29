@@ -92,6 +92,10 @@ public class WorkingArea {
         return newLabel;
     }
 
+    public void setExamsAmmount(int examsAmmount) {
+        this.examsAmmount = examsAmmount;
+    }
+
     public JPanel getWorkingArea() {
         return workingArea;
     }

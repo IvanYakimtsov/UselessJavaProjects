@@ -150,4 +150,7 @@ public class TableView {
     public JPanel getWorkingArea() {
         return workingArea.getWorkingArea();
     }
+    public WorkingArea getWorkingAreaObject() {
+        return workingArea;
+    }
 }

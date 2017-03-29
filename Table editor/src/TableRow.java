@@ -14,5 +14,8 @@ public class TableRow {
             this.exams = exams;
 
         }
+        TableRow(){
+
+        }
 
 }

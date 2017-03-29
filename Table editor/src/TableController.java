@@ -1,7 +1,9 @@
 import javax.swing.*;
+import javax.xml.transform.TransformerException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.Raster;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +33,25 @@ public class TableController {
         @Override
         public void actionPerformed(ActionEvent e) {
 
+
+            JFileChooser fileChooser = new JFileChooser();
+            TableFileFilter xmlFilter = new TableFileFilter(".table");
+
+            fileChooser.addChoosableFileFilter(xmlFilter);
+
+            int result = fileChooser.showSaveDialog(null);
+
+            if (result == JFileChooser.APPROVE_OPTION) {
+                try {
+                    tableModel.saveAction(fileChooser.getSelectedFile().getAbsolutePath() + ".table");
+                } catch (TransformerException exeption) {
+                    exeption.printStackTrace();
+                    JOptionPane.showMessageDialog(tableView.getWorkingArea(), "ошибка записи");
+                } catch (IOException exeption) {
+                    exeption.printStackTrace();
+                    JOptionPane.showMessageDialog(tableView.getWorkingArea(), "ошибка записи");
+                }
+            }
         }
     }
 
@@ -39,6 +60,29 @@ public class TableController {
         @Override
         public void actionPerformed(ActionEvent e) {
 
+
+            JFileChooser fileChooser = new JFileChooser();
+            TableFileFilter xmlFilter = new TableFileFilter(".table");
+
+            fileChooser.addChoosableFileFilter(xmlFilter);
+
+            int result = fileChooser.showSaveDialog(null);
+
+            if (result == JFileChooser.APPROVE_OPTION) {
+
+                try {
+                    tableModel.openAction(fileChooser.getSelectedFile().getAbsolutePath());
+                    tableView.setExamsAmmount(tableModel.getTableData().get(0).exams.size());
+                    tableView.getWorkingAreaObject().setExamsAmmount(tableModel.getTableData().get(0).exams.size());
+                    tableView.createTable(tableModel.getTableData());
+                } catch (Exception exeption) {
+                    exeption.printStackTrace();
+                    JOptionPane.showMessageDialog(tableView.getWorkingArea(), "ошибка чтения");
+                }
+
+
+
+            }
         }
     }
 
@@ -95,7 +139,6 @@ public class TableController {
             int dialogExitCode = dialog.startDialog();
             if (dialogExitCode != SearchPersonDialog.ID_CANCEL) {
                 List<TableRow> searchResult = null;
-                int deletedStudentsAmmount = 0;
                 switch (dialogExitCode) {
                     case SearchPersonDialog.ID_SEARCH_OPTION_1:
                         searchResult = tableModel.searchStudent(dialog.getGroup(), dialog.getStudentSurname());
@@ -109,7 +152,7 @@ public class TableController {
                                 dialog.getMaxResult(), dialog.getStudentSurname());
                         break;
                 }
-                ResultDialog resultDialog = new ResultDialog(tableView.getExamsAmmount(),searchResult);
+                ResultDialog resultDialog = new ResultDialog(tableView.getExamsAmmount(), searchResult);
                 tableView.addDialog(resultDialog.getDialog());
                 resultDialog.startDialog();
             }
