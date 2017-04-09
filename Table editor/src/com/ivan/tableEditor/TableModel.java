@@ -18,58 +18,72 @@ import java.util.List;
  * Created by Ivan on 21.03.2017.
  */
 public class TableModel {
-    private List<TableRow> tableData;
+    private List<Student> tableData;
 
     TableModel() {
         tableData = new ArrayList<>();
 
     }
 
-    public void addStudent(TableRow row) {
-        tableData.add(row);
+    public void addStudent(Student student) {
+        tableData.add(student);
     }
 
 
-    public List<TableRow> getTableData() {
+    public List<Student> getTableData() {
         return tableData;
     }
 
-    public List<TableRow> searchStudent(int minResult, int maxResult, String surname) {
-        List<TableRow> searchResult;
-        searchResult = findStudentBySurname(surname);
-        if (!searchResult.isEmpty()) {
-            searchResult = findStudentsByAverageExamsResult(minResult, maxResult, searchResult);
+    public List<Student> getPage(int pageNumber,int amountOfRecords){
+        List<Student> page = new ArrayList<>();
+        int firstRecordIndex = (pageNumber-1)*amountOfRecords;
+        for (int index = firstRecordIndex; index < firstRecordIndex + amountOfRecords; index++){
+            if(index>tableData.size() - 1) break;
+            page.add(tableData.get(index));
+        }
+
+        return page;
+    }
+
+    public List<Student> searchStudent(int minResult, int maxResult) {
+        List<Student> searchResult = new ArrayList<>();
+
+        for (Student student : tableData) {
+
+            double result = 0;
+
+            for (Exam examResult : student.exams) {
+                result += examResult.result;
+            }
+
+            result = result / student.exams.size();
+
+            if (result >= minResult && result <= maxResult) {
+                searchResult.add(student);
+            }
+
         }
         return searchResult;
     }
 
-    public List<TableRow> searchStudent(int groupNumber, String surname) {
-        List<TableRow> searchResult;
-        searchResult = findStudentBySurname(surname);
-        if (!searchResult.isEmpty()) {
-            searchResult = findStudentsByGroupNumber(groupNumber, searchResult);
+    public List<Student> searchStudent(int groupNumber) {
+        List<Student> searchResult = new ArrayList<>();
+
+        for (Student student : tableData) {
+            if (student.group == groupNumber) searchResult.add(student);
         }
+
         return searchResult;
     }
 
-    public List<TableRow> searchStudent(String exam, int minResult, int maxResult, String surname) {
-        List<TableRow> searchResult;
-        searchResult = findStudentBySurname(surname);
-        if (!searchResult.isEmpty()) {
-            searchResult = findStudentByExamResult(minResult, maxResult, exam, searchResult);
-        }
-        return searchResult;
-    }
+    public List<Student> searchStudent(String exam, int minResult, int maxResult) {
+        List<Student> searchResult = new ArrayList<>();
 
-    private List<TableRow> findStudentByExamResult(int minResult, int maxResult, String exam, List<TableRow> inputData) {
-        List<TableRow> searchResult = new ArrayList<>();
-
-
-        for (TableRow tableRow : inputData) {
-            for (Exam examResult : tableRow.exams) {
-                if (examResult.getExam().equals(exam)) {
-                    if (examResult.getExamResult() >= minResult && examResult.getExamResult() <= maxResult)
-                        searchResult.add(tableRow);
+        for (Student student : tableData) {
+            for (Exam examResult : student.exams) {
+                if (examResult.exam.equals(exam)) {
+                    if (examResult.result >= minResult && examResult.result <= maxResult)
+                        searchResult.add(student);
                 }
             }
 
@@ -78,66 +92,41 @@ public class TableModel {
         return searchResult;
     }
 
-    public List<TableRow> findStudentsByGroupNumber(int groupNumber, List<TableRow> inputData) {
-        List<TableRow> searchResult = new ArrayList<>(); //TODO: check this
 
-        for (TableRow tableRow : inputData) {
-            if (tableRow.group == groupNumber) searchResult.add(tableRow);
-        }
 
-        return searchResult;
-    }
+    public List<Student> searchStudent(String surname) {
+        List<Student> searchResult = new ArrayList<>();
 
-    public List<TableRow> findStudentBySurname(String surname) {
-        List<TableRow> searchResult = new ArrayList<>();
+        for (Student student : tableData) {
+            boolean isSurnameMatches = student.studentName.split(" ")[0].equals(surname);
 
-        for (TableRow tableRow : tableData) {
-            boolean isSurnameMatches = tableRow.studentName.split(" ")[0].equals(surname);
-
-            if (isSurnameMatches) searchResult.add(tableRow);
+            if (isSurnameMatches) searchResult.add(student);
         }
         return searchResult;
     }
 
-    public List<TableRow> findStudentsByAverageExamsResult(int minResult, int maxResult, List<TableRow> inputData) {
-        List<TableRow> searchResult = new ArrayList<>();
-
-        for (TableRow tableRow : inputData) {
-
-            double result = 0;
-
-            for (Exam examResult : tableRow.exams) {
-                result += examResult.getExamResult();
-            }
-
-            result = result / tableRow.exams.size();
-
-            if (result >= minResult && result <= maxResult) {
-                searchResult.add(tableRow);
-            }
-
-        }
-
-        return searchResult;
+    public int deleteStudent(String surname){
+        List<Student> searchResult = this.searchStudent(surname);
+        tableData.removeAll(searchResult);
+        return searchResult.size();
     }
 
-
-    public int deleteStudent(int groupNumber, String surname) {
-        List<TableRow> searchResult = this.searchStudent(groupNumber, surname);
+    public int deleteStudent(int groupNumber) {
+        List<Student> searchResult = this.searchStudent(groupNumber);
         tableData.removeAll(searchResult);
         return searchResult.size();
     }
 
 
-    public int deleteStudent(int minResult, int maxResult, String surname) {
-        List<TableRow> searchResult = this.searchStudent(minResult, maxResult, surname);
+    public int deleteStudent(int minResult, int maxResult) {
+        List<Student> searchResult = this.searchStudent(minResult, maxResult);
         tableData.removeAll(searchResult);
         return searchResult.size();
     }
 
 
-    public int deleteStudent(String exam, int minResult, int maxResult, String surname) {
-        List<TableRow> searchResult = this.searchStudent(exam, minResult, maxResult, surname);
+    public int deleteStudent(String exam, int minResult, int maxResult) {
+        List<Student> searchResult = this.searchStudent(exam, minResult, maxResult);
         tableData.removeAll(searchResult);
         return searchResult.size();
     }
@@ -161,31 +150,39 @@ public class TableModel {
     private void writeParamXML(DocumentBuilder builder, String path) throws TransformerException, IOException {
 
         Document document = builder.newDocument();
-        Element RootElement = document.createElement("table");
+        Element RootElement = document.createElement("studentsList");
 
-        for (TableRow row : tableData) {
-            Element tableRow = document.createElement("tableRow");
+        for (Student student : tableData) {
+            Element tableRow = document.createElement("student");
 
             Element studentName = document.createElement("studentName");
-            studentName.appendChild(document.createTextNode(row.studentName));
+            studentName.appendChild(document.createTextNode(student.studentName));
             tableRow.appendChild(studentName);
 
+            Element studentSurname = document.createElement("studentSurname");
+            studentSurname.appendChild(document.createTextNode(student.studentSurname));
+            tableRow.appendChild(studentSurname);
+
+            Element studentPatronymic = document.createElement("studentPatronymic");
+            studentPatronymic.appendChild(document.createTextNode(student.studentPatronymic));
+            tableRow.appendChild(studentPatronymic);
+
             Element group = document.createElement("group");
-            group.appendChild(document.createTextNode(String.valueOf(row.group)));
+            group.appendChild(document.createTextNode(String.valueOf(student.group)));
             tableRow.appendChild(group);
 
             Element exams = document.createElement("exams");
 
-            for (Exam exam : row.exams) {
+            for (Exam exam : student.exams) {
                 Element examElement = document.createElement("exam");
 
 
                 Element examTitle = document.createElement("examTitle");
-                examTitle.appendChild(document.createTextNode(exam.getExam()));
+                examTitle.appendChild(document.createTextNode(exam.exam));
                 examElement.appendChild(examTitle);
 
                 Element examResult = document.createElement("examResult");
-                examResult.appendChild(document.createTextNode(String.valueOf(exam.getExamResult())));
+                examResult.appendChild(document.createTextNode(String.valueOf(exam.result)));
                 examElement.appendChild(examResult);
 
                 exams.appendChild(examElement);

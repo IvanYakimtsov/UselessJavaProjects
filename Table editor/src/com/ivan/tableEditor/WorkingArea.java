@@ -9,35 +9,38 @@ import java.awt.event.ActionListener;
  * Created by Ivan on 29.03.2017.
  */
 public class WorkingArea {
-    private JPanel workingArea;
-    private int examsAmmount;
-    private java.util.List<TableRow> table;
+    private JPanel workingAreaPanel;
 
     private JLabel pageAmmountLabel;
 
     private int currentPage;
     private int ammountOfPages;
     private int ammountOfRecords;
-    private Container tableContainer;
+    private int examsAmmount;
 
-    WorkingArea(int examsAmmount) {
+    private Container tableContainer;
+    private TableManager tableManager;
+
+    WorkingArea(TableManager tableManager) {
 
         currentPage = 1;
         ammountOfPages = 1;
         ammountOfRecords = 5;
+        examsAmmount = 5;
 
-        workingArea = new JPanel();
-        workingArea.setBackground(new Color(175, 205, 231));
-        workingArea.setLayout(new BorderLayout());
-        this.examsAmmount = examsAmmount;
+        this.tableManager = tableManager;
+
+        workingAreaPanel = new JPanel();
+        workingAreaPanel.setBackground(new Color(175, 205, 231));
+        workingAreaPanel.setLayout(new BorderLayout());
     }
 
     private void addToolPanel() {
         JToolBar toolBar = new JToolBar();
-        toolBar.setPreferredSize(new Dimension(workingArea.getWidth(), 32));
+        toolBar.setPreferredSize(new Dimension(workingAreaPanel.getWidth(), 32));
         toolBar.setFloatable(false);
         setToolBarComponents(toolBar);
-        workingArea.add(toolBar, BorderLayout.SOUTH);
+        workingAreaPanel.add(toolBar, BorderLayout.SOUTH);
     }
 
 
@@ -59,14 +62,11 @@ public class WorkingArea {
         records.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int priviousAmmountOfRecords = ammountOfRecords;
                 ammountOfRecords = Integer.parseInt(records.getText());
                 if (ammountOfRecords < 0) ammountOfRecords = 1;
                 currentPage = 1;
-                if (table != null) ammountOfPages = (int) Math.ceil((double) table.size() / ammountOfRecords);
                 pageAmmountLabel.setText(String.valueOf(currentPage) + "/" + String.valueOf(ammountOfPages));
-                workingArea.repaint();
-                createTable(table);
+                tableManager.validateWorkingArea();
             }
         });
         componentsContainer.add(records, cell);
@@ -96,8 +96,8 @@ public class WorkingArea {
                 if (currentPage > 1) {
                     currentPage--;
                     pageAmmountLabel.setText(String.valueOf(currentPage) + "/" + String.valueOf(ammountOfPages));
-                    workingArea.repaint();
-                    createTable(table);
+                    workingAreaPanel.repaint();
+                    tableManager.validateWorkingArea();
                 }
             }
         });
@@ -107,8 +107,8 @@ public class WorkingArea {
                 if (currentPage < ammountOfPages) {
                     currentPage++;
                     pageAmmountLabel.setText(String.valueOf(currentPage) + "/" + String.valueOf(ammountOfPages));
-                    workingArea.repaint();
-                    createTable(table);
+                    workingAreaPanel.repaint();
+                    tableManager.validateWorkingArea();
                 }
             }
         });
@@ -117,8 +117,8 @@ public class WorkingArea {
             public void actionPerformed(ActionEvent e) {
                 currentPage = 1;
                 pageAmmountLabel.setText(String.valueOf(currentPage) + "/" + String.valueOf(ammountOfPages));
-                workingArea.repaint();
-                createTable(table);
+                workingAreaPanel.repaint();
+                tableManager.validateWorkingArea();
             }
         });
         addButton("img/end.png", cell, componentsContainer, new ActionListener() {
@@ -126,8 +126,8 @@ public class WorkingArea {
             public void actionPerformed(ActionEvent e) {
                 currentPage = ammountOfPages;
                 pageAmmountLabel.setText(String.valueOf(currentPage) + "/" + String.valueOf(ammountOfPages));
-                workingArea.repaint();
-                createTable(table);
+                workingAreaPanel.repaint();
+                tableManager.validateWorkingArea();
             }
         });
     }
@@ -142,44 +142,38 @@ public class WorkingArea {
     }
 
 
-    public void createTable(java.util.List<TableRow> table) {
-        this.table = table;
-        workingArea.removeAll();
-        if (table != null) ammountOfPages = (int) Math.ceil((double) table.size() / ammountOfRecords);
+    public void drawPage(java.util.List<Student> page) {
+        workingAreaPanel.removeAll();
         GridBagLayout tableLayout = new GridBagLayout();
         tableContainer = new Container();
         tableContainer.setLayout(tableLayout);
         printTableHeader(tableContainer);
-        if (table != null) printTableBody(table, tableContainer);
+        if (page != null) printTableBody(page, tableContainer);
         addToolPanel();
-        workingArea.add(tableContainer, BorderLayout.NORTH);
-        workingArea.validate();
-        workingArea.repaint();
+        workingAreaPanel.add(tableContainer, BorderLayout.NORTH);
+        workingAreaPanel.validate();
+        workingAreaPanel.repaint();
     }
 
-    private void printTableBody(java.util.List<TableRow> table, Container tableContainer) {
+    private void printTableBody(java.util.List<Student> page, Container tableContainer) {
         GridBagConstraints cell = new GridBagConstraints();
 
         cell.anchor = GridBagConstraints.CENTER;
         cell.fill = GridBagConstraints.BOTH;
 
         cell.gridy = 2;
-        for (int recordNumber = (currentPage - 1) * ammountOfRecords; recordNumber < currentPage * ammountOfRecords; recordNumber++) {
-            if (recordNumber >= table.size()) {
-                break;
-            }
-            TableRow row = table.get(recordNumber);
-
+        for (Student student : page) {
             cell.gridheight = 1;
             cell.gridwidth = 1;
             cell.weightx = 1;
             cell.gridx = GridBagConstraints.RELATIVE;
             cell.gridy++;
-            tableContainer.add(addLabe(row.studentName), cell);
-            tableContainer.add(addLabe(String.valueOf(row.group)), cell);
-            for (Exam exam : row.exams) {
-                tableContainer.add(addLabe(exam.getExam()), cell);
-                tableContainer.add(addLabe(String.valueOf(exam.getExamResult())), cell);
+            tableContainer.add(addLabe(student.studentName + " " + student.studentSurname + " "
+                    + student.studentPatronymic), cell);
+            tableContainer.add(addLabe(String.valueOf(student.group)), cell);
+            for (Exam exam : student.exams) {
+                tableContainer.add(addLabe(exam.exam), cell);
+                tableContainer.add(addLabe(String.valueOf(exam.result)), cell);
             }
         }
     }
@@ -227,11 +221,24 @@ public class WorkingArea {
         return newLabel;
     }
 
-    public void setExamsAmmount(int examsAmmount) {
-        this.examsAmmount = examsAmmount;
+
+    public JPanel getWorkingAreaPanel() {
+        return workingAreaPanel;
     }
 
-    public JPanel getWorkingArea() {
-        return workingArea;
+    public int getCurrentPage() {
+        return currentPage;
+    }
+
+    public int getAmmountOfRecords() {
+        return ammountOfRecords;
+    }
+
+    public int getExamsAmmount() {
+        return examsAmmount;
+    }
+
+    public void setAmmountOfPages(int tableSize) {
+        this.ammountOfPages = (int) Math.ceil((double) tableSize / ammountOfRecords);
     }
 }

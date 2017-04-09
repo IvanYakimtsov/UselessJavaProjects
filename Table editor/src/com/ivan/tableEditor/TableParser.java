@@ -12,43 +12,45 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TableParser {
-    final String TAG_TABLE_ROW = "tableRow";
+    final String TAG_STUDENT = "student";
     final String TAG_NAME = "studentName";
+    final String TAG_SURNAME = "studentSurname";
+    final String TAG_PATRONYMIC = "studentPatronymic";
     final String TAG_GROUP = "group";
     final String TAG_EXAMS = "exams";
     final String TAG_EXAM = "exam";
     final String TAG_EXAM_TITLE = "examTitle";
     final String TAG_EXAM_RESULT = "examResult";
 
-    private List<TableRow> table;
-    private TableRow currentRow;
+    private List<Student> table;
+    private Student currentStudent;
     private List<Exam> currentExams;
     private Exam currentExam;
     private  String tagName;
 
     TableParser() {
         table = new ArrayList<>();
-        currentRow = new TableRow();
+        currentStudent = new Student();
         currentExams = new ArrayList<>();
         currentExam = new Exam();
     }
 
 
 
-    public List<TableRow> parse(String path, SAXParser parser) throws Exception {
+    public List<Student> parse(String path, SAXParser parser) throws Exception {
         parser.parse(path, new DefaultHandler() {
 
             @Override
             public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
                 tagName = qName;
                 switch (tagName) {
-                    case TAG_TABLE_ROW:
-                        currentRow = new TableRow();
-                        table.add(currentRow);
+                    case TAG_STUDENT:
+                        currentStudent = new Student();
+                        table.add(currentStudent);
                         break;
                     case TAG_EXAMS:
                         currentExams = new ArrayList<>();
-                        currentRow.exams = currentExams;
+                        currentStudent.exams = currentExams;
                         break;
 
                     case TAG_EXAM:
@@ -63,16 +65,22 @@ public class TableParser {
             public void characters(char ch[], int start, int length) throws SAXException {
                 switch (tagName) {
                     case TAG_NAME:
-                        currentRow.studentName = new String(ch, start, length);
+                        currentStudent.studentName = new String(ch, start, length);
+                        break;
+                    case TAG_SURNAME:
+                        currentStudent.studentSurname = new String(ch, start, length);
+                        break;
+                    case TAG_PATRONYMIC:
+                        currentStudent.studentPatronymic = new String(ch, start, length);
                         break;
                     case TAG_GROUP:
-                        currentRow.group = Integer.valueOf(new String(ch, start, length));
+                        currentStudent.group = Integer.valueOf(new String(ch, start, length));
                         break;
                     case TAG_EXAM_TITLE:
-                        currentExam.setExam(new String(ch, start, length));
+                        currentExam.exam = new String(ch, start, length);
                         break;
                     case TAG_EXAM_RESULT:
-                        currentExam.setResult(Integer.valueOf(new String(ch, start, length)));
+                        currentExam.result = Integer.valueOf(new String(ch, start, length));
                         break;
                 }
             }

@@ -10,26 +10,22 @@ import java.util.List;
 /**
  * Created by Ivan on 21.03.2017.
  */
-public class TableView {
+public class TableMainFrame {
     private JFrame mainFrame;
-    private WorkingArea workingArea;
     private List<JButton> toolPanelButtons;
-    private int examsAmmount;
 
 
-    TableView(int examsAmmount) {
+
+    TableMainFrame() {
         toolPanelButtons = new ArrayList<>();
-        this.examsAmmount = examsAmmount;
         setFrame();
-        addWorkingArea();
-        createTable(null);
         mainFrame.validate();
         mainFrame.repaint();
     }
 
 
     private void setFrame() {
-        this.mainFrame = new JFrame("com.ivan.tableEditor.TableEditor");
+        this.mainFrame = new JFrame("TableEditor");
         this.mainFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
         addFrameListener();
@@ -69,24 +65,12 @@ public class TableView {
         toolPanelButtons.add(button);
     }
 
-    private void addWorkingArea() {
-       workingArea = new WorkingArea(examsAmmount);
-       mainFrame.add(workingArea.getWorkingArea());
+    public void addWorkingArea(WorkingArea workingArea) {
+       mainFrame.add(workingArea.getWorkingAreaPanel());
+       mainFrame.validate();
+       mainFrame.repaint();
     }
 
-
-    public void createTable(List<TableRow> table) {
-        //TODO: add ammount of rows depanding from page
-        workingArea.createTable(table);
-        mainFrame.validate();
-        mainFrame.repaint();
-    }
-
-
-    public void addDialog(JDialog dialog) {
-
-        dialog.setLocationRelativeTo(workingArea.getWorkingArea());
-    }
 
     private void addFrameListener() {
         this.mainFrame.addWindowListener(new WindowListener() {
@@ -139,21 +123,6 @@ public class TableView {
 
     public List<JButton> getToolPanelButtons() {
         return toolPanelButtons;
-    }
-
-
-    public int getExamsAmmount() {
-        return examsAmmount;
-    }
-
-
-    public void setExamsAmmount(int examsAmmount) {
-        this.examsAmmount = examsAmmount;
-        workingArea.setExamsAmmount(examsAmmount);
-    }
-
-    public JPanel getWorkingArea() {
-        return workingArea.getWorkingArea();
     }
 
 }

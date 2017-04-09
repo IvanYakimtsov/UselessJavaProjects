@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
+import java.util.regex.Pattern;
 
 /**
  * Created by Ivan on 28.03.2017.
@@ -17,7 +18,7 @@ public class AddPersonDialog {
 
     private JDialog addPersonDialog;
 
-    private TableRow tableRow;
+    private Student student;
     private java.util.List<JTextField> textFieldList;
     private int examsAmmount;
 
@@ -48,7 +49,9 @@ public class AddPersonDialog {
         cell.insets = new Insets(20, 20, 0, 0);
 
         addLabel("фио студента", cell, dialogBody, 1, 0, 0);
-        addTextField(cell, dialogBody, 3, 1, 0);
+        addTextField(cell, dialogBody, 1, 1, 0);
+        addTextField(cell, dialogBody, 1, 2, 0);
+        addTextField(cell, dialogBody, 1, 3, 0);
 
         addLabel("группа", cell, dialogBody, 1, 0, 1);
         addTextField(cell, dialogBody, 3, 1, 1);
@@ -79,18 +82,50 @@ public class AddPersonDialog {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(isInputValid()){
+                    addStudent();
+                    exitCode = ID_OK;
+                    addPersonDialog.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(addPersonDialog, "проверьте правильность ввода");
+                }
+            }
+
+            private void addStudent(){
                 java.util.List<Exam> exams = new ArrayList<>();
                 String studentName = textFieldList.get(0).getText();
-                int group = Integer.parseInt(textFieldList.get(1).getText());
-                for (int index = 2; index < textFieldList.size(); index += 2) {
+                String studentSurname = textFieldList.get(1).getText();
+                String studentPatronymic = textFieldList.get(2).getText();
+
+                int group = Integer.parseInt(textFieldList.get(3).getText());
+                for (int index = 4; index < textFieldList.size(); index += 2) {
                     String title = textFieldList.get(index).getText();
                     int result = Integer.parseInt(textFieldList.get(index + 1).getText());
                     exams.add(new Exam(title, result));
                 }
-                tableRow = new TableRow(studentName, group, exams);
 
-                exitCode = ID_OK;
-                addPersonDialog.dispose();
+                student = new Student(studentName, studentSurname, studentPatronymic,group, exams);
+            }
+
+            private boolean isInputValid(){
+                boolean isInputCorrect = true;
+                Pattern nameField = Pattern.compile("([А-Я])[а-я]+");
+                Pattern examTitle = Pattern.compile("([А-Я]|[а-я])+");
+                Pattern groupNumberField = Pattern.compile("\\d+");
+                Pattern examResultField = Pattern.compile("\\d|10");
+
+               for(int index = 0; index<3;index++){
+                   if(!nameField.matcher(textFieldList.get(index).getText()).matches()) isInputCorrect = false;
+               }
+
+                if(!groupNumberField.matcher(textFieldList.get(3).getText()).matches()) isInputCorrect = false;
+
+                for (int index = 4; index < textFieldList.size(); index += 2) {
+                    if(!examTitle.matcher(textFieldList.get(index).getText()).matches()) isInputCorrect = false;
+                    if(!examResultField.matcher(textFieldList.get(index+1).getText()).matches()) isInputCorrect = false;
+                }
+
+                return isInputCorrect;
             }
         });
 
@@ -128,8 +163,8 @@ public class AddPersonDialog {
         return exitCode;
     }
 
-    public TableRow getTableRow() {
-        return tableRow;
+    public Student getStudent() {
+        return student;
     }
 
     public JDialog getDialog() {
