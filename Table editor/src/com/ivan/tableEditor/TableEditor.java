@@ -18,6 +18,6 @@ public class TableEditor {
         } catch (UnsupportedLookAndFeelException e) {
             e.printStackTrace();
         }
-        new TableManager(new TableModel(),new TableMainFrame());
+        new TableEditorManager(new TableModel(),new TableEditorMainFrame());
     }
 }

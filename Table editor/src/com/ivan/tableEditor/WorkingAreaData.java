@@ -30,7 +30,7 @@ public class WorkingAreaData {
 
     public void setAmmountOfRecords(int ammountOfRecords) {
         this.ammountOfRecords = ammountOfRecords;
-        if (ammountOfRecords < 0) this.ammountOfRecords = 1;
+        if (ammountOfRecords <= 0) this.ammountOfRecords = 1;
     }
 
 

@@ -10,13 +10,13 @@ import java.util.List;
 /**
  * Created by Ivan on 21.03.2017.
  */
-public class TableMainFrame {
+public class TableEditorMainFrame {
     private JFrame mainFrame;
     private List<JButton> toolPanelButtons;
 
 
 
-    TableMainFrame() {
+    TableEditorMainFrame() {
         toolPanelButtons = new ArrayList<>();
         setFrame();
         mainFrame.validate();
