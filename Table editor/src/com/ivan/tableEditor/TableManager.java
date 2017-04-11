@@ -5,7 +5,6 @@ import javax.xml.transform.TransformerException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,8 +17,8 @@ public class TableManager {
 
     TableManager(TableModel tableModel, TableMainFrame tableMainFrame) {
         this.tableMainFrame = tableMainFrame;
-        this.workingArea = new WorkingArea(this);
-        workingArea.drawPage(null);
+        this.workingArea = new WorkingArea();
+        this.workingArea.addListener(new WorkingAreaManager(tableModel));
         this.tableMainFrame.addWorkingArea(workingArea);
         this.tableModel = tableModel;
         addListeners();
@@ -33,12 +32,6 @@ public class TableManager {
         tableMainFrame.getToolPanelButtons().get(4).addActionListener(new SearchButtonListener());
     }
 
-    public void validateWorkingArea(){
-        List<Student> page;
-        page = tableModel.getPage(workingArea.getCurrentPage(),workingArea.getAmmountOfRecords());
-        workingArea.setAmmountOfPages(tableModel.getTableData().size());
-        workingArea.drawPage(page);
-    }
 
     class SaveButtonListener implements ActionListener {
 
@@ -84,7 +77,7 @@ public class TableManager {
 
                 try {
                     tableModel.openAction(fileChooser.getSelectedFile().getAbsolutePath());
-                    validateWorkingArea();
+                    workingArea.validate();
                 } catch (Exception exeption) {
                     exeption.printStackTrace();
                     JOptionPane.showMessageDialog(workingArea.getWorkingAreaPanel(), "ошибка чтения");
@@ -104,7 +97,7 @@ public class TableManager {
             dialog.getDialog().setLocationRelativeTo(workingArea.getWorkingAreaPanel());
             if (dialog.startDialog() == AddPersonDialog.ID_OK) {
                 tableModel.addStudent(dialog.getStudent());
-               validateWorkingArea();
+                workingArea.validate();
             }
         }
     }
@@ -114,29 +107,10 @@ public class TableManager {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-//            SearchPersonDialog dialog = new SearchPersonDialog("удалить студента");
-//            tableMainFrame.addDialog(dialog.getDialog());
-//            int dialogExitCode = dialog.startDialog();
-//            if (dialogExitCode != SearchPersonDialog.ID_CANCEL) {
-//                int deletedStudentsAmmount = 0;
-//                switch (dialogExitCode) {
-//                    case SearchPersonDialog.ID_SEARCH_OPTION_1:
-//                        deletedStudentsAmmount = tableModel.deleteStudent(dialog.getGroup(), dialog.getStudentSurname());
-//                        break;
-//                    case SearchPersonDialog.ID_SEARCH_OPTION_2:
-//                        deletedStudentsAmmount = tableModel.deleteStudent(dialog.getMinResult(), dialog.getMaxResult(),
-//                                dialog.getStudentSurname());
-//                        break;
-//                    case SearchPersonDialog.ID_SEARCH_OPTION_3:
-//                        deletedStudentsAmmount = tableModel.deleteStudent(dialog.getExam(), dialog.getMinResult(),
-//                                dialog.getMaxResult(), dialog.getStudentSurname());
-//                        break;
-//                }
-//
-//                tableMainFrame.createTable(tableModel.getTableData());
-//
-//                JOptionPane.showMessageDialog(dialog.getDialog(), "удалено записей " + deletedStudentsAmmount);
-//            }
+//        SearchPersonDialog dialog = new SearchPersonDialog(false,tableModel);
+//        dialog.getDialog().setLocationRelativeTo(workingArea.getWorkingAreaPanel());
+//        dialog.startDialog();
+//        validateWorkingArea();
         }
     }
 

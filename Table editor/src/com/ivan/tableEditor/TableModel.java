@@ -47,21 +47,15 @@ public class TableModel {
 
     public List<Student> searchStudent(int minResult, int maxResult) {
         List<Student> searchResult = new ArrayList<>();
-
         for (Student student : tableData) {
-
             double result = 0;
-
             for (Exam examResult : student.exams) {
                 result += examResult.result;
             }
-
             result = result / student.exams.size();
-
             if (result >= minResult && result <= maxResult) {
                 searchResult.add(student);
             }
-
         }
         return searchResult;
     }
@@ -98,7 +92,7 @@ public class TableModel {
         List<Student> searchResult = new ArrayList<>();
 
         for (Student student : tableData) {
-            boolean isSurnameMatches = student.studentName.split(" ")[0].equals(surname);
+            boolean isSurnameMatches = student.studentSurname.equals(surname);
 
             if (isSurnameMatches) searchResult.add(student);
         }
@@ -155,13 +149,14 @@ public class TableModel {
         for (Student student : tableData) {
             Element tableRow = document.createElement("student");
 
+            Element studentSurname = document.createElement("studentSurname");
+            studentSurname.appendChild(document.createTextNode(student.studentSurname));
+            tableRow.appendChild(studentSurname);
+
             Element studentName = document.createElement("studentName");
             studentName.appendChild(document.createTextNode(student.studentName));
             tableRow.appendChild(studentName);
 
-            Element studentSurname = document.createElement("studentSurname");
-            studentSurname.appendChild(document.createTextNode(student.studentSurname));
-            tableRow.appendChild(studentSurname);
 
             Element studentPatronymic = document.createElement("studentPatronymic");
             studentPatronymic.appendChild(document.createTextNode(student.studentPatronymic));
@@ -200,6 +195,9 @@ public class TableModel {
 
     }
 
+    public void setTableData(List<Student> tableData) {
+        this.tableData = tableData;
+    }
 
     public void openAction(String path) throws Exception {
             SAXParserFactory factory = SAXParserFactory.newInstance();

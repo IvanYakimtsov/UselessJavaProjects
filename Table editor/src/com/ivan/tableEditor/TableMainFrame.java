@@ -81,10 +81,10 @@ public class TableMainFrame {
 
             @Override
             public void windowClosing(WindowEvent e) {
-                Object[] options = {"Exit", "Cancel"};
+                Object[] options = {"Выйти", "Отменить"};
                 int n = JOptionPane
-                        .showOptionDialog(e.getWindow(), "Are you sure you want to exit?",
-                                "Submit", JOptionPane.YES_NO_OPTION,
+                        .showOptionDialog(e.getWindow(), "Вы действительно хотите выйти?",
+                                "Подтверждение", JOptionPane.YES_NO_OPTION,
                                 JOptionPane.QUESTION_MESSAGE, null, options,
                                 options[0]);
                 if (n == 0) {

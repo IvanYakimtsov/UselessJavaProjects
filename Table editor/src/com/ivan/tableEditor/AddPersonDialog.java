@@ -93,8 +93,8 @@ public class AddPersonDialog {
 
             private void addStudent(){
                 java.util.List<Exam> exams = new ArrayList<>();
-                String studentName = textFieldList.get(0).getText();
-                String studentSurname = textFieldList.get(1).getText();
+                String studentSurname = textFieldList.get(0).getText();
+                String studentName = textFieldList.get(1).getText();
                 String studentPatronymic = textFieldList.get(2).getText();
 
                 int group = Integer.parseInt(textFieldList.get(3).getText());
@@ -104,7 +104,7 @@ public class AddPersonDialog {
                     exams.add(new Exam(title, result));
                 }
 
-                student = new Student(studentName, studentSurname, studentPatronymic,group, exams);
+                student = new Student(studentSurname, studentName, studentPatronymic,group, exams);
             }
 
             private boolean isInputValid(){
