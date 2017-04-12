@@ -1,5 +1,9 @@
 package com.ivan.tableEditor;
 
+import com.ivan.tableEditor.tableEditorController.TableEditorManager;
+import com.ivan.tableEditor.tableEditorModel.TableModel;
+import com.ivan.tableEditor.tableEditorView.TableEditorMainFrame;
+
 import javax.swing.*;
 
 /**
