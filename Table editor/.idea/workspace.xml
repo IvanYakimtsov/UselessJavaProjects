@@ -16,43 +16,54 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TableModel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorModel/TableModel.java">
+      <file leaf-file-name="Student.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorModel/Student.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="148" column="43" lean-forward="true" selection-start-line="148" selection-start-column="43" selection-end-line="148" selection-end-column="43" />
+            <state relative-caret-position="204">
+              <caret line="12" column="23" lean-forward="false" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WorkingArea.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/workingArea/WorkingArea.java">
+      <file leaf-file-name="Exam.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorModel/Exam.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="93" column="4" lean-forward="true" selection-start-line="93" selection-start-column="4" selection-end-line="93" selection-end-column="4" />
+            <state relative-caret-position="85">
+              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TableEditorManager.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorController/TableEditorManager.java">
+      <file leaf-file-name="TableFileFilter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorModel/TableFileFilter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="126" column="10" lean-forward="false" selection-start-line="126" selection-start-column="10" selection-end-line="126" selection-end-column="10" />
+            <state relative-caret-position="119">
+              <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#490#491#0" expanded="false" />
+                <element signature="e#522#523#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WorkingAreaData.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/workingArea/WorkingAreaData.java">
+      <file leaf-file-name="TableEditorManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorController/TableEditorManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-229">
-              <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            <state relative-caret-position="2295">
+              <caret line="145" column="51" lean-forward="false" selection-start-line="145" selection-start-column="51" selection-end-line="145" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddPersonDialog.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/AddPersonDialog.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -61,11 +72,85 @@
       <file leaf-file-name="WorkingAreaPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/workingArea/WorkingAreaPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-663">
-              <caret line="63" column="40" lean-forward="true" selection-start-line="63" selection-start-column="40" selection-end-line="63" selection-end-column="40" />
+            <state relative-caret-position="2839">
+              <caret line="173" column="52" lean-forward="false" selection-start-line="173" selection-start-column="52" selection-end-line="173" selection-end-column="52" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#addLabe#0;class#WorkingAreaPanel#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#6175#6176#0" expanded="false" />
+                <element signature="e#6205#6206#0" expanded="false" />
+                <element signature="e#6243#6244#0" expanded="false" />
+                <element signature="e#6273#6274#0" expanded="false" />
+                <element signature="e#6316#6317#0" expanded="false" />
+                <element signature="e#6355#6356#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WorkingAreaListener.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/workingArea/WorkingAreaListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WorkingArea.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/workingArea/WorkingArea.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="26" column="61" lean-forward="false" selection-start-line="26" selection-start-column="61" selection-end-line="26" selection-end-column="61" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#1390#1919#0" expanded="false" />
+                <element signature="e#1918#1919#0" expanded="false" />
+                <element signature="e#2019#2582#0" expanded="false" />
+                <element signature="e#2581#2582#0" expanded="false" />
+                <element signature="e#2682#3084#0" expanded="false" />
+                <element signature="e#3083#3084#0" expanded="false" />
+                <element signature="e#3183#3619#0" expanded="false" />
+                <element signature="e#3618#3619#0" expanded="false" />
+                <element signature="e#3687#3688#0" expanded="false" />
+                <element signature="e#3726#3727#0" expanded="false" />
+                <element signature="e#3790#3791#0" expanded="false" />
+                <element signature="e#3832#3833#0" expanded="false" />
+                <element signature="e#4065#4066#0" expanded="false" />
+                <element signature="e#4104#4105#0" expanded="false" />
+                <element signature="e#4140#4141#0" expanded="false" />
+                <element signature="e#4195#4196#0" expanded="false" />
+                <element signature="e#4235#4236#0" expanded="false" />
+                <element signature="e#4295#4296#0" expanded="false" />
+                <element signature="e#4331#4332#0" expanded="false" />
+                <element signature="e#4387#4388#0" expanded="false" />
+                <element signature="e#4684#4685#0" expanded="false" />
+                <element signature="e#4722#4723#0" expanded="false" />
+                <element signature="e#4762#4763#0" expanded="false" />
+                <element signature="e#4815#4816#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WorkingAreaData.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/workingArea/WorkingAreaData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="1" lean-forward="false" selection-start-line="15" selection-start-column="1" selection-end-line="19" selection-end-column="5" />
+              <folding>
+                <element signature="e#472#473#0" expanded="false" />
+                <element signature="e#518#519#0" expanded="false" />
+                <element signature="e#575#576#0" expanded="false" />
+                <element signature="e#627#628#0" expanded="false" />
+                <element signature="e#842#843#0" expanded="false" />
+                <element signature="e#876#877#0" expanded="false" />
+                <element signature="e#914#915#0" expanded="false" />
+                <element signature="e#951#952#0" expanded="false" />
+                <element signature="e#991#992#0" expanded="false" />
+                <element signature="e#1030#1031#0" expanded="false" />
+                <element signature="e#1067#1068#0" expanded="false" />
+                <element signature="e#1102#1103#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -94,8 +179,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/TableData.java" />
-        <option value="$PROJECT_DIR$/src/TableOperationDialog.java" />
         <option value="$PROJECT_DIR$/src/TableEditor.java" />
         <option value="$PROJECT_DIR$/src/DeletePersonDialog.java" />
         <option value="$PROJECT_DIR$/src/SearchResultDialog.java" />
@@ -133,18 +216,20 @@
         <option value="$PROJECT_DIR$/src/com/ivan/tableEditor/TableEditorMainFrame.java" />
         <option value="$PROJECT_DIR$/src/com/ivan/tableEditor/AddPersonDialog.java" />
         <option value="$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorModel/Exam.java" />
-        <option value="$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorModel/Student.java" />
-        <option value="$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorModel/TableModel.java" />
         <option value="$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/WorkingAreaPanel.java" />
         <option value="$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/AddPersonDialog.java" />
         <option value="$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/workingArea/WorkingAreaListener.java" />
-        <option value="$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/TableEditorMainFrame.java" />
         <option value="$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/SearchPersonDialog.java" />
         <option value="$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorModel/TableParser.java" />
         <option value="$USER_HOME$/Desktop/testTable.xml" />
         <option value="$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/workingArea/WorkingAreaPanel.java" />
         <option value="$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/workingArea/WorkingArea.java" />
+        <option value="$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/TableEditorMainFrame.java" />
+        <option value="$USER_HOME$/Desktop/testTable (2).xml" />
+        <option value="$USER_HOME$/Desktop/tmp.xml" />
+        <option value="$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorModel/TableModel.java" />
         <option value="$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorController/TableEditorManager.java" />
+        <option value="$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorModel/Student.java" />
       </list>
     </option>
   </component>
@@ -169,8 +254,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -219,98 +305,16 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tableEditorView" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Table editor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Table editor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tableEditor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tableEditorView" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="workingArea" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Table editor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Table editor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tableEditor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tableEditorModel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Table editor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Table editor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tableEditor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="tableEditorController" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Table editor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Table editor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="img" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -566,7 +570,6 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32492113" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -578,7 +581,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -589,8 +592,9 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="7.320644E-4" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32492113" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -640,29 +644,11 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorModel/Exam.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="19" lean-forward="false" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/TableEditorMainFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorController/TableEditorManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="28" lean-forward="false" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -670,7 +656,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="25" column="53" lean-forward="true" selection-start-line="25" selection-start-column="53" selection-end-line="25" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -709,9 +694,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="28" lean-forward="false" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -719,7 +702,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="22" column="63" lean-forward="false" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -758,9 +740,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="28" lean-forward="false" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -768,7 +748,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -791,9 +770,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="28" lean-forward="false" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -801,7 +778,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -824,9 +800,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="28" lean-forward="false" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -834,7 +808,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -886,43 +859,94 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorModel/Exam.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/ResultDialog.java" />
+    <entry file="file://$USER_HOME$/Desktop/testTable.xml" />
+    <entry file="file://$USER_HOME$/Desktop/testTable (2).xml" />
+    <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/SearchPersonDialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorModel/Student.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorModel/TableFileFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        <state relative-caret-position="879">
+          <caret line="257" column="87" lean-forward="true" selection-start-line="257" selection-start-column="87" selection-end-line="257" selection-end-column="87" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/TableEditor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="24" column="8" lean-forward="false" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
+        <state relative-caret-position="307">
+          <caret line="24" column="23" lean-forward="true" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/TableEditorMainFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1360">
+          <caret line="29" column="32" lean-forward="true" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/ResultDialog.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/AddPersonDialog.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorModel/TableParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1870">
-          <caret line="119" column="38" lean-forward="true" selection-start-line="119" selection-start-column="38" selection-end-line="119" selection-end-column="38" />
+        <state relative-caret-position="272">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/workingArea/WorkingAreaData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="1" lean-forward="false" selection-start-line="15" selection-start-column="1" selection-end-line="19" selection-end-column="5" />
+          <folding>
+            <element signature="e#472#473#0" expanded="false" />
+            <element signature="e#518#519#0" expanded="false" />
+            <element signature="e#575#576#0" expanded="false" />
+            <element signature="e#627#628#0" expanded="false" />
+            <element signature="e#842#843#0" expanded="false" />
+            <element signature="e#876#877#0" expanded="false" />
+            <element signature="e#914#915#0" expanded="false" />
+            <element signature="e#951#952#0" expanded="false" />
+            <element signature="e#991#992#0" expanded="false" />
+            <element signature="e#1030#1031#0" expanded="false" />
+            <element signature="e#1067#1068#0" expanded="false" />
+            <element signature="e#1102#1103#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/workingArea/WorkingArea.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="26" column="61" lean-forward="false" selection-start-line="26" selection-start-column="61" selection-end-line="26" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1390#1919#0" expanded="false" />
+            <element signature="e#1918#1919#0" expanded="false" />
+            <element signature="e#2019#2582#0" expanded="false" />
+            <element signature="e#2581#2582#0" expanded="false" />
+            <element signature="e#2682#3084#0" expanded="false" />
+            <element signature="e#3083#3084#0" expanded="false" />
+            <element signature="e#3183#3619#0" expanded="false" />
+            <element signature="e#3618#3619#0" expanded="false" />
+            <element signature="e#3687#3688#0" expanded="false" />
+            <element signature="e#3726#3727#0" expanded="false" />
+            <element signature="e#3790#3791#0" expanded="false" />
+            <element signature="e#3832#3833#0" expanded="false" />
+            <element signature="e#4065#4066#0" expanded="false" />
+            <element signature="e#4104#4105#0" expanded="false" />
+            <element signature="e#4140#4141#0" expanded="false" />
+            <element signature="e#4195#4196#0" expanded="false" />
+            <element signature="e#4235#4236#0" expanded="false" />
+            <element signature="e#4295#4296#0" expanded="false" />
+            <element signature="e#4331#4332#0" expanded="false" />
+            <element signature="e#4387#4388#0" expanded="false" />
+            <element signature="e#4684#4685#0" expanded="false" />
+            <element signature="e#4722#4723#0" expanded="false" />
+            <element signature="e#4762#4763#0" expanded="false" />
+            <element signature="e#4815#4816#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -934,26 +958,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/TableEditorMainFrame.java">
+    <entry file="file://$USER_HOME$/Desktop/tmp.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="39" column="52" lean-forward="false" selection-start-line="39" selection-start-column="52" selection-end-line="39" selection-end-column="52" />
-          <folding />
+        <state relative-caret-position="-178">
+          <caret line="0" column="51" lean-forward="false" selection-start-line="0" selection-start-column="51" selection-end-line="0" selection-end-column="51" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorModel/TableParser.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorModel/Student.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-32">
-          <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/testTable.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="42" lean-forward="true" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
+        <state relative-caret-position="204">
+          <caret line="12" column="23" lean-forward="false" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -961,63 +976,67 @@
     <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/workingArea/WorkingAreaManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <caret line="10" column="50" lean-forward="false" selection-start-line="10" selection-start-column="50" selection-end-line="10" selection-end-column="50" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/SearchPersonDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="250" column="56" lean-forward="false" selection-start-line="250" selection-start-column="56" selection-end-line="250" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorModel/TableModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="148" column="43" lean-forward="true" selection-start-line="148" selection-start-column="43" selection-end-line="148" selection-end-column="43" />
+        <state relative-caret-position="255">
+          <caret line="27" column="24" lean-forward="false" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorModel/Exam.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorModel/TableFileFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="e#490#491#0" expanded="false" />
+            <element signature="e#522#523#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorController/TableEditorManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2295">
+          <caret line="145" column="51" lean-forward="false" selection-start-line="145" selection-start-column="51" selection-end-line="145" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/workingArea/WorkingAreaPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-663">
-          <caret line="63" column="40" lean-forward="true" selection-start-line="63" selection-start-column="40" selection-end-line="63" selection-end-column="40" />
+        <state relative-caret-position="2839">
+          <caret line="173" column="52" lean-forward="false" selection-start-line="173" selection-start-column="52" selection-end-line="173" selection-end-column="52" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#addLabe#0;class#WorkingAreaPanel#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#6175#6176#0" expanded="false" />
+            <element signature="e#6205#6206#0" expanded="false" />
+            <element signature="e#6243#6244#0" expanded="false" />
+            <element signature="e#6273#6274#0" expanded="false" />
+            <element signature="e#6316#6317#0" expanded="false" />
+            <element signature="e#6355#6356#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/workingArea/WorkingAreaData.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/AddPersonDialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-229">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        <state relative-caret-position="272">
+          <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/workingArea/WorkingArea.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="93" column="4" lean-forward="true" selection-start-line="93" selection-start-column="4" selection-end-line="93" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorController/TableEditorManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="126" column="10" lean-forward="false" selection-start-line="126" selection-start-column="10" selection-end-line="126" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

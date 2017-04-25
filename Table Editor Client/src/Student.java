@@ -1,5 +1,3 @@
-package com.ivan.tableEditor.tableEditorModel;
-
 import java.util.List;
 
 /**

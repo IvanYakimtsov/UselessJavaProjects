@@ -1,4 +1,4 @@
-package com.ivan.tableEditor.tableEditorModel;
+package tableEditorModel;
 
 import java.util.List;
 

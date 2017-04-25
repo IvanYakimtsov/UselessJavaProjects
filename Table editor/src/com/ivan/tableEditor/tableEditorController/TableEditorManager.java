@@ -94,6 +94,7 @@ public class TableEditorManager {
 
 
             JFileChooser fileChooser = new JFileChooser();
+
             TableFileFilter xmlFilter = new TableFileFilter(".table");
 
             fileChooser.addChoosableFileFilter(xmlFilter);
@@ -123,8 +124,8 @@ public class TableEditorManager {
             AddPersonDialog dialog = new AddPersonDialog(workingArea.getExamsAmmount());
             dialog.getDialog().setLocationRelativeTo(workingArea.getWorkingAreaPanel());
             if (dialog.startDialog() == AddPersonDialog.ID_OK) {
-
                 tableModel.addStudent(dialog.getStudent());
+
                 workingArea.validate();
             }
         }
