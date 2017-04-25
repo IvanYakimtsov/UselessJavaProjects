@@ -9,21 +9,21 @@ import java.awt.event.ActionListener;
 public class TableEditorManager {
     TableEditorMainFrame tableEditorMainFrame;
     WorkingArea workingArea;
-    TableModel tableModel;
+    ConnectionManager connectionManager;
 
-    public TableEditorManager(TableModel tableModel, TableEditorMainFrame tableEditorMainFrame) {
-        this.tableModel = tableModel;
+    public TableEditorManager(ConnectionManager connectionManager, TableEditorMainFrame tableEditorMainFrame) {
+        this.connectionManager = connectionManager;
         this.tableEditorMainFrame = tableEditorMainFrame;
         this.workingArea = new WorkingArea();
-        //   this.workingArea.addListener(new WorkingAreaManager(tableModel));
+        this.workingArea.addListener(new WorkingAreaManager(connectionManager));
         this.tableEditorMainFrame.addWorkingArea(workingArea);
         setConnection();
         addListeners();
     }
 
     private void setConnection() {
-        if (tableModel.chooseServerIp()) {
-            if (!tableModel.setConnection()) {
+        if (connectionManager.chooseServerIp()) {
+            if (!connectionManager.setConnection()) {
                 Object[] options = {"Переподключиться", "Выйти"};
                 int n = JOptionPane
                         .showOptionDialog(workingArea.getWorkingAreaPanel(), "Не удается установить соединение с сервером." +
@@ -34,7 +34,7 @@ public class TableEditorManager {
                 if (n == 1) {
                     tableEditorMainFrame.disposeFrame();
                 } else setConnection();
-            }
+            } else JOptionPane.showMessageDialog(workingArea.getWorkingAreaPanel(),"Соединение установлено");
         } else {
             Object[] options = {"Переподключиться", "Выйти"};
             int n = JOptionPane
@@ -97,7 +97,7 @@ public class TableEditorManager {
 //
 //            if (result == JFileChooser.APPROVE_OPTION) {
 //                try {
-//                    tableModel.saveAction(fileChooser.getSelectedFile().getAbsolutePath() + ".table");
+//                    connectionManager.saveAction(fileChooser.getSelectedFile().getAbsolutePath() + ".table");
 //                } catch (TransformerException exeption) {
 //                    exeption.printStackTrace();
 //                    JOptionPane.showMessageDialog(workingArea.getWorkingAreaPanel(), "ошибка записи");
@@ -126,7 +126,7 @@ public class TableEditorManager {
 //            if (result == JFileChooser.APPROVE_OPTION) {
 //
 //                try {
-//                    tableModel.openAction(fileChooser.getSelectedFile().getAbsolutePath());
+//                    connectionManager.openAction(fileChooser.getSelectedFile().getAbsolutePath());
 //                    workingArea.validate();
 //                } catch (Exception exeption) {
 //                    exeption.printStackTrace();
@@ -143,13 +143,13 @@ public class TableEditorManager {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-//            AddPersonDialog dialog = new AddPersonDialog(workingArea.getExamsAmmount());
-//            dialog.getDialog().setLocationRelativeTo(workingArea.getWorkingAreaPanel());
-//            if (dialog.startDialog() == AddPersonDialog.ID_OK) {
-//                tableModel.addStudent(dialog.getStudent());
-//
-//                workingArea.validate();
-//            }
+            AddPersonDialog dialog = new AddPersonDialog(workingArea.getExamsAmmount());
+            dialog.getDialog().setLocationRelativeTo(workingArea.getWorkingAreaPanel());
+            if (dialog.startDialog() == AddPersonDialog.ID_OK) {
+                connectionManager.addStudent(dialog.getStudent());
+
+                workingArea.validate();
+            }
         }
     }
 
@@ -158,10 +158,10 @@ public class TableEditorManager {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-//        SearchPersonDialog dialog = new SearchPersonDialog(true,tableModel);
-//        dialog.getDialog().setLocationRelativeTo(workingArea.getWorkingAreaPanel());
-//        dialog.startDialog();
-//        workingArea.validate();
+        SearchPersonDialog dialog = new SearchPersonDialog(true, connectionManager);
+        dialog.getDialog().setLocationRelativeTo(workingArea.getWorkingAreaPanel());
+        dialog.startDialog();
+        workingArea.validate();
         }
     }
 
@@ -169,10 +169,10 @@ public class TableEditorManager {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-//            SearchPersonDialog dialog = new SearchPersonDialog(false,tableModel);
-//            dialog.getDialog().setLocationRelativeTo(workingArea.getWorkingAreaPanel());
-//            dialog.startDialog();
-//            workingArea.validate();
+            SearchPersonDialog dialog = new SearchPersonDialog(false, connectionManager);
+            dialog.getDialog().setLocationRelativeTo(workingArea.getWorkingAreaPanel());
+            dialog.startDialog();
+            workingArea.validate();
         }
     }
 

@@ -13,6 +13,8 @@ public class Server implements Runnable {
     ServerSocket serverSocket;
     List<Thread> connectionsList;
 
+    public static int PORT = 1488;
+
     Server(ServerManager serverManager) {
         this.serverManager = serverManager;
         connectionsList = new ArrayList<>();
@@ -21,7 +23,7 @@ public class Server implements Runnable {
 
     private void adjustServer() {
         try {
-            serverSocket = new ServerSocket(Const.port);
+            serverSocket = new ServerSocket(PORT);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -32,8 +34,8 @@ public class Server implements Runnable {
         try {
             while (true) {
                 Socket s = serverSocket.accept();
-                serverManager.getServerControlPanel().printLog("new conection");
-                Thread connection = new Thread(new Connection(s));
+                serverManager.getServerControlPanel().printLog("new connection");
+                Thread connection = new Thread(new Connection(s,this));
                 connectionsList.add(connection);
                 connection.start();
             }
@@ -46,11 +48,21 @@ public class Server implements Runnable {
     public void stopServer(){
         try {
             serverSocket.close();
-            for (Thread connection : connectionsList) connection.stop();
+            for (Thread connection : connectionsList) connection.interrupt();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+    public void killConnection(Thread connection){
+        if(connectionsList.contains(connection)){
+            serverManager.getServerControlPanel().printLog("connection killed");
+            connection.interrupt();
+            connectionsList.remove(connection);
+        }
+    }
+
+
     public ServerSocket getServerSocket() {
         return serverSocket;
     }

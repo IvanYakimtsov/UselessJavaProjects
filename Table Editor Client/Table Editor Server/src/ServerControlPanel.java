@@ -42,7 +42,7 @@ public class ServerControlPanel {
         cell.gridx = GridBagConstraints.RELATIVE;
         cell.insets = new Insets(0, 0, 0, 20);
 
-        container.setBackground(Color.RED);
+        container.setBackground(new Color(94, 115, 232));
         container.setSize(400,100);
 
         JButton startServerButton = new JButton("Start Server");
@@ -79,11 +79,11 @@ public class ServerControlPanel {
 
     private void setLogPanel(){
         logPanel = new JPanel();
-        logPanel.setBackground(Color.WHITE);
+        logPanel.setBackground(new Color(175, 205, 231));
         logPanel.setLayout(new GridBagLayout());
 
         JPanel panel = new JPanel();
-        panel.setBackground(Color.WHITE);
+        panel.setBackground(new Color(175, 205, 231));
         panel.setLayout(new BorderLayout());
         panel.add(logPanel,BorderLayout.NORTH);
         JScrollPane scrollPane = new JScrollPane(panel);

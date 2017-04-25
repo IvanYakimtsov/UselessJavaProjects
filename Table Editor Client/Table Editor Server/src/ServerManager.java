@@ -28,7 +28,7 @@ public class ServerManager {
         if (isServerWorking) {
             serverControlPanel.printLog("server stop");
             server.stopServer();
-            serverThread.stop();
+            serverThread.interrupt();
             isServerWorking = false;
         }
     }

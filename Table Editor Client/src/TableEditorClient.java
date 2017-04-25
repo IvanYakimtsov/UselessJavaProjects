@@ -19,13 +19,13 @@ public class TableEditorClient {
             e.printStackTrace();
         }
 
-    TableModel tableModel = new TableModel();
+    ConnectionManager connectionManager = new ConnectionManager();
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
             public void run() {
-                tableModel.shutConnection();
+                connectionManager.shutConnection();
             }
         }, "Shutdown-thread"));
-        new TableEditorManager(tableModel,new TableEditorMainFrame());
+        new TableEditorManager(connectionManager,new TableEditorMainFrame());
     }
 
 
