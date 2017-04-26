@@ -1,6 +1,7 @@
 
 import java.io.*;
 import java.net.ServerSocket;
+import java.util.Iterator;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
 public class Server implements Runnable {
     ServerManager serverManager;
     ServerSocket serverSocket;
-    List<Thread> connectionsList;
+    List<Connection> connectionsList;
 
     public static int PORT = 1488;
 
@@ -35,9 +36,10 @@ public class Server implements Runnable {
             while (true) {
                 Socket s = serverSocket.accept();
                 serverManager.getServerControlPanel().printLog("new connection");
-                Thread connection = new Thread(new Connection(s,this));
+                Connection connection = new Connection(s,this);
                 connectionsList.add(connection);
-                connection.start();
+                 new Thread(connection).start();
+
             }
         } catch (Exception x) {
             x.printStackTrace();
@@ -47,23 +49,31 @@ public class Server implements Runnable {
     }
     public void stopServer(){
         try {
+            for(Connection connection:connectionsList){
+                 connection.killConnection();
+            }
+            connectionsList.clear();
             serverSocket.close();
-            for (Thread connection : connectionsList) connection.interrupt();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void killConnection(Thread connection){
-        if(connectionsList.contains(connection)){
-            serverManager.getServerControlPanel().printLog("connection killed");
-            connection.interrupt();
-            connectionsList.remove(connection);
-        }
-    }
+//    public void killConnection(Thread connectionThread, Connection connection){
+//        if(connectionsList.contains(connection)){
+//            serverManager.getServerControlPanel().printLog("connection killed");
+//            connectionThread.interrupt();
+//            connectionsList.remove(connection);
+//        }
+//    }
 
 
-    public ServerSocket getServerSocket() {
-        return serverSocket;
+    public ServerManager getServerManager() {
+        return serverManager;
     }
+
+    public List<Connection> getConnectionsList() {
+        return connectionsList;
+    }
+
 }

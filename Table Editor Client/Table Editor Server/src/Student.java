@@ -1,11 +1,10 @@
-package tableEditorModel;
-
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Ivan on 25.03.2017.
  */
-public class Student {
+public class Student implements Serializable {
         public String studentSurname;
         public String studentName;
         public String studentPatronymic;

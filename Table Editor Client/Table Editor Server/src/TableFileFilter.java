@@ -1,5 +1,3 @@
-package tableEditorModel;
-
 import javax.swing.filechooser.FileFilter;
 
 /**

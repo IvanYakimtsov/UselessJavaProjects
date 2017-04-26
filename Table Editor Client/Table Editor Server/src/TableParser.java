@@ -1,4 +1,4 @@
-package tableEditorModel; /**
+/**
  * Created by Ivan on 29.03.2017.
  */
 

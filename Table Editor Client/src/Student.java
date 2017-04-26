@@ -1,9 +1,10 @@
 import java.util.List;
+import java.io.Serializable;
 
 /**
  * Created by Ivan on 25.03.2017.
  */
-public class Student {
+public class Student implements Serializable {
         public String studentSurname;
         public String studentName;
         public String studentPatronymic;

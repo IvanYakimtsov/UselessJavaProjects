@@ -1,10 +1,5 @@
-import tableEditorModel.Exam;
-import tableEditorModel.Student;
-import tableEditorModel.TableModel;
-
 import java.io.*;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,8 +8,8 @@ import java.util.List;
 public class Connection implements Runnable {
     private  Socket socket;
     private TableModel tableModel;
-    private DataInputStream dataInputStream;
-    private DataOutputStream dataOutputStream;
+    private ObjectOutputStream objectOutputStream;
+    private ObjectInputStream objectInputStream;
     private Server server;
 
     Connection(Socket socket,Server server) throws Throwable {
@@ -26,27 +21,40 @@ public class Connection implements Runnable {
     @Override
     public void run() {
         try {
-            InputStream sin = socket.getInputStream();
-            OutputStream sout = socket.getOutputStream();
-
-            dataInputStream = new DataInputStream(sin);
-            dataOutputStream = new DataOutputStream(sout);
-
+            objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+            objectInputStream = new ObjectInputStream(socket.getInputStream());
 
             String comand = null;
             while (true) {
-                comand = dataInputStream.readUTF();
+                comand = objectInputStream.readUTF();
                 switch (comand) {
                     case Comands.ADD_PERSON:
-                        addPersonComand();
+                        addPersonCommand();
                         break;
-                    case Comands.DELETE_PERSON:
-                        deletePersonCommand();
+                    case Comands.DELETE_PERSON_BY_ID:
+                        deletePersonByIdCommand();
                         break;
-                    case Comands.SEARCH_PERSON:
-                        searchPersonCommand();
+                    case Comands.DELETE_PERSON_BY_GROUP:
+                        deletePersonByGroupCommand();
                         break;
-
+                    case Comands.DELETE_PERSON_BY_MARKS:
+                        deletePersonByMarksCommand();
+                        break;
+                    case Comands.DELETE_PERSON_BY_EXAM_RESULT:
+                        deletePersonByExamResultCommand();
+                        break;
+                    case Comands.SEARCH_PERSON_BY_ID:
+                        searchPersonByIdCommand();
+                        break;
+                    case Comands.SEARCH_PERSON_BY_GROUP:
+                        searchPersonByGroupCommand();
+                        break;
+                    case Comands.SEARCH_PERSON_BY_MARKS:
+                        searchPersonByMarksCommand();
+                        break;
+                    case Comands.SEARCH_PERSON_BY_EXAM_RESULT:
+                        searchPersonByExamResultCommand();
+                        break;
                     case Comands.SAVE:
                         saveCommand();
                         break;
@@ -54,6 +62,7 @@ public class Connection implements Runnable {
                         openCommand();
                         break;
                     case Comands.KILL_CONNECTION:
+                        server.getConnectionsList().remove(this);
                         killConnection();
                         break;
                     case Comands.GET_PAGE:
@@ -65,40 +74,83 @@ public class Connection implements Runnable {
                 }
             }
         } catch (IOException e) {
-            killConnection();
             e.printStackTrace();
         }
 
 
     }
 
-    private void addPersonComand() {
+    private void searchPersonByExamResultCommand() {
+
+    }
+
+    private void searchPersonByMarksCommand() {
+
+    }
+
+    private void searchPersonByGroupCommand() {
+
+    }
+
+    private void searchPersonByIdCommand() {
+
+    }
+
+    private void deletePersonByExamResultCommand() {
         try {
-            String studentSurname = dataInputStream.readUTF();
-            String studentName = dataInputStream.readUTF();
-            String studentPatronymic = dataInputStream.readUTF();
-            int group = dataInputStream.readInt();
-            List<Exam> exams = new ArrayList<>();
-            while (true){
-                String exam = dataInputStream.readUTF();
-                if(exam.equals(Comands.STOP_WRITING)) break;
-                int result = dataInputStream.readInt();
-                exams.add(new Exam(exam,result));
-            }
-            tableModel.addStudent(new Student(studentSurname,studentName,studentPatronymic,group,exams));
-            dataOutputStream.writeUTF(Comands.OK_RESPONSE);
+            String exam = objectInputStream.readUTF();
+            int minResult = objectInputStream.readInt();
+            int maxResult = objectInputStream.readInt();
+            objectOutputStream.writeInt(tableModel.deleteStudent(exam,minResult,maxResult));
+            objectOutputStream.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void deletePersonCommand() {
+    private void deletePersonByMarksCommand() {
+
+        try {
+            int minResult = objectInputStream.readInt();
+            int maxResult = objectInputStream.readInt();
+            objectOutputStream.writeInt(tableModel.deleteStudent(minResult,maxResult));
+            objectOutputStream.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
-    private void searchPersonCommand() {
+    private void deletePersonByGroupCommand() {
+        try {
+            objectOutputStream.writeInt(tableModel.deleteStudent(objectInputStream.readInt()));
+            objectOutputStream.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
+
+    private void deletePersonByIdCommand() {
+        try {
+          objectOutputStream.writeInt(tableModel.deleteStudent(objectInputStream.readUTF()));
+          objectOutputStream.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void addPersonCommand() {
+        try {
+            Student student = (Student)objectInputStream.readObject();
+            tableModel.addStudent(student);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private void saveCommand() {
 
@@ -111,7 +163,8 @@ public class Connection implements Runnable {
 
     private void getAmountOfRecords(){
         try {
-            dataOutputStream.writeInt(tableModel.getTableData().size());
+            objectOutputStream.writeInt(tableModel.getTableData().size());
+            objectOutputStream.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -119,35 +172,23 @@ public class Connection implements Runnable {
 
     private void getPageCommand(){
         try {
-            int pageNumber = dataInputStream.readInt();
-            int amountOfRecords = dataInputStream.readInt();
-            List<Student> page = tableModel.getPage(pageNumber,amountOfRecords);
-            if (page == null) dataOutputStream.writeUTF(Comands.ERROR_RESPONSE);
-                    else {
-                             for (Student student : page){
-                                 dataOutputStream.writeUTF(Comands.OK_RESPONSE);
-                                 dataOutputStream.writeUTF(student.studentSurname);
-                                 dataOutputStream.writeUTF(student.studentName);
-                                 dataOutputStream.writeUTF(student.studentPatronymic);
-                                 dataOutputStream.writeInt(student.group);
-                                 for (Exam exam : student.exams) {
-                                     dataOutputStream.writeUTF(exam.exam);
-                                     dataOutputStream.writeInt(exam.result);
-                                 }
-                                 dataOutputStream.writeUTF(Comands.END_OF_LINE);
-                             }
-                                 dataOutputStream.writeUTF(Comands.STOP_WRITING);
-                                 dataOutputStream.flush();
-                         }
+            int pageNumber = objectInputStream.readInt();
+            int amountOfRecords = objectInputStream.readInt();
+            List <Student> page  =  tableModel.getPage(pageNumber,amountOfRecords);
+            objectOutputStream.writeObject(page);
+            objectOutputStream.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
-    private void killConnection(){
+    public void killConnection(){
         try {
             socket.close();
-            server.killConnection(Thread.currentThread());
+            //server.killConnection(Thread.currentThread(),this);
+            server.getServerManager().getServerControlPanel().printLog("connection killed");
+            Thread.currentThread().interrupt();
         } catch (IOException e) {
             e.printStackTrace();
         }

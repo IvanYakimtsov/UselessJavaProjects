@@ -5,14 +5,15 @@ public abstract class Comands {
     public static final String GET_PAGE = "get page";
     public static final String GET_AMMOUNT_OF_RECORDS = "get ammount of records";
     public static final String ADD_PERSON = "add person";
-    public static final String DELETE_PERSON = "delete person";
-    public static final String SEARCH_PERSON = "search person";
+    public static final String DELETE_PERSON_BY_ID = "delete person id";
+    public static final String DELETE_PERSON_BY_GROUP = "delete person group";
+    public static final String DELETE_PERSON_BY_MARKS = "delete person marks";
+    public static final String DELETE_PERSON_BY_EXAM_RESULT = "delete person exam resul";
+    public static final String SEARCH_PERSON_BY_ID = "search person id";
+    public static final String SEARCH_PERSON_BY_GROUP = "search person group";
+    public static final String SEARCH_PERSON_BY_MARKS = "search person marks";
+    public static final String SEARCH_PERSON_BY_EXAM_RESULT = "search person exam resul";
     public static final String SAVE = "save";
     public static final String OPEN = "open";
     public static final String KILL_CONNECTION = "kill connection";
-    public static final String CHECK_CONNECTION = "check connection";
-    public static final String END_OF_LINE = "end of line";
-    public static final String STOP_WRITING = "stop writing";
-    public static final String OK_RESPONSE = "OK";
-    public static final String ERROR_RESPONSE = "Error";
 }

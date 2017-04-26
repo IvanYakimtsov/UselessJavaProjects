@@ -1,5 +1,3 @@
-package tableEditorModel;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -34,7 +32,7 @@ public class TableModel {
         return tableData;
     }
 
-    public List<Student> getPage(int pageNumber,int amountOfRecords){
+    public List<Student> getPage(int pageNumber, int amountOfRecords){
         List<Student> page = new ArrayList<>();
         int firstRecordIndex = (pageNumber-1)*amountOfRecords;
         for (int index = firstRecordIndex; index < firstRecordIndex + amountOfRecords; index++){
@@ -195,9 +193,6 @@ public class TableModel {
 
     }
 
-    public void setTableData(List<Student> tableData) {
-        this.tableData = tableData;
-    }
 
     public void openAction(String path) throws Exception {
             SAXParserFactory factory = SAXParserFactory.newInstance();

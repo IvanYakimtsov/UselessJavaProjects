@@ -1,5 +1,3 @@
-
-
 import javax.swing.*;
 import java.io.*;
 import java.net.InetAddress;
@@ -16,8 +14,8 @@ public class ConnectionManager implements PageSwapper {
     public static final int SERVER_PORT = 1488;
     public static final int RESPONSE_TIMEOUT = 5000;
     private InetAddress ipAddress;
-    private DataInputStream dataInputStream;
-    private DataOutputStream dataOutputStream;
+    private ObjectInputStream objectInputStream;
+    private ObjectOutputStream objectOutputStream;
     private Socket socket;
 
 
@@ -30,11 +28,9 @@ public class ConnectionManager implements PageSwapper {
             socket.connect(new InetSocketAddress(ipAddress, SERVER_PORT), RESPONSE_TIMEOUT);
             socket.setSoTimeout(RESPONSE_TIMEOUT);
 
-            InputStream inputStream = socket.getInputStream();
-            OutputStream outputStream = socket.getOutputStream();
+            objectInputStream = new ObjectInputStream(socket.getInputStream());
+            objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
 
-            dataInputStream = new DataInputStream(inputStream);
-            dataOutputStream = new DataOutputStream(outputStream);
 
             return true;
         } catch (IOException e) {
@@ -61,8 +57,10 @@ public class ConnectionManager implements PageSwapper {
 
     public void shutConnection() {
         try {
-            if (dataOutputStream != null) dataOutputStream.writeUTF(Comands.KILL_CONNECTION);
-            if (dataOutputStream != null) dataOutputStream.flush();
+            if (objectOutputStream != null){
+                objectOutputStream.writeUTF(Comands.KILL_CONNECTION);
+                objectOutputStream.flush();
+            }
             if (socket != null) socket.close();
             ipAddress = null;
         } catch (IOException e) {
@@ -72,70 +70,48 @@ public class ConnectionManager implements PageSwapper {
 
     public boolean addStudent(Student student) {
         try {
-            dataOutputStream.writeUTF(Comands.ADD_PERSON);
-            dataOutputStream.writeUTF(student.studentSurname);
-            dataOutputStream.writeUTF(student.studentName);
-            dataOutputStream.writeUTF(student.studentPatronymic);
-            dataOutputStream.writeInt(student.group);
-            for (Exam exam : student.exams) {
-                dataOutputStream.writeUTF(exam.exam);
-                dataOutputStream.writeInt(exam.result);
-            }
-            dataOutputStream.writeUTF(Comands.STOP_WRITING);
-            dataOutputStream.flush();
-            String response = dataInputStream.readUTF();
-            if (response.equals(Comands.OK_RESPONSE)) return true;
-            else return false;
-
+            objectOutputStream.writeUTF(Comands.ADD_PERSON);
+            objectOutputStream.writeObject(student);
+            objectOutputStream.flush();
+            return true;
         } catch (IOException e) {
             e.printStackTrace();
             return false;
         }
+
     }
 
     @Override
     public int getAmountOfRecords() {
         try {
-            dataOutputStream.writeUTF(Comands.GET_AMMOUNT_OF_RECORDS);
-            dataOutputStream.flush();
-            return dataInputStream.readInt();
+            objectOutputStream.writeUTF(Comands.GET_AMMOUNT_OF_RECORDS);
+            objectOutputStream.flush();
+            return objectInputStream.readInt();
         } catch (IOException e) {
             e.printStackTrace();
+            return 0;
         }
-        return 0;
     }
 
     @Override
     public List<Student> getPage(int pageNumber, int amountOfRecords) {
+
         try {
-            List<Student> page = new ArrayList<>();
-            dataOutputStream.writeUTF(Comands.GET_PAGE);
-            dataOutputStream.writeInt(pageNumber);
-            dataOutputStream.writeInt(amountOfRecords);
-            dataOutputStream.flush();
-
-            while (true) {
-                if (dataInputStream.readUTF().equals(Comands.OK_RESPONSE)) {
-                    String studentSurname = dataInputStream.readUTF();
-                    String studentName = dataInputStream.readUTF();
-                    String studentPatronymic = dataInputStream.readUTF();
-                    int group = dataInputStream.readInt();
-                    List<Exam> exams = new ArrayList<>();
-                    while (true) {
-                        String exam = dataInputStream.readUTF();
-                        if (exam.equals(Comands.END_OF_LINE)) break;
-                        int result = dataInputStream.readInt();
-                        exams.add(new Exam(exam, result));
-                    }
-                    page.add(new Student(studentSurname, studentName, studentPatronymic, group, exams));
-                } else break;
-            }
-
+            List<Student> page = null;
+            objectOutputStream.writeUTF(Comands.GET_PAGE);
+            objectOutputStream.writeInt(pageNumber);
+            objectOutputStream.writeInt(amountOfRecords);
+            objectOutputStream.flush();
+            page = (ArrayList)objectInputStream.readObject();
             return page;
         } catch (IOException e) {
             e.printStackTrace();
-            return null;
+            return  null;
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            return  null;
         }
+
     }
 
 
@@ -161,21 +137,58 @@ public class ConnectionManager implements PageSwapper {
     }
 
     public int deleteStudent(String surname) {
-        return 0;
+        try {
+            objectOutputStream.writeUTF(Comands.DELETE_PERSON_BY_ID);
+            objectOutputStream.writeUTF(surname);
+            objectOutputStream.flush();
+            return objectInputStream.readInt();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return  0;
+        }
     }
 
     public int deleteStudent(int groupNumber) {
-        return 0;
+        try {
+            objectOutputStream.writeUTF(Comands.DELETE_PERSON_BY_GROUP);
+            objectOutputStream.writeInt(groupNumber);
+            objectOutputStream.flush();
+            return objectInputStream.readInt();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return  0;
+        }
     }
 
 
     public int deleteStudent(int minResult, int maxResult) {
-        return 0;
+        try {
+            objectOutputStream.writeUTF(Comands.DELETE_PERSON_BY_MARKS);
+            objectOutputStream.writeInt(minResult);
+            objectOutputStream.writeInt(maxResult);
+            objectOutputStream.flush();
+            return objectInputStream.readInt();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return  0;
+        }
+
     }
 
 
-    public int deleteStudent(String exam, int minResult, int maxResult) {
-        return 0;
+    public int deleteStudent(String exam, int minResult, int maxResult)
+    {
+        try {
+            objectOutputStream.writeUTF(Comands.DELETE_PERSON_BY_EXAM_RESULT);
+            objectOutputStream.writeUTF(exam);
+            objectOutputStream.writeInt(minResult);
+            objectOutputStream.writeInt(maxResult);
+            objectOutputStream.flush();
+            return objectInputStream.readInt();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return  0;
+        }
     }
 
     public void saveAction(String path) {
