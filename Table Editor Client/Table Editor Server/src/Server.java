@@ -1,7 +1,6 @@
 
-import java.io.*;
+import java.io.IOException;
 import java.net.ServerSocket;
-import java.util.Iterator;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
@@ -59,13 +58,6 @@ public class Server implements Runnable {
         }
     }
 
-//    public void killConnection(Thread connectionThread, Connection connection){
-//        if(connectionsList.contains(connection)){
-//            serverManager.getServerControlPanel().printLog("connection killed");
-//            connectionThread.interrupt();
-//            connectionsList.remove(connection);
-//        }
-//    }
 
 
     public ServerManager getServerManager() {

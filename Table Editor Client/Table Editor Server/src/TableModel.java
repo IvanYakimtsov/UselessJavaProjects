@@ -189,7 +189,9 @@ public class TableModel {
         document.appendChild(RootElement);
 
         Transformer t = TransformerFactory.newInstance().newTransformer();
-        t.transform(new DOMSource(document), new StreamResult(new FileOutputStream(path)));
+        FileOutputStream fileOutputStream = new FileOutputStream(path);
+        t.transform(new DOMSource(document), new StreamResult(fileOutputStream));
+        fileOutputStream.close();
 
     }
 
@@ -198,6 +200,7 @@ public class TableModel {
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser saxParser = factory.newSAXParser();
             tableData = new TableParser().parse(path,saxParser);
+
 
     }
 

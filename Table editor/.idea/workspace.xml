@@ -46,11 +46,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TableEditorManager.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TableEditorManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorController/TableEditorManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2295">
-              <caret line="145" column="51" lean-forward="false" selection-start-line="145" selection-start-column="51" selection-end-line="145" selection-end-column="51" />
+            <state relative-caret-position="410">
+              <caret line="107" column="20" lean-forward="false" selection-start-line="107" selection-start-column="20" selection-end-line="107" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -69,18 +69,18 @@
       <file leaf-file-name="TableModel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorModel/TableModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1547">
-              <caret line="209" column="1" lean-forward="true" selection-start-line="209" selection-start-column="1" selection-end-line="209" selection-end-column="1" />
+            <state relative-caret-position="546">
+              <caret line="209" column="1" lean-forward="false" selection-start-line="209" selection-start-column="1" selection-end-line="209" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WorkingAreaManager.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WorkingAreaManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/workingArea/WorkingAreaManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
-              <caret line="19" column="71" lean-forward="true" selection-start-line="19" selection-start-column="71" selection-end-line="19" selection-end-column="71" />
+              <caret line="19" column="71" lean-forward="false" selection-start-line="19" selection-start-column="71" selection-end-line="19" selection-end-column="71" />
               <folding />
             </state>
           </provider>
@@ -184,8 +184,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -311,6 +309,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -929,26 +929,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorController/TableEditorManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2295">
-          <caret line="145" column="51" lean-forward="false" selection-start-line="145" selection-start-column="51" selection-end-line="145" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/AddPersonDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1547">
           <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorModel/TableModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1547">
-          <caret line="209" column="1" lean-forward="true" selection-start-line="209" selection-start-column="1" selection-end-line="209" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -980,7 +964,23 @@
     <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorView/workingArea/WorkingAreaManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="19" column="71" lean-forward="true" selection-start-line="19" selection-start-column="71" selection-end-line="19" selection-end-column="71" />
+          <caret line="19" column="71" lean-forward="false" selection-start-line="19" selection-start-column="71" selection-end-line="19" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorModel/TableModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="209" column="1" lean-forward="false" selection-start-line="209" selection-start-column="1" selection-end-line="209" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ivan/tableEditor/tableEditorController/TableEditorManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="107" column="20" lean-forward="false" selection-start-line="107" selection-start-column="20" selection-end-line="107" selection-end-column="43" />
           <folding />
         </state>
       </provider>

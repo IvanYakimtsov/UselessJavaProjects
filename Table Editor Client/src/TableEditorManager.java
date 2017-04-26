@@ -86,26 +86,8 @@ public class TableEditorManager {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-
-//
-//            JFileChooser fileChooser = new JFileChooser();
-//            TableFileFilter xmlFilter = new TableFileFilter(".table");
-//
-//            fileChooser.addChoosableFileFilter(xmlFilter);
-//
-//            int result = fileChooser.showSaveDialog(null);
-//
-//            if (result == JFileChooser.APPROVE_OPTION) {
-//                try {
-//                    connectionManager.saveAction(fileChooser.getSelectedFile().getAbsolutePath() + ".table");
-//                } catch (TransformerException exeption) {
-//                    exeption.printStackTrace();
-//                    JOptionPane.showMessageDialog(workingArea.getWorkingAreaPanel(), "ошибка записи");
-//                } catch (IOException exeption) {
-//                    exeption.printStackTrace();
-//                    JOptionPane.showMessageDialog(workingArea.getWorkingAreaPanel(), "ошибка записи");
-//                }
-//            }
+            String name = JOptionPane.showInputDialog("Введите название таблицы");
+            connectionManager.saveAction(name);
         }
     }
 
@@ -113,29 +95,9 @@ public class TableEditorManager {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-
-//
-//            JFileChooser fileChooser = new JFileChooser();
-//
-//            TableFileFilter xmlFilter = new TableFileFilter(".table");
-//
-//            fileChooser.addChoosableFileFilter(xmlFilter);
-//
-//            int result = fileChooser.showOpenDialog(null);
-//
-//            if (result == JFileChooser.APPROVE_OPTION) {
-//
-//                try {
-//                    connectionManager.openAction(fileChooser.getSelectedFile().getAbsolutePath());
-//                    workingArea.validate();
-//                } catch (Exception exeption) {
-//                    exeption.printStackTrace();
-//                    JOptionPane.showMessageDialog(workingArea.getWorkingAreaPanel(), "ошибка чтения");
-//                }
-//
-//
-//
-//            }
+            String name = JOptionPane.showInputDialog("Введите название таблицы");
+            connectionManager.openAction(name);
+            workingArea.validate();
         }
     }
 

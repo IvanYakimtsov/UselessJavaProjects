@@ -116,24 +116,67 @@ public class ConnectionManager implements PageSwapper {
 
 
     public List<Student> searchStudent(int minResult, int maxResult) {
-        List<Student> searchResult = new ArrayList<>();
-        return searchResult;
+        try {
+            objectOutputStream.writeUTF(Comands.SEARCH_PERSON_BY_MARKS);
+            objectOutputStream.writeInt(minResult);
+            objectOutputStream.writeInt(maxResult);
+            objectOutputStream.flush();
+            return (List<Student>)objectInputStream.readObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return  null;
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public List<Student> searchStudent(int groupNumber) {
-        List<Student> searchResult = new ArrayList<>();
-        return searchResult;
+        try {
+            objectOutputStream.writeUTF(Comands.SEARCH_PERSON_BY_GROUP);
+            objectOutputStream.writeInt(groupNumber);
+            objectOutputStream.flush();
+            return (List<Student>)objectInputStream.readObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return  null;
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public List<Student> searchStudent(String exam, int minResult, int maxResult) {
-        List<Student> searchResult = new ArrayList<>();
-        return searchResult;
+        try {
+            objectOutputStream.writeUTF(Comands.SEARCH_PERSON_BY_EXAM_RESULT);
+            objectOutputStream.writeUTF(exam);
+            objectOutputStream.writeInt(minResult);
+            objectOutputStream.writeInt(maxResult);
+            objectOutputStream.flush();
+            return (List<Student>)objectInputStream.readObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return  null;
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 
     public List<Student> searchStudent(String surname) {
-        List<Student> searchResult = new ArrayList<>();
-        return searchResult;
+        try {
+            objectOutputStream.writeUTF(Comands.SEARCH_PERSON_BY_ID);
+            objectOutputStream.writeUTF(surname);
+            objectOutputStream.flush();
+            return (List<Student>)objectInputStream.readObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return  null;
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public int deleteStudent(String surname) {
@@ -191,13 +234,25 @@ public class ConnectionManager implements PageSwapper {
         }
     }
 
-    public void saveAction(String path) {
-
+    public void saveAction(String name) {
+        try {
+            objectOutputStream.writeUTF(Comands.SAVE);
+            objectOutputStream.writeUTF(name);
+            objectOutputStream.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
-    public void openAction(String path) {
-
+    public void openAction(String name) {
+        try {
+            objectOutputStream.writeUTF(Comands.OPEN);
+            objectOutputStream.writeUTF(name);
+            objectOutputStream.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 

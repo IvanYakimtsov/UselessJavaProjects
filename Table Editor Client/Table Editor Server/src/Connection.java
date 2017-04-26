@@ -1,3 +1,4 @@
+import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.net.Socket;
 import java.util.List;
@@ -81,19 +82,44 @@ public class Connection implements Runnable {
     }
 
     private void searchPersonByExamResultCommand() {
-
+        try {
+            String exam = objectInputStream.readUTF();
+            int min = objectInputStream.readInt();
+            int max = objectInputStream.readInt();
+            objectOutputStream.writeObject(tableModel.searchStudent(exam,min,max));
+            objectOutputStream.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void searchPersonByMarksCommand() {
-
+        try {
+            int min = objectInputStream.readInt();
+            int max = objectInputStream.readInt();
+            objectOutputStream.writeObject(tableModel.searchStudent(min,max));
+            objectOutputStream.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void searchPersonByGroupCommand() {
-
+        try {
+            objectOutputStream.writeObject(tableModel.searchStudent(objectInputStream.readInt()));
+            objectOutputStream.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void searchPersonByIdCommand() {
-
+        try {
+            objectOutputStream.writeObject(tableModel.searchStudent(objectInputStream.readUTF()));
+            objectOutputStream.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void deletePersonByExamResultCommand() {
@@ -153,11 +179,27 @@ public class Connection implements Runnable {
 
 
     private void saveCommand() {
-
+        try {
+           String name = objectInputStream.readUTF();
+           tableModel.saveAction(System.getProperty("user.dir")+"\\Table Editor Server\\TablesDataBase\\"+name+".table");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (TransformerException e) {
+            e.printStackTrace();
+        }
     }
 
     private void openCommand() {
-
+        try {
+            String name = objectInputStream.readUTF();
+            tableModel.openAction(System.getProperty("user.dir")+"\\Table Editor Server\\TablesDataBase\\"+name+".table");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (TransformerException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -186,7 +228,6 @@ public class Connection implements Runnable {
     public void killConnection(){
         try {
             socket.close();
-            //server.killConnection(Thread.currentThread(),this);
             server.getServerManager().getServerControlPanel().printLog("connection killed");
             Thread.currentThread().interrupt();
         } catch (IOException e) {
