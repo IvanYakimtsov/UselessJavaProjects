@@ -1,3 +1,7 @@
+import connectionController.ConnectionManager;
+import controller.TableEditorManager;
+import view.TableEditorMainFrame;
+
 import javax.swing.*;
 
 /**

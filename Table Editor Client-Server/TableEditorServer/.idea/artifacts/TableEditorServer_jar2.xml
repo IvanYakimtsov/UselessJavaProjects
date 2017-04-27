@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="TableEditorServer:jar2">
+    <output-path>$PROJECT_DIR$/out/artifacts/TableEditorServer_jar2</output-path>
+    <root id="archive" name="TableEditorServer.jar">
+      <element id="module-output" name="TableEditorServer" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/log4j/log4j/1.2.17/log4j-1.2.17.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
