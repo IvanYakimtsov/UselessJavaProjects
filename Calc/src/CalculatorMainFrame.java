@@ -114,7 +114,29 @@ public class CalculatorMainFrame {
         basicCommandsPanel.add(createNumberButton("8"), cell);
         basicCommandsPanel.add(createNumberButton("9"), cell);
         basicCommandsPanel.add(createCommandButton("+"), cell);
-        basicCommandsPanel.add(createCommandButton("-"), cell);
+        JButton button = new JButton();
+        button.setText("-");
+        Pattern digit = Pattern.compile("(\\d|\\)|!)");
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                boolean isLastDigit;
+                if (expressionPanel.getText().length() != 0) {
+                    isLastDigit = digit.matcher(expressionPanel.getText().substring(expressionPanel.getText().length() - 1
+                            , expressionPanel.getText().length())).matches();
+                    if (isLastDigit) {
+                        expressionPanel.setText(expressionPanel.getText() + "-");
+                    } else {
+                        if (!expressionPanel.getText().substring(expressionPanel.getText().length() - 1
+                                , expressionPanel.getText().length()).equals("(") )
+                            expressionPanel.setText(expressionPanel.getText().substring(0, expressionPanel.getText().length() - 1)
+                                    + "-");
+                        else expressionPanel.setText(expressionPanel.getText() + "-");
+                    }
+                } else expressionPanel.setText("-");
+            }
+        });
+        basicCommandsPanel.add(button, cell);
 
         row++;
         cell.gridy = row;
@@ -177,12 +199,14 @@ public class CalculatorMainFrame {
         });
         JButton logButton = createSpecialCommandButton("log", "log(");
         JButton lnButton = createSpecialCommandButton("ln", "ln(");
+        JButton sqrtButton = createSpecialCommandButton("sqrt", "sqrt(");
         Container advancedCommandsContainer = new Container();
-        advancedCommandsContainer.setLayout(new GridLayout(3, 1));
+        advancedCommandsContainer.setLayout(new GridLayout(4, 1));
         advancedCommandsContainer.setBackground(Color.WHITE);
         advancedCommandsContainer.add(factButton);
         advancedCommandsContainer.add(logButton);
         advancedCommandsContainer.add(lnButton);
+        advancedCommandsContainer.add(sqrtButton);
 
         advancedCommandsButton.addActionListener(new ActionListener() {
             @Override
@@ -226,7 +250,7 @@ public class CalculatorMainFrame {
                         expressionPanel.setText(expressionPanel.getText() + title);
                     } else {
                         if (!expressionPanel.getText().substring(expressionPanel.getText().length() - 1
-                                , expressionPanel.getText().length()).equals("("))
+                                , expressionPanel.getText().length()).equals("(") && !expressionPanel.getText().substring(0).equals("-"))
                             expressionPanel.setText(expressionPanel.getText().substring(0, expressionPanel.getText().length() - 1)
                                     + title);
                     }
@@ -296,5 +320,9 @@ public class CalculatorMainFrame {
 
     public JButton getBackwardButton() {
         return backwardButton;
+    }
+
+    public JTextField getExpressionPanel() {
+        return expressionPanel;
     }
 }
