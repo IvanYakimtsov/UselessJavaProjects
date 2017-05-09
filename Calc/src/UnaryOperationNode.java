@@ -15,7 +15,7 @@ public class UnaryOperationNode implements Node {
 
 
     @Override
-    public int ArityOfOperation() {
+    public int arityOfOperation() {
         return 1;
     }
 
@@ -62,5 +62,11 @@ public class UnaryOperationNode implements Node {
 
     public String getTitle() {
         return operation;
+    }
+
+
+    @Override
+    public void setDepth(int depth) {
+        this.depth = depth;
     }
 }

@@ -1,40 +1,73 @@
 import java.util.Stack;
+import java.util.List;
 import java.util.StringTokenizer;
 
 /**
  * Created by Ivan on 06.05.2017.
  */
 public class CalculatorData {
-    private final String[] FUNCTIONS = {"log", "ln", "sqrt"};
+    private final String[] FUNCTIONS = {"log", "ln", "sqrt", "sqr"};
     private final String OPERATORS = "+-*/!%";
 
     private Node rootNode;
-    private int depth = 0;
-    private int maxDeepth;
+    private int depth;
+    private int maxDepth = 0;
 
 
     public double calculate(String expression) throws CalculationException {
         Stack<Node> stackRPN = parseExpression(expression);
-        //  buildTree(stackRPN);
-        // return rootNode.getResult();
-        return 0;
+        buildTree(stackRPN);
+        return rootNode.getResult();
+
     }
 
-    public String changeDepth(boolean isIncrease) throws CalculationException {
+    public void changeDepth(boolean isIncrease) throws CalculationException {
         if (isIncrease) {
-            if (depth + 1 <= depth) depth++;
-            return getExpression();
-        } else if (depth - 1 >= 0) depth--;
-
-        return getExpression();
+            if (depth + 1 <= maxDepth) depth++;
+        } else if (depth - 1 > 0) depth--;
     }
 
     public String getExpression() throws CalculationException {
         return rootNode.getText(depth);
     }
 
-    private void buildTree(Stack<String> stackRPN) {
+    private void buildTree(Stack<Node> stackRPN) throws CalculationException {
+        Stack<Node> expressionStack = new Stack<>();
+        rootNode = stackRPN.firstElement();
+        while (!stackRPN.isEmpty()){
+            Node node = stackRPN.pop();
 
+                switch (node.arityOfOperation()){
+                    case 0: expressionStack.push(node);
+                            break;
+                    case 1: if(!expressionStack.isEmpty()){
+                            if(node instanceof FunctionNode) ((FunctionNode)node).setOperators(expressionStack.pop());
+                            else if(node instanceof UnaryOperationNode) ((UnaryOperationNode)node)
+                                                                        .setOperators(expressionStack.pop());
+                            expressionStack.push(node);
+                            } else throw new CalculationException("пропущены операнты");
+                             break;
+                    case 2: if(!expressionStack.isEmpty() && expressionStack.peek() != expressionStack.firstElement()){
+                        Node secondOperator = expressionStack.pop();
+                        Node firstOperator = expressionStack.pop();
+                        ((BinaryOperationNode)node).setOperators(firstOperator,secondOperator);
+                        expressionStack.push(node);
+                    }else throw new CalculationException("пропущены операнты");
+                             break;
+                }
+        }
+        DFS(rootNode,0);
+        maxDepth++;
+        depth = maxDepth;
+    }
+
+    private void DFS(Node node, int depth){
+        if(maxDepth<depth) maxDepth = depth;
+        node.setDepth(depth);
+        List<Node> adjacentNodes = node.getAdjacentNodes();
+        for (Node adjacentNode : adjacentNodes){
+            DFS(adjacentNode,depth+1);
+        }
     }
 
     private Stack<Node> parseExpression(String expression) throws CalculationException {
@@ -100,10 +133,17 @@ public class CalculatorData {
             }
         }
 
-        while (!result.isEmpty()){
-            System.out.println(result.pop().getTitle());
-        }
         return result;
+    }
+
+    public void reset(){
+        rootNode = null;
+        maxDepth = 0;
+        depth = 0;
+    }
+
+    public int getDepth() {
+        return depth;
     }
 
     public Node getRootNode() {

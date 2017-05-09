@@ -16,7 +16,7 @@ public class BinaryOperationNode implements Node {
 
 
     @Override
-    public int ArityOfOperation() {
+    public int arityOfOperation() {
         return 2;
     }
 
@@ -64,6 +64,11 @@ public class BinaryOperationNode implements Node {
     @Override
     public String getTitle() {
         return operation;
+    }
+
+    @Override
+    public void setDepth(int depth) {
+        this.depth = depth;
     }
 
     public void setOperators(Node leftOperator, Node rightOperator) {

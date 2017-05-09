@@ -17,10 +17,55 @@ public class CalculatorManager {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    calculatorData.calculate(calculatorMainFrame.getExpressionPanel().getText());
+                    calculatorData.reset();
+                    if(calculatorMainFrame.getExpressionPanel().getText().length() != 0)
+                    calculatorMainFrame.getResultPanel().setText(
+                            String.valueOf(calculatorData.calculate(calculatorMainFrame.getExpressionPanel().getText())));
+                    calculatorMainFrame.createTree(calculatorData.getRootNode(),calculatorData.getDepth());
                 } catch (CalculationException e1) {
-                    System.out.println( e1.getMessage());
+                    e1.printStackTrace();
+                    calculatorMainFrame.showMessage(e1.getMessage());
 
+                }
+            }
+        });
+
+        calculatorMainFrame.getClearButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calculatorData.reset();
+                calculatorMainFrame.reset();
+            }
+        });
+
+        calculatorMainFrame.getForwardButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    if(calculatorData.getRootNode() != null){
+                        calculatorData.changeDepth(false);
+                        calculatorMainFrame.getExpressionPanel().setText(calculatorData.getExpression());
+                        calculatorMainFrame.createTree(calculatorData.getRootNode(),calculatorData.getDepth());
+                    }
+                } catch (CalculationException e1) {
+                    e1.printStackTrace();
+                    calculatorMainFrame.showMessage(e1.getMessage());
+                }
+            }
+        });
+
+        calculatorMainFrame.getBackwardButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    if(calculatorData.getRootNode() != null){
+                        calculatorData.changeDepth(true);
+                        calculatorMainFrame.getExpressionPanel().setText(calculatorData.getExpression());
+                        calculatorMainFrame.createTree(calculatorData.getRootNode(),calculatorData.getDepth());
+                    }
+                } catch (CalculationException e1) {
+                    e1.printStackTrace();
+                    calculatorMainFrame.showMessage(e1.getMessage());
                 }
             }
         });

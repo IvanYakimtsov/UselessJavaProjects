@@ -13,7 +13,7 @@ public class NumberNode implements Node {
     }
 
     @Override
-    public int ArityOfOperation() {
+    public int arityOfOperation() {
         return 0;
     }
 
@@ -43,5 +43,10 @@ public class NumberNode implements Node {
 
     public String getTitle() {
         return String.valueOf(number);
+    }
+
+    @Override
+    public void setDepth(int depth) {
+        this.depth = depth;
     }
 }

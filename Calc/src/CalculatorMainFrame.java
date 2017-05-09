@@ -1,7 +1,9 @@
 import javax.swing.*;
 import javax.swing.border.*;
+import javax.swing.tree.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.List;
 import java.util.regex.Pattern;
 
 /**
@@ -10,7 +12,8 @@ import java.util.regex.Pattern;
 public class CalculatorMainFrame {
     private JFrame mainFrame;
     private JTextField resultPanel;
-    private JPanel treePanel;
+
+    private JTree tree;
     private JTextField expressionPanel;
 
     private JButton submitButton;
@@ -54,18 +57,70 @@ public class CalculatorMainFrame {
         mainFrame.setVisible(true);
     }
 
-    private void setResultContainer(Container container) {
-        container.setLayout(new BorderLayout());
+    private void setResultContainer(Container resultContainer) {
+        resultContainer.setLayout(new BorderLayout());
         resultPanel = new JTextField();
         resultPanel.setEditable(false);
         resultPanel.setBackground(Color.WHITE);
         resultPanel.setPreferredSize(new Dimension(MAIN_FRAME_WIDTH / 10, MAIN_FRAME_WIDTH / 10));
         resultPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
-        container.add(resultPanel, BorderLayout.NORTH);
-        treePanel = new JPanel();
-        treePanel.setBackground(Color.WHITE);
-        treePanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
-        container.add(treePanel, BorderLayout.CENTER);
+        resultContainer.add(resultPanel, BorderLayout.NORTH);
+        setTree();
+        JScrollPane treeView = new JScrollPane(tree);
+        resultContainer.add(treeView, BorderLayout.CENTER);
+    }
+
+    private void setTree(){
+        DefaultMutableTreeNode rootNode =
+                new DefaultMutableTreeNode("Дерево разбора");
+        tree = new JTree(rootNode);
+        tree.setBackground(Color.WHITE);
+        tree.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
+
+    }
+
+
+    public void reset(){
+        expressionPanel.setText("");
+        resultPanel.setText("");
+        resetTree();
+        mainFrame.validate();
+        mainFrame.repaint();
+    }
+
+    private void resetTree(){
+        DefaultTreeModel model = (DefaultTreeModel)tree.getModel();
+        DefaultMutableTreeNode root = (DefaultMutableTreeNode)model.getRoot();
+        root.setUserObject("Дерево разбора");
+        root.removeAllChildren();
+        model.reload(root);
+    }
+
+    public void createTree(Node rootNode,int depth){
+        resetTree();
+        DefaultTreeModel model = (DefaultTreeModel)tree.getModel();
+        DefaultMutableTreeNode viewRoot = (DefaultMutableTreeNode)model.getRoot();
+        viewRoot.setUserObject(rootNode.getTitle());
+        DFS(rootNode,viewRoot,depth);
+        model.reload(viewRoot);
+    }
+
+    private void DFS(Node node,DefaultMutableTreeNode viewNode,int depth){
+        List<Node> adjacentNodes = node.getAdjacentNodes();
+        for (Node adjacentNode : adjacentNodes){
+            if(adjacentNode.isReachable(depth)){
+                DefaultMutableTreeNode adjacentNodeView = new DefaultMutableTreeNode(adjacentNode.getTitle());
+                viewNode.add(adjacentNodeView);
+                DFS(adjacentNode,adjacentNodeView,depth);
+            } else {
+                try {
+                    viewNode.setUserObject(node.getText(depth));
+                } catch (CalculationException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
     }
 
     private void setCommandContainer(Container container) {
@@ -200,13 +255,15 @@ public class CalculatorMainFrame {
         JButton logButton = createSpecialCommandButton("log", "log(");
         JButton lnButton = createSpecialCommandButton("ln", "ln(");
         JButton sqrtButton = createSpecialCommandButton("sqrt", "sqrt(");
+        JButton sqrButton = createSpecialCommandButton("sqr", "sqr(");
         Container advancedCommandsContainer = new Container();
-        advancedCommandsContainer.setLayout(new GridLayout(4, 1));
+        advancedCommandsContainer.setLayout(new GridLayout(5, 1));
         advancedCommandsContainer.setBackground(Color.WHITE);
         advancedCommandsContainer.add(factButton);
         advancedCommandsContainer.add(logButton);
         advancedCommandsContainer.add(lnButton);
         advancedCommandsContainer.add(sqrtButton);
+        advancedCommandsContainer.add(sqrButton);
 
         advancedCommandsButton.addActionListener(new ActionListener() {
             @Override
@@ -238,7 +295,7 @@ public class CalculatorMainFrame {
     private JButton createCommandButton(String title) {
         JButton button = new JButton();
         button.setText(title);
-        Pattern digit = Pattern.compile("(\\d|\\)|!)");
+        Pattern digit = Pattern.compile("(\\d|\\)|!|%)");
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -306,6 +363,10 @@ public class CalculatorMainFrame {
         return button;
     }
 
+    public void showMessage(String message){
+        JOptionPane.showMessageDialog(mainFrame,message);
+    }
+
     public JButton getSubmitButton() {
         return submitButton;
     }
@@ -324,5 +385,9 @@ public class CalculatorMainFrame {
 
     public JTextField getExpressionPanel() {
         return expressionPanel;
+    }
+
+    public JTextField getResultPanel() {
+        return resultPanel;
     }
 }

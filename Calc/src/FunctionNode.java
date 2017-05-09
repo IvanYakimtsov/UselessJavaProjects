@@ -15,7 +15,7 @@ public class FunctionNode implements Node {
 
 
     @Override
-    public int ArityOfOperation() {
+    public int arityOfOperation() {
         return 1;
     }
 
@@ -35,10 +35,11 @@ public class FunctionNode implements Node {
             case "log":
                 return Math.log10(operator.getResult());
             case "ln":
-                return Math.log(operator.getResult()/100);
-
+                return Math.log(operator.getResult());
             case "sqrt":
                 return Math.sqrt(operator.getResult());
+            case "sqr":
+                return operator.getResult()*operator.getResult();
 
             default: return 0;
         }
@@ -58,6 +59,12 @@ public class FunctionNode implements Node {
 
     public void setOperators(Node operator) {
         this.operator = operator;
+    }
+
+
+    @Override
+    public void setDepth(int depth) {
+        this.depth = depth;
     }
 
     public String getTitle() {
