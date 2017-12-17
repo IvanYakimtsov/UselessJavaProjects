@@ -20,14 +20,14 @@ public class Connection implements Runnable {
     private List<Student> searchResultsByGroup;
     private List<Student> searchResultsByMarks;
     private List<Student> searchResultsByExamResult;
-    private  Socket socket;
+    private Socket socket;
     private TableModel tableModel;
     private ObjectOutputStream objectOutputStream;
     private ObjectInputStream objectInputStream;
     private Server server;
     private static final Logger log = Logger.getLogger(Connection.class);
 
-    Connection(Socket socket,Server server) throws Throwable {
+    Connection(Socket socket, Server server) throws Throwable {
         searchResultsById = new ArrayList<>();
         searchResultsByGroup = new ArrayList<>();
         searchResultsByMarks = new ArrayList<>();
@@ -105,7 +105,10 @@ public class Connection implements Runnable {
             }
         } catch (IOException e) {
             log.error(e.getMessage());
-           server.getServerManager().getServerControlPanel().printLog("Info " +e.getMessage());
+            server.getServerManager().getServerControlPanel().printLog("Info " + e.getMessage());
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            server.getServerManager().getServerControlPanel().printLog("Info " + e.getMessage());
         }
 
 
@@ -113,7 +116,7 @@ public class Connection implements Runnable {
 
     private void getSearchResultPageCommand() {
         try {
-            switch (objectInputStream.readUTF()){
+            switch (objectInputStream.readUTF()) {
                 case Comands.SEARCH_PERSON_BY_ID:
                     getSearchResultPage(searchResultsById);
                     break;
@@ -133,15 +136,15 @@ public class Connection implements Runnable {
         }
     }
 
-    private void getSearchResultPage(List<Student> searchResult){
+    private void getSearchResultPage(List<Student> searchResult) {
         List<Student> page = new ArrayList<Student>();
         try {
-            if(searchResult.size() != 0){
+            if (searchResult.size() != 0) {
                 int amountOfRecords = objectInputStream.readInt();
                 int pageNumber = objectInputStream.readInt();
-                int firstRecordIndex = (pageNumber-1)*amountOfRecords;
-                for (int index = firstRecordIndex; index < firstRecordIndex + amountOfRecords; index++){
-                    if(index>searchResult.size() - 1) break;
+                int firstRecordIndex = (pageNumber - 1) * amountOfRecords;
+                for (int index = firstRecordIndex; index < firstRecordIndex + amountOfRecords; index++) {
+                    if (index > searchResult.size() - 1) break;
                     page.add(searchResult.get(index));
                 }
                 objectOutputStream.writeObject(page);
@@ -175,7 +178,7 @@ public class Connection implements Runnable {
 
     private void getSearchResultSize() {
         try {
-            switch (objectInputStream.readUTF()){
+            switch (objectInputStream.readUTF()) {
                 case Comands.SEARCH_PERSON_BY_ID:
                     objectOutputStream.writeInt(searchResultsById.size());
                     objectOutputStream.flush();
@@ -204,7 +207,7 @@ public class Connection implements Runnable {
             objectOutputStream.flush();
         } catch (IOException e) {
             log.error(e.getMessage());
-            server.getServerManager().getServerControlPanel().printLog("Error " +e.getMessage());
+            server.getServerManager().getServerControlPanel().printLog("Error " + e.getMessage());
         }
 
     }
@@ -214,11 +217,11 @@ public class Connection implements Runnable {
             String exam = objectInputStream.readUTF();
             int min = objectInputStream.readInt();
             int max = objectInputStream.readInt();
-            searchResultsByExamResult =  tableModel.searchStudent(exam,min,max);
+            searchResultsByExamResult = tableModel.searchStudent(exam, min, max);
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             log.error(e.getMessage());
-            server.getServerManager().getServerControlPanel().printLog("Error " +e.getMessage());
+            server.getServerManager().getServerControlPanel().printLog("Error " + e.getMessage());
         }
     }
 
@@ -226,28 +229,28 @@ public class Connection implements Runnable {
         try {
             int min = objectInputStream.readInt();
             int max = objectInputStream.readInt();
-            searchResultsByMarks =  tableModel.searchStudent(min,max);
-        } catch (IOException e) {
+            searchResultsByMarks = tableModel.searchStudent(min, max);
+        } catch (Exception e) {
             log.error(e.getMessage());
-            server.getServerManager().getServerControlPanel().printLog("Error " +e.getMessage());
+            server.getServerManager().getServerControlPanel().printLog("Error " + e.getMessage());
         }
     }
 
-    private void searchPersonByGroupCommand() {
+    private void searchPersonByGroupCommand() throws Exception {
         try {
-            searchResultsByGroup =  tableModel.searchStudent(objectInputStream.readInt());
+            searchResultsByGroup = tableModel.searchStudent(objectInputStream.readInt());
         } catch (IOException e) {
             log.error(e.getMessage());
-            server.getServerManager().getServerControlPanel().printLog("Error " +e.getMessage());
+            server.getServerManager().getServerControlPanel().printLog("Error " + e.getMessage());
         }
     }
 
     private void searchPersonByIdCommand() {
         try {
-            searchResultsById =  tableModel.searchStudent(objectInputStream.readUTF());
-        } catch (IOException e) {
+            searchResultsById = tableModel.searchStudent(objectInputStream.readUTF());
+        } catch (Exception e) {
             log.error(e.getMessage());
-            server.getServerManager().getServerControlPanel().printLog("Error " +e.getMessage());
+            server.getServerManager().getServerControlPanel().printLog("Error " + e.getMessage());
         }
     }
 
@@ -256,11 +259,11 @@ public class Connection implements Runnable {
             String exam = objectInputStream.readUTF();
             int minResult = objectInputStream.readInt();
             int maxResult = objectInputStream.readInt();
-            objectOutputStream.writeInt(tableModel.deleteStudent(exam,minResult,maxResult));
+            objectOutputStream.writeInt(tableModel.deleteStudent(exam, minResult, maxResult));
             objectOutputStream.flush();
-        } catch (IOException e) {
+        } catch (Exception e) {
             log.error(e.getMessage());
-            server.getServerManager().getServerControlPanel().printLog("Error " +e.getMessage());
+            server.getServerManager().getServerControlPanel().printLog("Error " + e.getMessage());
         }
     }
 
@@ -269,11 +272,11 @@ public class Connection implements Runnable {
         try {
             int minResult = objectInputStream.readInt();
             int maxResult = objectInputStream.readInt();
-            objectOutputStream.writeInt(tableModel.deleteStudent(minResult,maxResult));
+            objectOutputStream.writeInt(tableModel.deleteStudent(minResult, maxResult));
             objectOutputStream.flush();
-        } catch (IOException e) {
+        } catch (Exception e) {
             log.error(e.getMessage());
-            server.getServerManager().getServerControlPanel().printLog("Error " +e.getMessage());
+            server.getServerManager().getServerControlPanel().printLog("Error " + e.getMessage());
         }
 
     }
@@ -282,99 +285,105 @@ public class Connection implements Runnable {
         try {
             objectOutputStream.writeInt(tableModel.deleteStudent(objectInputStream.readInt()));
             objectOutputStream.flush();
-        } catch (IOException e) {
+        } catch (Exception e) {
             log.error(e.getMessage());
-            server.getServerManager().getServerControlPanel().printLog("Error " +e.getMessage());
+            server.getServerManager().getServerControlPanel().printLog("Error " + e.getMessage());
         }
 
     }
 
     private void deletePersonByIdCommand() {
         try {
-          objectOutputStream.writeInt(tableModel.deleteStudent(objectInputStream.readUTF()));
-          objectOutputStream.flush();
-        } catch (IOException e) {
+            objectOutputStream.writeInt(tableModel.deleteStudent(objectInputStream.readUTF()));
+            objectOutputStream.flush();
+        } catch (Exception e) {
             log.error(e.getMessage());
-            server.getServerManager().getServerControlPanel().printLog("Error " +e.getMessage());
+            server.getServerManager().getServerControlPanel().printLog("Error " + e.getMessage());
         }
     }
 
     private void addPersonCommand() {
         try {
-            Student student = (Student)objectInputStream.readObject();
+            Student student = (Student) objectInputStream.readObject();
             tableModel.addStudent(student);
         } catch (IOException e) {
             log.error(e.getMessage());
-            server.getServerManager().getServerControlPanel().printLog("Error " +e.getMessage());
+            server.getServerManager().getServerControlPanel().printLog("Error " + e.getMessage());
         } catch (ClassNotFoundException e) {
             log.error(e.getMessage());
-            server.getServerManager().getServerControlPanel().printLog("Error " +e.getMessage());
+            server.getServerManager().getServerControlPanel().printLog("Error " + e.getMessage());
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            server.getServerManager().getServerControlPanel().printLog("Error " + e.getMessage());
         }
     }
 
 
     private void saveCommand() {
         try {
-           String name = objectInputStream.readUTF();
-           tableModel.saveAction(System.getProperty("user.dir")+"\\TablesDataBase\\"+name+".table");
-        } catch (IOException e) {
+            String name = objectInputStream.readUTF();
+            // tableModel.saveAction(System.getProperty("user.dir")+"\\TablesDataBase\\"+name+".table");
+            tableModel.saveAction(name);
+        } catch (Exception e) {
             log.error(e.getMessage());
-            server.getServerManager().getServerControlPanel().printLog("Error " +e.getMessage());
-        } catch (TransformerException e) {
-            log.error(e.getMessage());
-            server.getServerManager().getServerControlPanel().printLog("Error " +e.getMessage());
+            server.getServerManager().getServerControlPanel().printLog("Error " + e.getMessage());
         }
+//        } catch (TransformerException e) {
+//            log.error(e.getMessage());
+//            server.getServerManager().getServerControlPanel().printLog("Error " +e.getMessage());
+//        }
     }
 
     private void openCommand() {
         try {
             String name = objectInputStream.readUTF();
-            tableModel.openAction(System.getProperty("user.dir")+"\\TablesDataBase\\"+name+".table");
+            //tableModel.openAction(System.getProperty("user.dir")+"\\TablesDataBase\\"+name+".table");
+            tableModel.openAction(name);
         } catch (IOException e) {
             log.error(e.getMessage());
-            server.getServerManager().getServerControlPanel().printLog("Error " +e.getMessage());
+            server.getServerManager().getServerControlPanel().printLog("Error " + e.getMessage());
         } catch (TransformerException e) {
             log.error(e.getMessage());
-            server.getServerManager().getServerControlPanel().printLog("Error " +e.getMessage());
+            server.getServerManager().getServerControlPanel().printLog("Error " + e.getMessage());
         } catch (Exception e) {
             log.error(e.getMessage());
-            server.getServerManager().getServerControlPanel().printLog("Error " +e.getMessage());
+            server.getServerManager().getServerControlPanel().printLog("Error " + e.getMessage());
         }
     }
 
 
-    private void getAmountOfRecords(){
+    private void getAmountOfRecords() {
         try {
-            objectOutputStream.writeInt(tableModel.getTableData().size());
+            objectOutputStream.writeInt(tableModel.getAmountOfRecords());
             objectOutputStream.flush();
-        } catch (IOException e) {
+        } catch (Exception e) {
             log.error(e.getMessage());
-            server.getServerManager().getServerControlPanel().printLog("Error " +e.getMessage());
+            server.getServerManager().getServerControlPanel().printLog("Error " + e.getMessage());
         }
     }
 
-    private void getPageCommand(){
+    private void getPageCommand() {
         try {
             int pageNumber = objectInputStream.readInt();
             int amountOfRecords = objectInputStream.readInt();
-            List <Student> page  =  tableModel.getPage(pageNumber,amountOfRecords);
+            List<Student> page = tableModel.getPage(pageNumber, amountOfRecords);
             objectOutputStream.writeObject(page);
             objectOutputStream.flush();
-        } catch (IOException e) {
+        } catch (Exception e) {
             log.error(e.getMessage());
-            server.getServerManager().getServerControlPanel().printLog("Error " +e.getMessage());
+            server.getServerManager().getServerControlPanel().printLog("Error " + e.getMessage());
         }
 
     }
 
-    public void killConnection(){
+    public void killConnection() {
         try {
             socket.close();
             server.getServerManager().getServerControlPanel().printLog("Info connection killed");
             Thread.currentThread().interrupt();
         } catch (IOException e) {
             log.error(e.getMessage());
-            server.getServerManager().getServerControlPanel().printLog("Warning " +e.getMessage());
+            server.getServerManager().getServerControlPanel().printLog("Warning " + e.getMessage());
         }
     }
 }
