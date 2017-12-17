@@ -11,13 +11,13 @@ import java.util.List;
 /**
  * Created by Ivan on 11.04.2017.
  */
+
 public class WorkingAreaPanel extends JPanel {
 
     final public static int BACK_BUTTON_INDEX = 0;
     final public static int NEXT_BUTTON_INDEX = 1;
     final public static int HOME_BUTTON_INDEX = 2;
     final public static int END_BUTTON_INDEX = 3;
-
 
     private List<JButton> buttons;
     private JTextField records;

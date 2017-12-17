@@ -24,7 +24,14 @@ public class CalculatorData {
 
 
     public double calculate(String expression) throws CalculationException {
+        int brackets = 0;
+        for(int index = 0; index<expression.length();index++){
+            if(isOpenBracket(String.valueOf(expression.charAt(index)))) brackets++;
+            if(isCloseBracket(String.valueOf(expression.charAt(index)))) brackets--;
+        }
+        if(brackets != 0) throw new CalculationException("Разное количество скобок");
         Stack<Node> stackRPN = parseExpression(expression);
+        if(stackRPN.isEmpty()) throw new CalculationException("Неверное выражение");
         buildTree(stackRPN);
         return rootNode.getResult();
 
@@ -189,7 +196,7 @@ public class CalculatorData {
         if (token.equals("+") || token.equals("-")) {
             return 1;
         }
-        if (token.equals("!")) return 3;
+        if (token.equals("!") || token.equals("%")) return 3;
         return 2;
     }
 

@@ -1,9 +1,9 @@
 package com.ivan.tableEditor.tableEditorView.workingArea;
 
 import com.ivan.tableEditor.tableEditorModel.Student;
-import com.ivan.tableEditor.tableEditorModel.TableModel;
+        import com.ivan.tableEditor.tableEditorModel.TableModel;
 
-import java.util.List;
+        import java.util.List;
 
 /**
  * Created by Ivan on 11.04.2017.
