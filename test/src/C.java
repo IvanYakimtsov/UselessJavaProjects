@@ -3,7 +3,6 @@
  */
 public class C extends B{
     C(){
-        super(9);
         System.out.println("hello from C");
     }
 }

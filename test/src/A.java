@@ -2,7 +2,7 @@
  * Created by Ivan on 22.11.2017.
  */
 public class A {
-    A(){
-        System.out.println("hello from A");
-    }
+    protected void a(int p1){
+        System.out.println(p1);
+    };
 }

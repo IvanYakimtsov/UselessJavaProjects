@@ -1,0 +1,309 @@
+2018-02-07 19:40:23 [main] FATAL com.yakimtsov.ih.reader.TextReader catching
+java.nio.file.NoSuchFileException: duke.java
+	at sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:79) ~[?:1.8.0_91]
+	at sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:97) ~[?:1.8.0_91]
+	at sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:102) ~[?:1.8.0_91]
+	at sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:230) ~[?:1.8.0_91]
+	at java.nio.file.Files.newByteChannel(Files.java:361) ~[?:1.8.0_91]
+	at java.nio.file.Files.newByteChannel(Files.java:407) ~[?:1.8.0_91]
+	at java.nio.file.Files.readAllBytes(Files.java:3152) ~[?:1.8.0_91]
+	at com.yakimtsov.ih.reader.TextReader.read(TextReader.java:29) [InformationHandling/:?]
+	at com.yakimtsov.ih.Main.main(Main.java:14) [InformationHandling/:?]
+2018-02-07 20:02:43 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler check
+2018-02-07 20:04:20 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler check
+2018-02-07 20:04:20 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-07 20:04:20 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-07 20:04:20 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-07 20:04:20 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-07 20:05:20 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-07 20:05:20 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-07 20:05:20 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-07 20:05:20 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-07 20:05:20 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-07 20:05:20 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-07 20:05:20 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-07 20:05:20 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-07 20:06:30 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-07 20:06:30 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-07 20:06:30 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-07 20:06:30 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-07 20:06:30 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-07 20:06:30 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-07 20:06:30 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-07 20:06:30 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-07 20:06:30 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-07 20:06:30 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-07 20:06:53 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-07 20:06:53 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-07 20:06:53 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-07 20:06:53 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-07 20:06:53 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-07 20:06:53 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-07 20:06:53 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-07 20:06:53 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-07 20:06:53 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-07 20:06:53 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-07 20:09:08 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-07 20:09:08 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-07 20:09:08 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  survived -
+2018-02-07 20:09:08 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  leap into
+2018-02-07 20:09:08 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  13+ i--
+2018-02-07 20:09:08 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  3+5
+2018-02-07 20:09:08 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  6+9*(3-4)
+2018-02-07 20:09:08 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-07 20:09:08 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  popularised in
+2018-02-07 20:09:08 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  5*(1*2*(3*(4*(5- --j +4)-3)-2)-1)
+2018-02-07 20:09:08 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  PageMaker including
+2018-02-07 20:09:08 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-07 20:09:08 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-07 20:09:08 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula 	It is
+2018-02-07 20:09:08 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  at its
+2018-02-07 20:09:08 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-07 20:09:08 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  (71-(2*i--*(3*(2-1/2*2)-2)-10/2))*++i
+2018-02-07 20:09:08 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  Ipsum is
+2018-02-07 20:09:08 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  that it
+2018-02-07 20:09:08 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  more-or-less
+2018-02-07 20:09:08 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  making it
+2018-02-07 20:09:08 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-07 20:09:08 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-07 20:09:08 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula 	It is
+2018-02-07 20:09:08 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  (-5+1/2*(2+5*2- --j))*1200
+2018-02-07 20:09:08 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  at its
+2018-02-07 20:09:08 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-07 20:09:08 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  survived -
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  (five)
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  leap into
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  13+ i--
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  3+5
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  6+9*(3-4)
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  popularised in
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  5*(1*2*(3*(4*(5- --j +4)-3)-2)-1)
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  PageMaker including
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula 	It is
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  at its
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  (71-(2*i--*(3*(2-1/2*2)-2)-10/2))*++i
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  Ipsum is
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  that it
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  more-or-less
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  (Content
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  here)
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  ,
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  making it
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula 	It is
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  (-5+1/2*(2+5*2- --j))*1200
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.LexemeHandler formula  at its
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 10:02:47 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 10:59:08 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 10:59:08 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 10:59:08 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 10:59:08 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 10:59:08 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 10:59:08 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 10:59:08 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 10:59:08 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 10:59:08 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 10:59:08 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:03:41 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:03:41 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:03:41 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:03:41 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:03:41 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:03:41 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:03:41 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:03:41 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:03:41 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:03:41 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:04:55 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:04:55 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:04:55 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:04:55 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:04:55 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:04:55 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:04:55 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:04:55 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:04:55 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:04:55 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:05:32 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:05:32 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:05:32 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:05:32 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:05:32 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:05:32 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:05:32 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:05:32 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:05:32 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:05:32 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:07:00 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:07:00 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:07:00 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:07:00 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:07:00 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:07:00 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:07:00 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:07:00 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:07:00 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:07:00 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:11:22 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:11:22 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler 	It has survived - not only (five) centuries, but also the leap into 13+ i-- electronic typesetting, remaining 3+5 essentially 6+9*(3-4) unchanged. It was popularised in the 5*(1*2*(3*(4*(5- --j +4)-3)-2)-1) with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+2018-02-08 11:11:22 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:11:22 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:11:22 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:11:22 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler 	It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using (71-(2*i--*(3*(2-1/2*2)-2)-10/2))*++i Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using (Content here) , content here, making it look like readable English.
+2018-02-08 11:11:22 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:11:22 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:11:22 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:11:22 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler 	It is a (-5+1/2*(2+5*2- --j))*1200 established fact that a reader will be of a page when looking at its layout.
+2018-02-08 11:11:22 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:11:22 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:11:22 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler 	Bye!
+2018-02-08 11:11:22 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:14:17 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:14:17 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:14:17 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:14:17 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:14:17 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:14:17 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:14:17 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:14:17 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:14:17 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:14:17 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:14:32 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:14:32 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:14:32 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:14:32 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:14:32 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:14:32 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:14:32 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:14:32 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:14:32 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:14:32 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:53:32 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:53:32 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:53:32 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:53:32 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:53:32 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:53:32 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:53:32 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:53:32 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 11:53:32 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 11:53:32 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:43:25 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:43:25 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:43:25 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:43:25 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:43:25 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:43:25 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:43:25 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:43:25 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:43:25 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:43:25 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:45:06 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:45:06 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:45:06 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:45:06 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:45:06 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:45:06 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:45:06 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:45:06 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:45:06 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:45:06 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:47:55 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:47:55 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:47:55 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:47:55 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:47:55 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:47:55 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:47:55 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:47:55 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:47:55 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:47:55 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:48:29 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:48:29 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:48:29 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:48:29 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:48:29 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:48:29 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:48:29 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:48:29 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:48:29 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:48:29 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:49:13 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:49:13 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:49:13 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:49:13 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:49:13 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:49:13 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:49:13 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:49:13 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:49:13 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:49:13 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:50:48 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:50:48 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:50:48 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:50:48 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:50:48 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:50:48 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:50:48 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:50:48 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:50:48 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:50:48 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:53:08 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:53:08 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:53:08 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:53:08 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:53:08 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:53:08 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:53:08 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:53:08 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:53:08 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:53:08 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:54:59 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:54:59 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:54:59 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:54:59 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:54:59 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:54:59 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:54:59 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:54:59 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:54:59 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:54:59 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:56:59 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:56:59 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:56:59 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:56:59 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:56:59 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:56:59 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:56:59 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:56:59 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 13:56:59 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 13:56:59 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 14:18:04 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 14:18:04 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 14:18:04 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 14:18:04 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 14:18:04 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 14:18:04 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 14:18:04 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 14:18:04 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 14:18:04 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 14:18:04 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 14:19:03 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 14:19:03 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 14:19:03 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 14:19:03 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 14:19:03 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 14:19:03 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 14:19:03 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 14:19:03 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
+2018-02-08 14:19:03 [main] DEBUG com.yakimtsov.ih.handler.ParagraphHandler paragraph detected
+2018-02-08 14:19:03 [main] DEBUG com.yakimtsov.ih.handler.SentenceHandler sentence detected
