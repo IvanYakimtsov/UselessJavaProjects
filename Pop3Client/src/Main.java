@@ -1,6 +1,7 @@
 import com.yakimtsov.pop3client.Exception.ConnectionException;
 import com.yakimtsov.pop3client.client.MessageHolder;
 import com.yakimtsov.pop3client.client.Pop3Client;
+import com.yakimtsov.pop3client.client.command.*;
 import com.yakimtsov.pop3client.manager.ClientManager;
 
 import java.util.LinkedList;
@@ -10,13 +11,21 @@ import java.util.LinkedList;
  */
 class Main {
     public static void main(String[] args) throws ConnectionException {
-        Pop3Client client = new Pop3Client();
-        client.connect("pop.mail.ru", 995);
-        client.login("uslessmailtest@mail.ru", "qwerty12");
-        client.noop();
-
-//        System.out.println("Number of new emails: " + client.getNumberOfNewMessages());
-//        LinkedList<MessageHolder> messages = client.getMessages();
+//        Pop3Client client = new Pop3Client();
+//        client.connect("pop.mail.ru", 995);
+//      //  client.login("uslessmailtest@mail.ru", "qwerty12");
+//        client.executeCommand(new LoginCommand("uslessmailtest@mail.ru", "qwerty12"));
+//        System.out.println(client.executeCommand(new NoopCommand()));
+//        //client.noop();
+//        StatCommand stat = new StatCommand();
+//        client.executeCommand(stat);
+//        System.out.println("UIDL " + client.sendCommand("UIDL 2"));
+//
+//
+//        System.out.println("Number of new emails: " + stat.getNumberOfMessages());
+//        GetMassagesCommand massagesCommand = new GetMassagesCommand();
+//        client.executeCommand(massagesCommand);
+//        LinkedList<MessageHolder> messages = massagesCommand.getMessageHolderList();
 //        for (int index = 0; index < messages.size(); index++) {
 //            System.out.println("--- com.yakimtsov.pop3client.client.MessageHolder num. " + index + " ---");
 //            System.out.println("From " +messages.get(index).getFrom());
@@ -24,10 +33,21 @@ class Main {
 //            System.out.println("Subject " +messages.get(index).getSubject());
 //            System.out.println(messages.get(index).getBody());
 //        }
-        client.logout();
+//
+//
+//        TopCommand topCommand = new TopCommand(5,4);
+//        System.out.println(client.executeCommand(topCommand));
+//
+//
+//       // System.out.println("LIST " + client.sendCommand("LIST"));
+//        System.out.println("UIDL " + client.sendCommand("UIDL 2"));
+//        System.out.println(client.executeCommand(new ListCommand()));
+//        System.out.println("UIDL " + client.sendCommand("UIDL 2"));
+//
+//        client.executeCommand(new QuitCommand());
+//
+//        client.disconnect();
 
-        client.disconnect();
-
- //       new ClientManager().startClient();
+        new ClientManager().startClient();
     }
 }

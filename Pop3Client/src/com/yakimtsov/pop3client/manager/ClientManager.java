@@ -3,7 +3,8 @@ package com.yakimtsov.pop3client.manager;
 import com.yakimtsov.pop3client.Exception.ConnectionException;
 import com.yakimtsov.pop3client.client.MessageHolder;
 import com.yakimtsov.pop3client.client.Pop3Client;
-import com.yakimtsov.pop3client.listener.ClientObserver;
+import com.yakimtsov.pop3client.client.command.*;
+import com.yakimtsov.pop3client.observer.ClientObserver;
 import com.yakimtsov.pop3client.view.ConnectionPanel;
 import com.yakimtsov.pop3client.view.LoginPanel;
 import com.yakimtsov.pop3client.view.MessagePanel;
@@ -44,7 +45,7 @@ public class ClientManager implements ClientObserver {
 
     private void setUpGUI(){
         mainFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         mainFrame.setLayout(new BorderLayout());
 
        // logPanel.setPreferredSize();
@@ -91,8 +92,11 @@ public class ClientManager implements ClientObserver {
 
     public void login(String username, String password){
         try {
-            client.login(username,password);
-            LinkedList<MessageHolder> messages = client.getMessages();
+            //client.login(username,password);
+            client.executeCommand(new LoginCommand(username, password));
+            GetMassagesCommand massagesCommand = new GetMassagesCommand();
+            client.executeCommand(massagesCommand);
+            LinkedList<MessageHolder> messages = massagesCommand.getMessageHolderList();
             messagePanel.setMessages(messages);
             CardLayout cards = (CardLayout)(workingArea.getLayout());
             this.username = username;
@@ -106,7 +110,9 @@ public class ClientManager implements ClientObserver {
 
     public List<MessageHolder> getMessages(){
         try {
-            return client.getMessages();
+            GetMassagesCommand massagesCommand = new GetMassagesCommand();
+            client.executeCommand(massagesCommand);
+            return massagesCommand.getMessageHolderList();
         } catch (ConnectionException e) {
             logPanel.append(e.getMessage() + "\n");
             e.printStackTrace();
@@ -116,7 +122,7 @@ public class ClientManager implements ClientObserver {
 
     public void logout(){
         try {
-            client.logout();
+            client.executeCommand(new QuitCommand());
             client.disconnect();
             CardLayout cards = (CardLayout)(workingArea.getLayout());
             cards.show(workingArea, CONNECT_PANEL_TITLE);
@@ -128,7 +134,9 @@ public class ClientManager implements ClientObserver {
 
     public void deleteMessage(int index){
         try {
-            client.delete(index);
+            DeleCommand deleCommand = new DeleCommand(index);
+            client.executeCommand(deleCommand);
+           // client.delete(index);
         } catch (ConnectionException e) {
             logPanel.append(e.getMessage() + "\n");
             e.printStackTrace();
@@ -137,10 +145,12 @@ public class ClientManager implements ClientObserver {
 
     public void update(){
         try {
-            client.logout();
+//            client.logout();
+            client.executeCommand(new QuitCommand());
             client.disconnect();
             client.connect(host,port);
-            client.login(username,password);
+           // client.login(username,password);
+            client.executeCommand(new LoginCommand(username, password));
         } catch (ConnectionException e) {
             logPanel.append(e.getMessage() + "\n");
             e.printStackTrace();
@@ -155,6 +165,55 @@ public class ClientManager implements ClientObserver {
         } catch (ConnectionException e) {
             logPanel.append(e.getMessage() + "\n");
             e.printStackTrace();
+        }
+    }
+
+    public void checkConnection(){
+        try {
+            client.executeCommand(new NoopCommand());
+        } catch (ConnectionException e) {
+            logPanel.append(e.getMessage() + "\n");
+            e.printStackTrace();
+        }
+    }
+
+    public String findMessageId(int index){
+        try {
+            UIDLCommand command = new UIDLCommand(index);
+          //  client.executeCommand(command);
+            return client.executeCommand(command);
+        } catch (ConnectionException e) {
+            logPanel.append(e.getMessage() + "\n");
+            e.printStackTrace();
+            return "error";
+        }
+    }
+
+    public void rset(){
+        try {
+            client.executeCommand(new RsetCommand());
+        } catch (ConnectionException e) {
+            e.printStackTrace();
+            logPanel.append(e.getMessage() + "\n");
+        }
+    }
+
+    public String top(int index,int linesAmount){
+        try {
+            return client.executeCommand(new TopCommand(index, linesAmount));
+        } catch (ConnectionException e) {
+            e.printStackTrace();
+            logPanel.append(e.getMessage() + "\n");
+            return "error";
+        }
+    }
+
+    public void list(){
+        try {
+            client.executeCommand(new ListCommand());
+        } catch (ConnectionException e) {
+            e.printStackTrace();
+            logPanel.append(e.getMessage() + "\n");
         }
     }
 }
