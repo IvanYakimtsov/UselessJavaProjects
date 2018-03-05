@@ -1,9 +1,6 @@
 package com.yakimtsov.pop3client.client;
 
-import com.yakimtsov.pop3client.Exception.ConnectionException;
 import com.yakimtsov.pop3client.client.command.Command;
-import com.yakimtsov.pop3client.observer.ClientObserver;
-import com.yakimtsov.pop3client.observer.ObservableClient;
 
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
@@ -32,10 +29,8 @@ public class Pop3Client implements ObservableClient {
         try {
             sslClientSocket = (SSLSocket) ssf.createSocket(host, port);
             sslClientSocket.startHandshake();
-            in = new BufferedReader(new InputStreamReader(sslClientSocket.getInputStream(), "UTF-8"));
-            // out = new BufferedWriter(new OutputStreamWriter(sslClientSocket.getOutputStream(), "UTF-8"));
-            out = new BufferedWriter(new OutputStreamWriter(sslClientSocket.getOutputStream(), "UTF-8"));
-            //  System.out.println("Connected to the host");
+            in = new BufferedReader(new InputStreamReader(sslClientSocket.getInputStream(), "ASCII"));
+            out = new BufferedWriter(new OutputStreamWriter(sslClientSocket.getOutputStream(), "ASCII"));
             notifyObservers("Connected to the host");
             return readResponseLine();
         } catch (IOException e) {
@@ -98,72 +93,6 @@ public class Pop3Client implements ObservableClient {
     public String executeCommand(Command command) throws ConnectionException {
         return command.execute(this);
     }
-
-//    public void login(String username, String password) throws ConnectionException {
-//        sendCommand("USER " + username);
-//        sendCommand("PASS " + password);
-//    }
-
-//    public void noop() throws ConnectionException {
-//        sendCommand("NOOP");
-//    }
-
-//    public void logout() throws ConnectionException {
-//        sendCommand("QUIT");
-//    }
-
-//    public void delete(int index) throws ConnectionException {
-//        sendCommand("DELE " + index);
-//    }
-
-//    public int getNumberOfNewMessages() throws ConnectionException {
-//        String response = sendCommand("STAT");
-//      //  System.out.println(response);
-//        String[] values = response.split(" ");
-//        return Integer.parseInt(values[1]);
-//    }
-
-//    public MessageHolder getMessage(int messageNumber) throws ConnectionException {
-//        //  System.out.println(messageNumber);
-//        String response = sendCommand("RETR " + messageNumber);
-//        MessageHolder massage = new MessageHolder();
-//        massage.setNumber(messageNumber);
-//        while ((response = readResponseLine()).length() != 0) {
-//            // System.out.println(response);
-//            int colonPosition = response.indexOf(":");
-//            if (colonPosition != -1) {
-//                String headerName = response.substring(0, colonPosition);
-//                String value = response.substring(colonPosition + EXTRA_SPACE, response.length());
-//                massage.setHeader(headerName, value);
-//            }
-//        }
-//        String responseBody = "";
-//        while (!(response = readResponseLine()).equals(".")) {
-//            responseBody += response + "\n";
-//        }
-//
-//        Pattern pattern = Pattern.compile(MESSAGE_REGEX);
-//        Matcher matcher = pattern.matcher(responseBody);
-//        String messageBody = "";
-//        if (matcher.find()) {
-//            messageBody = matcher.group().substring(EXTRA_SPACE);
-//            messageBody = messageBody.substring(0, messageBody.length());
-//        }
-//
-//        massage.setBody(messageBody);
-//
-//        return massage;
-//    }
-
-//
-//    public LinkedList<MessageHolder> getMessages() throws ConnectionException {
-//        int numOfMessages = getNumberOfNewMessages();
-//        LinkedList<MessageHolder> messageHolderList = new LinkedList<>();
-//        for (int i = 1; i <= numOfMessages; i++) {
-//            messageHolderList.add(getMessage(i));
-//        }
-//        return messageHolderList;
-//    }
 
 
     @Override

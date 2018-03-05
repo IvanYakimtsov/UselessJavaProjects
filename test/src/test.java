@@ -1,18 +1,13 @@
-import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.*;
-import java.util.function.Consumer;
+import java.util.ArrayDeque;
+import java.util.Stack;
 
 public class test {
     public static void main(String[] args) {
-        int a = 42;
-        float b = 13.0f;
-        double c = 42.0d;
-      //  a = (int) (a / b);
-        a /= b;
-
+        ArrayClassTest arrayClassTest = new ArrayClassTest();
+        ArrayDeque<Integer> e = arrayClassTest.getArrayDeque();
+        e.push(4);
+        System.out.println(e.peek());
+        System.out.println(arrayClassTest.getArrayDeque().peek());
     }
 
 }

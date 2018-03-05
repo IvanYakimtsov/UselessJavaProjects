@@ -1,10 +1,5 @@
-import com.yakimtsov.pop3client.Exception.ConnectionException;
-import com.yakimtsov.pop3client.client.MessageHolder;
-import com.yakimtsov.pop3client.client.Pop3Client;
-import com.yakimtsov.pop3client.client.command.*;
-import com.yakimtsov.pop3client.manager.ClientManager;
-
-import java.util.LinkedList;
+import com.yakimtsov.pop3client.client.ConnectionException;
+import com.yakimtsov.pop3client.client.ClientManager;
 
 /**
  * Created by Ivan on 30.01.2018.
@@ -35,18 +30,13 @@ class Main {
 //        }
 //
 //
-//        TopCommand topCommand = new TopCommand(5,4);
-//        System.out.println(client.executeCommand(topCommand));
 //
-//
-//       // System.out.println("LIST " + client.sendCommand("LIST"));
-//        System.out.println("UIDL " + client.sendCommand("UIDL 2"));
-//        System.out.println(client.executeCommand(new ListCommand()));
-//        System.out.println("UIDL " + client.sendCommand("UIDL 2"));
 //
 //        client.executeCommand(new QuitCommand());
 //
 //        client.disconnect();
+
+
 
         new ClientManager().startClient();
     }

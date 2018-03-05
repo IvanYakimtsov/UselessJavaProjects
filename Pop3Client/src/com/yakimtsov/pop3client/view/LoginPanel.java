@@ -1,6 +1,6 @@
 package com.yakimtsov.pop3client.view;
 
-import com.yakimtsov.pop3client.manager.ClientManager;
+import com.yakimtsov.pop3client.client.ClientManager;
 
 import javax.swing.*;
 import java.awt.*;

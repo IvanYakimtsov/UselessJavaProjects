@@ -1,8 +1,8 @@
 package com.yakimtsov.pop3client.client.command;
 
-import com.yakimtsov.pop3client.Exception.ConnectionException;
 import com.yakimtsov.pop3client.client.MessageHolder;
 import com.yakimtsov.pop3client.client.Pop3Client;
+import com.yakimtsov.pop3client.client.ConnectionException;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -35,7 +35,6 @@ public class RetrCommand implements Command {
         massage = new MessageHolder();
         massage.setNumber(messageNumber);
         while ((response = client.readResponseLine()).length() != 0) {
-            // System.out.println(response);
             int colonPosition = response.indexOf(":");
             if (colonPosition != -1) {
                 String headerName = response.substring(0, colonPosition);

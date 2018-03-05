@@ -1,7 +1,7 @@
 package com.yakimtsov.pop3client.view;
 
 import com.yakimtsov.pop3client.client.MessageHolder;
-import com.yakimtsov.pop3client.manager.ClientManager;
+import com.yakimtsov.pop3client.client.ClientManager;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -159,22 +159,24 @@ public class MessagePanel {
             button = new JButton("Top command");
             button.addActionListener(e -> {
                 String linesAmount = JOptionPane.showInputDialog(messageHolder, "lines amount");
-                String result = clientManager.top(message.getNumber(),Integer.parseInt(linesAmount));
-                JFrame frame = new JFrame();
-                frame.setSize(400, 400);
-                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                frame.setBackground(Color.WHITE);
+                if(linesAmount != null){
+                    String result = clientManager.top(message.getNumber(),Integer.parseInt(linesAmount));
+                    JFrame frame = new JFrame();
+                    frame.setSize(400, 400);
+                    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    frame.setBackground(Color.WHITE);
 
-                JTextArea body = new JTextArea();
-                body.setEditable(false);
-                body.append(result);
+                    JTextArea body = new JTextArea();
+                    body.setEditable(false);
+                    body.append(result);
 
-                JScrollPane bodyHolder = new JScrollPane(body);
-                bodyHolder.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-                bodyHolder.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+                    JScrollPane bodyHolder = new JScrollPane(body);
+                    bodyHolder.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+                    bodyHolder.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 
-                frame.add(bodyHolder, BorderLayout.CENTER);
-                frame.setVisible(true);
+                    frame.add(bodyHolder, BorderLayout.CENTER);
+                    frame.setVisible(true);
+                }
 
             });
 

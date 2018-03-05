@@ -1,6 +1,6 @@
 package com.yakimtsov.pop3client.client.command;
 
-import com.yakimtsov.pop3client.Exception.ConnectionException;
+import com.yakimtsov.pop3client.client.ConnectionException;
 import com.yakimtsov.pop3client.client.MessageHolder;
 import com.yakimtsov.pop3client.client.Pop3Client;
 
