@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://service.axis.yakimtsov.com" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ax21="http://service.axis.yakimtsov.com/xsd" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" targetNamespace="http://service.axis.yakimtsov.com">
+    <wsdl:types>
+        <xs:schema xmlns:ax22="http://service.axis.yakimtsov.com/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://service.axis.yakimtsov.com">
+            <xs:import namespace="http://service.axis.yakimtsov.com/xsd"/>
+            <xs:element name="modifyArticle">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="args0" nillable="true" type="ax22:Article"/>
+                        <xs:element minOccurs="0" name="args1" nillable="true" type="ax22:Article"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getArticles">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getArticlesResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax22:Article"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteArticle">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="args0" nillable="true" type="ax22:Article"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addArticle">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="args0" nillable="true" type="ax22:Article"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://service.axis.yakimtsov.com/xsd">
+            <xs:complexType name="Article">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="author" nillable="true" type="ax21:Author"/>
+                    <xs:element minOccurs="0" name="content" nillable="true" type="ax21:Content"/>
+                    <xs:element minOccurs="0" name="title" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Author">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="experience" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="surname" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Content">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="text" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="addArticleRequest">
+        <wsdl:part name="parameters" element="ns:addArticle"/>
+    </wsdl:message>
+    <wsdl:message name="modifyArticleRequest">
+        <wsdl:part name="parameters" element="ns:modifyArticle"/>
+    </wsdl:message>
+    <wsdl:message name="getArticlesRequest">
+        <wsdl:part name="parameters" element="ns:getArticles"/>
+    </wsdl:message>
+    <wsdl:message name="getArticlesResponse">
+        <wsdl:part name="parameters" element="ns:getArticlesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteArticleRequest">
+        <wsdl:part name="parameters" element="ns:deleteArticle"/>
+    </wsdl:message>
+    <wsdl:portType name="CrawlingServicePortType">
+        <wsdl:operation name="addArticle">
+            <wsdl:input message="ns:addArticleRequest" wsaw:Action="urn:addArticle"/>
+        </wsdl:operation>
+        <wsdl:operation name="modifyArticle">
+            <wsdl:input message="ns:modifyArticleRequest" wsaw:Action="urn:modifyArticle"/>
+        </wsdl:operation>
+        <wsdl:operation name="getArticles">
+            <wsdl:input message="ns:getArticlesRequest" wsaw:Action="urn:getArticles"/>
+            <wsdl:output message="ns:getArticlesResponse" wsaw:Action="urn:getArticlesResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteArticle">
+            <wsdl:input message="ns:deleteArticleRequest" wsaw:Action="urn:deleteArticle"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="CrawlingServiceSoap11Binding" type="ns:CrawlingServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="addArticle">
+            <soap:operation soapAction="urn:addArticle" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="modifyArticle">
+            <soap:operation soapAction="urn:modifyArticle" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getArticles">
+            <soap:operation soapAction="urn:getArticles" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteArticle">
+            <soap:operation soapAction="urn:deleteArticle" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="CrawlingServiceSoap12Binding" type="ns:CrawlingServicePortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="addArticle">
+            <soap12:operation soapAction="urn:addArticle" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="modifyArticle">
+            <soap12:operation soapAction="urn:modifyArticle" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getArticles">
+            <soap12:operation soapAction="urn:getArticles" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteArticle">
+            <soap12:operation soapAction="urn:deleteArticle" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="CrawlingServiceHttpBinding" type="ns:CrawlingServicePortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="addArticle">
+            <http:operation location="addArticle"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="modifyArticle">
+            <http:operation location="modifyArticle"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getArticles">
+            <http:operation location="getArticles"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteArticle">
+            <http:operation location="deleteArticle"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="CrawlingService">
+        <wsdl:port name="CrawlingServiceHttpSoap11Endpoint" binding="ns:CrawlingServiceSoap11Binding">
+            <soap:address location="http://localhost:8080//services/com/yakimtsov/axis/service/CrawlingService"/>
+        </wsdl:port>
+        <wsdl:port name="CrawlingServiceHttpSoap12Endpoint" binding="ns:CrawlingServiceSoap12Binding">
+            <soap12:address location="http://localhost:8080//services/com/yakimtsov/axis/service/CrawlingService"/>
+        </wsdl:port>
+        <wsdl:port name="CrawlingServiceHttpEndpoint" binding="ns:CrawlingServiceHttpBinding">
+            <http:address location="http://localhost:8080//services/com/yakimtsov/axis/service/CrawlingService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

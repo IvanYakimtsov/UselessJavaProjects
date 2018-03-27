@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file was auto-generated from WSDL -->
+<!-- by the Apache Axis2 version: 1.7.7  Built on : Nov 20, 2017 (11:41:20 GMT) -->
+<serviceGroup>
+    <service name="CrawlingService">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-only" class="com.yakimtsov.axis.CrawlingServiceMessageReceiverInOnly"/>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="com.yakimtsov.axis.CrawlingServiceMessageReceiverInOut"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">com.yakimtsov.axis.CrawlingServiceSkeleton</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">true</parameter>
+        <operation name="modifyArticle" mep="http://www.w3.org/ns/wsdl/in-only" namespace="http://service.axis.yakimtsov.com">
+            <actionMapping>urn:modifyArticle</actionMapping>
+        </operation>
+        <operation name="addArticle" mep="http://www.w3.org/ns/wsdl/in-only" namespace="http://service.axis.yakimtsov.com">
+            <actionMapping>urn:addArticle</actionMapping>
+        </operation>
+        <operation name="deleteArticle" mep="http://www.w3.org/ns/wsdl/in-only" namespace="http://service.axis.yakimtsov.com">
+            <actionMapping>urn:deleteArticle</actionMapping>
+        </operation>
+        <operation name="getArticles" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://service.axis.yakimtsov.com">
+            <actionMapping>urn:getArticles</actionMapping>
+            <outputActionMapping>urn:getArticlesResponse</outputActionMapping>
+        </operation>
+    </service>
+</serviceGroup>

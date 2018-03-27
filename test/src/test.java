@@ -2,12 +2,12 @@ import java.util.ArrayDeque;
 import java.util.Stack;
 
 public class test {
+    private static Boolean c;
+    private enum TypeParser {
+        SAX, STAX, DOM
+    }
     public static void main(String[] args) {
-        ArrayClassTest arrayClassTest = new ArrayClassTest();
-        ArrayDeque<Integer> e = arrayClassTest.getArrayDeque();
-        e.push(4);
-        System.out.println(e.peek());
-        System.out.println(arrayClassTest.getArrayDeque().peek());
+        TypeParser type = TypeParser.valueOf("fdsfdsf");
     }
 
 }
