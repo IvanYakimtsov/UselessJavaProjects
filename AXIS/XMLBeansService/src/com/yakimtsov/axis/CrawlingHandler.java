@@ -80,10 +80,12 @@ public class CrawlingHandler {
     public void deleteArticle(Article article) {
         for (int i = 0; i < topicList.size(); i++) {
             Article currentArticle = topicList.get(i);
+            Author author = currentArticle.getAuthor();
+            Author author1 = article.getAuthor();
             boolean condition = currentArticle.getTitle().equals(article.getTitle())
-                    && currentArticle.getAuthor().getName().equals(article.getAuthor().getName())
-                    && currentArticle.getAuthor().getSurname().equals(article.getAuthor().getSurname())
-                    && currentArticle.getAuthor().getExperience().equals(article.getAuthor().getExperience())
+                    && author.getName().equals(author1.getName())
+                    && author.getSurname().equals(author1.getSurname())
+                    && author.getExperience().equals(author1.getExperience())
                     && currentArticle.getContent().getText().equals(article.getContent().getText())
                     && currentArticle.getContent().getDescription().equals(article.getContent().getDescription());
             if (condition) {

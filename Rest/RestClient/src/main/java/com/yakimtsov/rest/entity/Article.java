@@ -1,11 +1,12 @@
 package com.yakimtsov.rest.entity;
 
 public class Article {
+    private String uri;
     private String title;
     private Author author;
     private Content content;
 
-    public Article(){
+    public Article() {
 
     }
 
@@ -13,6 +14,7 @@ public class Article {
         this.title = title;
         this.author = author;
         this.content = content;
+        updateUri();
     }
 
     public String getTitle() {
@@ -21,6 +23,7 @@ public class Article {
 
     public void setTitle(String title) {
         this.title = title;
+        updateUri();
     }
 
     public Author getAuthor() {
@@ -29,6 +32,7 @@ public class Article {
 
     public void setAuthor(Author author) {
         this.author = author;
+        updateUri();
     }
 
     public Content getContent() {
@@ -39,16 +43,29 @@ public class Article {
         this.content = content;
     }
 
+    private void updateUri() {
+        uri = title;
+        if (author != null) {
+            uri += author.getSurname();
+        }
+
+        uri = uri.replaceAll("\\s+","+");
+    }
+
+    public String getUri() {
+        return uri;
+    }
+
     @Override
     public boolean equals(Object obj) {
-        if(obj == null){
+        if (obj == null) {
             return false;
         }
-        if(obj == this) {
+        if (obj == this) {
             return true;
         }
-        if(obj.getClass() != this.getClass()){
-            return  false;
+        if (obj.getClass() != this.getClass()) {
+            return false;
         }
 
         Article article = (Article) obj;

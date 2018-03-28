@@ -23,7 +23,7 @@
             <version>20160810</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.owlike/genson -->
-        <dependency>
+       <dependency>
             <groupId>com.owlike</groupId>
             <artifactId>genson</artifactId>
             <version>1.4</version>

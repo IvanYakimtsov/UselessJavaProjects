@@ -16,18 +16,18 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="825">
               <caret line="33" column="21" lean-forward="false" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Server.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Server.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/yakimtsov/thrift/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="16" column="47" lean-forward="false" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
+            <state relative-caret-position="247">
+              <caret line="18" column="70" lean-forward="false" selection-start-line="18" selection-start-column="61" selection-end-line="18" selection-end-column="70" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -35,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CrawlingHandler.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CrawlingHandler.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/yakimtsov/thrift/dao/CrawlingHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="15" column="17" lean-forward="false" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+            <state relative-caret-position="297">
+              <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -50,27 +50,9 @@
       <file leaf-file-name="CrawlingService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/yakimtsov/thrift/service/CrawlingService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2383">
-              <caret line="2413" column="9" lean-forward="true" selection-start-line="2413" selection-start-column="9" selection-end-line="2413" selection-end-column="9" />
-              <folding>
-                <element signature="e#31091#31108#0" expanded="true" />
-                <element signature="e#32749#32801#0" expanded="true" />
-                <element signature="e#42874#42891#0" expanded="true" />
-                <element signature="e#44446#44498#0" expanded="true" />
-                <element signature="e#51172#51189#0" expanded="true" />
-                <element signature="e#52744#52796#0" expanded="true" />
-                <element signature="e#59726#59743#0" expanded="true" />
-                <element signature="e#61384#61436#0" expanded="true" />
-                <element signature="e#62387#62396#0" expanded="true" />
-                <element signature="e#74115#74132#0" expanded="true" />
-                <element signature="e#75846#75898#0" expanded="true" />
-                <element signature="e#89743#89760#0" expanded="true" />
-                <element signature="e#91315#91367#0" expanded="true" />
-                <element signature="e#98385#98402#0" expanded="true" />
-                <element signature="e#100043#100095#0" expanded="true" />
-                <element signature="e#110270#110287#0" expanded="true" />
-                <element signature="e#111842#111894#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="56175">
+              <caret line="2413" column="9" lean-forward="false" selection-start-line="2413" selection-start-column="9" selection-end-line="2413" selection-end-column="9" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -78,7 +60,7 @@
       <file leaf-file-name="Article.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/yakimtsov/thrift/service/Article.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6350">
+            <state relative-caret-position="8875">
               <caret line="388" column="14" lean-forward="false" selection-start-line="388" selection-start-column="14" selection-end-line="388" selection-end-column="14" />
               <folding />
             </state>
@@ -140,7 +122,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -203,9 +184,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -216,7 +198,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ThriftClient" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -375,11 +357,12 @@
       <workItem from="1521542279700" duration="48000" />
       <workItem from="1521554496821" duration="166000" />
       <workItem from="1521555161960" duration="2153000" />
+      <workItem from="1522227449390" duration="443000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16444000" />
+    <option name="totallyTimeSpent" value="16887000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -387,7 +370,6 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -398,7 +380,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16487648" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -410,6 +392,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -432,25 +415,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="47250">
           <caret line="2036" column="32" lean-forward="false" selection-start-line="2036" selection-start-column="32" selection-end-line="2036" selection-end-column="32" />
-          <folding>
-            <element signature="e#31091#31108#0" expanded="true" />
-            <element signature="e#32749#32801#0" expanded="true" />
-            <element signature="e#42874#42891#0" expanded="true" />
-            <element signature="e#44446#44498#0" expanded="true" />
-            <element signature="e#51172#51189#0" expanded="true" />
-            <element signature="e#52744#52796#0" expanded="true" />
-            <element signature="e#59726#59743#0" expanded="true" />
-            <element signature="e#61384#61436#0" expanded="true" />
-            <element signature="e#62387#62396#0" expanded="true" />
-            <element signature="e#74115#74132#0" expanded="true" />
-            <element signature="e#75846#75898#0" expanded="true" />
-            <element signature="e#89743#89760#0" expanded="true" />
-            <element signature="e#91315#91367#0" expanded="true" />
-            <element signature="e#98385#98402#0" expanded="true" />
-            <element signature="e#100043#100095#0" expanded="true" />
-            <element signature="e#110270#110287#0" expanded="true" />
-            <element signature="e#111842#111894#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -512,25 +477,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50900">
           <caret line="2036" column="32" lean-forward="false" selection-start-line="2036" selection-start-column="32" selection-end-line="2036" selection-end-column="32" />
-          <folding>
-            <element signature="e#31091#31108#0" expanded="true" />
-            <element signature="e#32749#32801#0" expanded="true" />
-            <element signature="e#42874#42891#0" expanded="true" />
-            <element signature="e#44446#44498#0" expanded="true" />
-            <element signature="e#51172#51189#0" expanded="true" />
-            <element signature="e#52744#52796#0" expanded="true" />
-            <element signature="e#59726#59743#0" expanded="true" />
-            <element signature="e#61384#61436#0" expanded="true" />
-            <element signature="e#62387#62396#0" expanded="true" />
-            <element signature="e#74115#74132#0" expanded="true" />
-            <element signature="e#75846#75898#0" expanded="true" />
-            <element signature="e#89743#89760#0" expanded="true" />
-            <element signature="e#91315#91367#0" expanded="true" />
-            <element signature="e#98385#98402#0" expanded="true" />
-            <element signature="e#100043#100095#0" expanded="true" />
-            <element signature="e#110270#110287#0" expanded="true" />
-            <element signature="e#111842#111894#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -574,25 +521,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50900">
           <caret line="2036" column="32" lean-forward="false" selection-start-line="2036" selection-start-column="32" selection-end-line="2036" selection-end-column="32" />
-          <folding>
-            <element signature="e#31091#31108#0" expanded="true" />
-            <element signature="e#32749#32801#0" expanded="true" />
-            <element signature="e#42874#42891#0" expanded="true" />
-            <element signature="e#44446#44498#0" expanded="true" />
-            <element signature="e#51172#51189#0" expanded="true" />
-            <element signature="e#52744#52796#0" expanded="true" />
-            <element signature="e#59726#59743#0" expanded="true" />
-            <element signature="e#61384#61436#0" expanded="true" />
-            <element signature="e#62387#62396#0" expanded="true" />
-            <element signature="e#74115#74132#0" expanded="true" />
-            <element signature="e#75846#75898#0" expanded="true" />
-            <element signature="e#89743#89760#0" expanded="true" />
-            <element signature="e#91315#91367#0" expanded="true" />
-            <element signature="e#98385#98402#0" expanded="true" />
-            <element signature="e#100043#100095#0" expanded="true" />
-            <element signature="e#110270#110287#0" expanded="true" />
-            <element signature="e#111842#111894#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -636,25 +565,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="47250">
           <caret line="2036" column="32" lean-forward="false" selection-start-line="2036" selection-start-column="32" selection-end-line="2036" selection-end-column="32" />
-          <folding>
-            <element signature="e#31091#31108#0" expanded="true" />
-            <element signature="e#32749#32801#0" expanded="true" />
-            <element signature="e#42874#42891#0" expanded="true" />
-            <element signature="e#44446#44498#0" expanded="true" />
-            <element signature="e#51172#51189#0" expanded="true" />
-            <element signature="e#52744#52796#0" expanded="true" />
-            <element signature="e#59726#59743#0" expanded="true" />
-            <element signature="e#61384#61436#0" expanded="true" />
-            <element signature="e#62387#62396#0" expanded="true" />
-            <element signature="e#74115#74132#0" expanded="true" />
-            <element signature="e#75846#75898#0" expanded="true" />
-            <element signature="e#89743#89760#0" expanded="true" />
-            <element signature="e#91315#91367#0" expanded="true" />
-            <element signature="e#98385#98402#0" expanded="true" />
-            <element signature="e#100043#100095#0" expanded="true" />
-            <element signature="e#110270#110287#0" expanded="true" />
-            <element signature="e#111842#111894#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -727,25 +638,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
           <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="e#31091#31108#0" expanded="true" />
-            <element signature="e#32749#32801#0" expanded="true" />
-            <element signature="e#42874#42891#0" expanded="true" />
-            <element signature="e#44446#44498#0" expanded="true" />
-            <element signature="e#51172#51189#0" expanded="true" />
-            <element signature="e#52744#52796#0" expanded="true" />
-            <element signature="e#59726#59743#0" expanded="true" />
-            <element signature="e#61384#61436#0" expanded="true" />
-            <element signature="e#62387#62396#0" expanded="true" />
-            <element signature="e#74115#74132#0" expanded="true" />
-            <element signature="e#75846#75898#0" expanded="true" />
-            <element signature="e#89743#89760#0" expanded="true" />
-            <element signature="e#91315#91367#0" expanded="true" />
-            <element signature="e#98385#98402#0" expanded="true" />
-            <element signature="e#100043#100095#0" expanded="true" />
-            <element signature="e#110270#110287#0" expanded="true" />
-            <element signature="e#111842#111894#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -856,14 +749,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
           <caret line="5" column="16" lean-forward="false" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/yakimtsov/thrift/dao/DatabaseManager.java" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="825">
           <caret line="33" column="21" lean-forward="false" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
           <folding />
         </state>
@@ -873,58 +765,39 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="9" column="9" lean-forward="false" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/yakimtsov/thrift/service/Article.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6350">
+        <state relative-caret-position="8875">
           <caret line="388" column="14" lean-forward="false" selection-start-line="388" selection-start-column="14" selection-end-line="388" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yakimtsov/thrift/dao/CrawlingHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yakimtsov/thrift/service/CrawlingService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="15" column="17" lean-forward="false" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+        <state relative-caret-position="56175">
+          <caret line="2413" column="9" lean-forward="false" selection-start-line="2413" selection-start-column="9" selection-end-line="2413" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yakimtsov/thrift/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="18" column="70" lean-forward="false" selection-start-line="18" selection-start-column="61" selection-end-line="18" selection-end-column="70" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yakimtsov/thrift/service/CrawlingService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yakimtsov/thrift/dao/CrawlingHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2383">
-          <caret line="2413" column="9" lean-forward="true" selection-start-line="2413" selection-start-column="9" selection-end-line="2413" selection-end-column="9" />
-          <folding>
-            <element signature="e#31091#31108#0" expanded="true" />
-            <element signature="e#32749#32801#0" expanded="true" />
-            <element signature="e#42874#42891#0" expanded="true" />
-            <element signature="e#44446#44498#0" expanded="true" />
-            <element signature="e#51172#51189#0" expanded="true" />
-            <element signature="e#52744#52796#0" expanded="true" />
-            <element signature="e#59726#59743#0" expanded="true" />
-            <element signature="e#61384#61436#0" expanded="true" />
-            <element signature="e#62387#62396#0" expanded="true" />
-            <element signature="e#74115#74132#0" expanded="true" />
-            <element signature="e#75846#75898#0" expanded="true" />
-            <element signature="e#89743#89760#0" expanded="true" />
-            <element signature="e#91315#91367#0" expanded="true" />
-            <element signature="e#98385#98402#0" expanded="true" />
-            <element signature="e#100043#100095#0" expanded="true" />
-            <element signature="e#110270#110287#0" expanded="true" />
-            <element signature="e#111842#111894#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yakimtsov/thrift/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="16" column="47" lean-forward="false" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
+        <state relative-caret-position="297">
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

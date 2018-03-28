@@ -15,7 +15,7 @@ public class RestService {
     private final static CrawlingHandler service = new CrawlingHandler();
 
 
-    @Path("/add-article") @POST
+    @Path("/add-article") @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response addArticle(Article article){
@@ -24,12 +24,19 @@ public class RestService {
     }
 
 
-    @Path("/delete-article") @POST
+    @Path("/delete-article/{articleUri}") @DELETE
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response delete(Article article){
-        service.deleteArticle(article);
-        return Response.status(Response.Status.CREATED).build();
+    public Response delete(@PathParam("articleUri") String uri){
+        List<Article> articles = service.getArticles();
+        for(Article article : articles){
+            if(article.getUri().equals(uri)){
+                service.deleteArticle(article);
+                break;
+            }
+        }
+
+        return Response.status(Response.Status.OK).build();
     }
 
 

@@ -1,6 +1,7 @@
 package com.yakimtsov.rest.entity;
 
 public class Article {
+    private String uri;
     private String title;
     private Author author;
     private Content content;
@@ -13,6 +14,7 @@ public class Article {
         this.title = title;
         this.author = author;
         this.content = content;
+        updateUri();
     }
 
     public String getTitle() {
@@ -21,6 +23,7 @@ public class Article {
 
     public void setTitle(String title) {
         this.title = title;
+        updateUri();
     }
 
     public Author getAuthor() {
@@ -29,6 +32,7 @@ public class Article {
 
     public void setAuthor(Author author) {
         this.author = author;
+        updateUri();
     }
 
     public Content getContent() {
@@ -37,6 +41,19 @@ public class Article {
 
     public void setContent(Content content) {
         this.content = content;
+    }
+
+    private void updateUri(){
+        uri = title;
+        if(author != null){
+            uri += author.getSurname();
+        }
+
+        uri = uri.replaceAll("\\s+","+");
+    }
+
+    public String getUri() {
+        return uri;
     }
 
     @Override

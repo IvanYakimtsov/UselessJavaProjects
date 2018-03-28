@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ClientManager {
     private ClientService client = new ClientService();
-    private JFrame mainFrame = new JFrame("Thrift Client");
+    private JFrame mainFrame = new JFrame("Rest Client");
   //  private ContentPanel contentPanel = new ContentPanel(this);
     private ArticlePanel articlePanel;
 
