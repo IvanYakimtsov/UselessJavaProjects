@@ -6,7 +6,6 @@ import com.sun.jersey.api.client.GenericType;
 import com.sun.jersey.api.client.WebResource;
 import com.yakimtsov.rest.entity.Article;
 import com.yakimtsov.rest.util.UpdateMessage;
-import netscape.javascript.JSObject;
 
 import javax.ws.rs.core.MediaType;
 import java.util.List;

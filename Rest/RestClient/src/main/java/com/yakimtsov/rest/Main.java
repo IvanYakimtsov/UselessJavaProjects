@@ -9,9 +9,9 @@ public class Main {
 
     public static void main(String... args) {
 
-        //new ClientManager().startClient();
-        ClientService service = new ClientService();
-        service.getArticles();
-        service.addArticle(new Article());
+        new ClientManager().startClient();
+//        ClientService service = new ClientService();
+//        service.getArticles();
+//        service.addArticle(new Article());
     }
 }
