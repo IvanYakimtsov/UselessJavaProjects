@@ -17,7 +17,7 @@
 <table>
     <c:forEach items="${list}" var="item">
         <tr>
-            <div itemscope itemtype="http://schema.org/Article">
+            <div itemprop="article" itemscope itemtype="http://schema.org/Article">
                 <span itemprop="name">
                     <a href="${pageContext.request.contextPath}/showArticle?id=${item.id}">${item.title}</a>
                 </span>

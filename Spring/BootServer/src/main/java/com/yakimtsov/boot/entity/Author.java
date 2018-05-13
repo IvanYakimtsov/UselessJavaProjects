@@ -18,9 +18,6 @@ public class Author {
     @Column(name = "experience")
     private String experience;
 
-//    @JsonIgnore
-//    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-//    private Set<Article> articles = new HashSet<Article>();
 
     public Author(){
 

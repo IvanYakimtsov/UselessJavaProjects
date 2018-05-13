@@ -25,14 +25,14 @@
     <c:redirect url="${pageContext.request.contextPath}/showArticles"/>
 </c:if>
 
-<div itemscope itemtype="http://schema.org/Article">
+<div itemprop="article" itemscope itemtype="http://schema.org/Article">
 
     <form action="${pageContext.request.contextPath}/update" method="post">
         <span itemprop="name">
         <input type="text" name="title" value="${entity.title}" required>
         </span>
         <br/>
-        <span itemprop="pagination">
+        <span itemprop="description">
         <input type="text" name="description" value="${entity.description}">
         </span>
         <br/>
